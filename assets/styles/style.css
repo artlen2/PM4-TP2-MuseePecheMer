@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,100..900;1,100..900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap%27);
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,100..900;1,100..900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import "tailwindcss";
  
 @theme {
@@ -38,21 +38,44 @@ body {
  
 .site-header {
   width: 100%;
-  min-height: clamp(5rem, 10vh, 7rem);
+  min-height: clamp(6rem, 12vh, 8rem);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.25rem 2rem;
+  padding: 1rem clamp(1.5rem, 5vw, 5rem) 1.5rem;
   background: var(--color-prussianblue7);
+  border-radius: 0 0 50% 50% / 0 0 24% 24%;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 4vw, 4rem);
+}
+
+.nav-link {
   color: var(--color-palesky2);
   font-family: var(--font-main);
-  font-size: clamp(1rem, 1.5vw, 1.35rem);
+  font-size: clamp(1rem, 1.8vw, 1.5rem);
   font-weight: 700;
-  letter-spacing: 0.08em;
-  text-align: center;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
+  transition: color 250ms ease, transform 250ms ease;
 }
- 
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--color-yellow1);
+  transform: translateY(-0.2rem);
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--color-skyblue3);
+  outline-offset: 0.35rem;
+}
+
 .page-main {
   flex: 1;
   min-height: clamp(30rem, 78vh, 52rem);
@@ -122,6 +145,15 @@ footer {
 }
  
 @media (max-width: 600px) {
+  .site-header {
+    padding: 1.25rem 1rem 2rem;
+    border-radius: 0 0 25% 25% / 0 0 8% 8%;
+  }
+
+  .site-nav {
+    gap: 0.8rem 1.25rem;
+  }
+
   .page-main {
     min-height: 30rem;
     padding: 1.25rem;
