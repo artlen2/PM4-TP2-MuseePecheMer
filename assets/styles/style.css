@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,100..900;1,100..900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,100..900;1,100..900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap%27);
 @import "tailwindcss";
-
+ 
 @theme {
   --color-yellow1: #f2e676;
   --color-palesky2: #d6edf7;
@@ -14,19 +14,19 @@
   --font-main: "Archivo", sans-serif;
   --font-title: "Merriweather Sans", sans-serif;
 }
-
+ 
 *,
 *::before,
 *::after {
   @apply m-0 p-0 box-border;
 }
-
+ 
 html {
   @apply scroll-smooth;
   width: 100%;
   min-height: 100%;
 }
-
+ 
 body {
   @apply bg-prussianblue7 text-white font-main;
   min-width: 320px;
@@ -35,7 +35,7 @@ body {
   flex-direction: column;
   overflow-x: hidden;
 }
-
+ 
 .site-header {
   width: 100%;
   min-height: clamp(5rem, 10vh, 7rem);
@@ -52,7 +52,7 @@ body {
   text-align: center;
   text-transform: uppercase;
 }
-
+ 
 .page-main {
   flex: 1;
   min-height: clamp(30rem, 78vh, 52rem);
@@ -61,12 +61,12 @@ body {
   padding: clamp(3rem, 8vw, 8rem) clamp(1.5rem, 8vw, 10rem);
   background: linear-gradient(180deg, var(--color-cloudysky4) 0%, var(--color-smartblue5) 48%, var(--color-prussianblue7) 100%);
 }
-
+ 
 .hero-content {
   width: min(100%, 1100px);
   text-align: center;
 }
-
+ 
 .hero-content p {
   max-width: 100%;
   color: transparent;
@@ -82,16 +82,16 @@ body {
   line-height: 0.9;
   letter-spacing: -0.04em;
   text-wrap: balance;
-  animation: title-drift 6s ease-in-out infinite;
-  transition: background-position 700ms ease, transform 500ms ease;
+  animation: title-drift 100s ease-in-out infinite;
+    transition: background-position 700ms ease, transform 500ms ease;
 }
-
+ 
 .hero-content p:hover {
   cursor: default;
   background-position: 100% 50%;
   transform: translateY(-0.45rem) scale(1.02);
 }
-
+ 
 footer {
   min-height: 4.5rem;
   display: grid;
@@ -105,29 +105,30 @@ footer {
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
-
+ 
 @keyframes title-drift {
   0%,
   100% { transform: translateY(0) rotate(0deg); }
   50% { transform: translateY(-0.45rem) rotate(-1deg); }
 }
-
+ 
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
+    animation-duration: 4s !important;
+    transition-duration: 3ms !important;
   }
 }
-
+ 
 @media (max-width: 600px) {
   .page-main {
     min-height: 30rem;
     padding: 1.25rem;
   }
-
+ 
   .hero-content {
     width: 100%;
   }
 }
+ 
