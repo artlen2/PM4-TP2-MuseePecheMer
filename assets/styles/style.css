@@ -37,49 +37,50 @@ body {
 .bg-beige {
   position: relative;
   display: grid;
-  min-height: clamp(32rem, 78vh, 52rem);
+  width: 100%;
+  min-height: clamp(28rem, 76vh, 48rem);
   place-items: center;
-  padding: clamp(3rem, 8vw, 7rem) clamp(1.5rem, 8vw, 9rem);
+  padding: clamp(4rem, 8vw, 7rem) clamp(2rem, 8vw, 10rem);
   overflow: visible;
   border-radius: 0 0 30% 16% / 0 0 18% 10%;
   background: linear-gradient(180deg, var(--color-cloudysky4) 0%, var(--color-smartblue5) 48%, var(--color-prussianblue7) 100%);
-  transition: min-height 550ms ease, border-radius 550ms ease, padding 550ms ease;
+  transition: min-height 550ms ease, border-radius 550ms ease;
 }
 
 .bg-beige:hover {
-  min-height: clamp(36rem, 86vh, 58rem);
-  padding-block: clamp(4rem, 10vw, 9rem);
+  min-height: clamp(31rem, 82vh, 52rem);
   border-radius: 0 0 42% 28% / 0 0 24% 14%;
 }
 
 .bg-beige > div {
-  width: min(100%, 760px);
+  width: min(100%, 1100px);
   padding: 0;
-  transform: translateX(clamp(-5rem, -8vw, -1rem));
-  transition: transform 550ms ease;
-}
-
-.bg-beige:hover > div {
-  transform: translateX(clamp(-4rem, -5vw, 0rem));
+  text-align: center;
 }
 
 .bg-beige p {
-  max-width: 10ch;
-  color: var(--color-palesky2);
-  font-family: var(--font-title);
-  font-size: clamp(3.5rem, 12vw, 9rem);
+  max-width: 100%;
+  color: transparent;
+  background: linear-gradient(110deg, var(--color-palesky2) 10%, var(--color-skyblue3) 48%, var(--color-yellow1) 86%);
+  background-size: 180% 100%;
+  background-position: 0% 50%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  mix-blend-mode: screen;
+  font-family: var(--font-main);
+  font-size: clamp(5rem, 14vw, 11rem);
   font-weight: 800;
-  line-height: 0.85;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
   text-wrap: balance;
-  text-shadow: 0 0.08em 0 var(--color-prussianblue7);
-  animation: title-drift 5s ease-in-out infinite;
-  transition: transform 500ms ease, color 500ms ease;
+  animation: title-drift 6s ease-in-out infinite;
+  transition: background-position 700ms ease, transform 500ms ease;
 }
 
 .bg-beige p:hover {
-  color: var(--color-yellow1);
   cursor: default;
-  transform: translateY(-0.55rem);
+  background-position: 100% 50%;
+  transform: translateY(-0.45rem) scale(1.02);
 }
 
 footer {
@@ -113,20 +114,16 @@ footer {
 
 @media (max-width: 600px) {
   .bg-beige {
-    min-height: 32rem;
+    min-height: 30rem;
     padding: 1.25rem;
   }
 
   .bg-beige:hover {
-    min-height: 34rem;
+    min-height: 32rem;
     padding-block: 2rem;
   }
 
   .bg-beige > div {
-    transform: none;
-  }
-
-  .bg-beige:hover > div {
-    transform: translateY(-0.5rem);
+    width: 100%;
   }
 }
