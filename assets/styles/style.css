@@ -36,80 +36,31 @@ body {
 
 .bg-beige {
   position: relative;
-  isolation: isolate;
   display: grid;
-  flex: 1;
-  min-height: 100vh;
+  min-height: clamp(32rem, 78vh, 52rem);
   place-items: center;
-  padding: clamp(2rem, 8vw, 7rem);
-  overflow: hidden;
-  border-radius: 0 0 22% 8% / 0 0 10% 5%;
+  padding: clamp(3rem, 8vw, 7rem) clamp(1.5rem, 8vw, 9rem);
+  overflow: visible;
+  border-radius: 0 0 30% 16% / 0 0 18% 10%;
   background: linear-gradient(180deg, var(--color-cloudysky4) 0%, var(--color-smartblue5) 48%, var(--color-prussianblue7) 100%);
-  transition: min-height 650ms ease, padding 650ms ease, border-radius 650ms ease;
-}
-
-.bg-beige::before {
-  position: absolute;
-  top: 10%;
-  right: 9%;
-  width: 5rem;
-  height: 3.5rem;
-  content: "";
-  border-top: 2px solid var(--color-palesky2);
-  border-radius: 50%;
-  opacity: 0.7;
-  box-shadow: -2rem 1.8rem 0 -0.1rem var(--color-skyblue3), 2.5rem 3rem 0 -0.2rem var(--color-palesky2);
-  animation: bubbles-rise 6s ease-in-out infinite;
-}
-
-.bg-beige::after {
-  position: absolute;
-  z-index: -1;
-  right: -5%;
-  bottom: -6rem;
-  left: -5%;
-  height: 12rem;
-  content: "";
-  background: var(--color-prussianblue7);
-  clip-path: polygon(0 48%, 13% 25%, 27% 48%, 41% 21%, 55% 46%, 70% 28%, 84% 49%, 100% 30%, 100% 100%, 0 100%);
-  transition: height 650ms ease, clip-path 650ms ease;
+  transition: min-height 550ms ease, border-radius 550ms ease, padding 550ms ease;
 }
 
 .bg-beige:hover {
-  min-height: 108vh;
-  padding-block: clamp(3rem, 10vw, 9rem);
-  border-radius: 0 0 42% 28% / 0 0 16% 10%;
-}
-
-.bg-beige:hover::after {
-  height: 16rem;
-  clip-path: polygon(0 34%, 13% 58%, 27% 28%, 41% 62%, 55% 33%, 70% 57%, 84% 30%, 100% 52%, 100% 100%, 0 100%);
+  min-height: clamp(36rem, 86vh, 58rem);
+  padding-block: clamp(4rem, 10vw, 9rem);
+  border-radius: 0 0 42% 28% / 0 0 24% 14%;
 }
 
 .bg-beige > div {
-  position: relative;
   width: min(100%, 760px);
-  padding: clamp(2.25rem, 7vw, 5.5rem);
-  border-top: 4px solid var(--color-yellow1);
-  background: rgba(2, 26, 52, 0.3);
-  transition: transform 650ms ease, background 650ms ease;
+  padding: 0;
+  transform: translateX(clamp(-5rem, -8vw, -1rem));
+  transition: transform 550ms ease;
 }
 
 .bg-beige:hover > div {
-  transform: translateY(-0.8rem);
-  background: rgba(2, 26, 52, 0.5);
-}
-
-.bg-beige > div::before {
-  position: absolute;
-  top: -3.2rem;
-  right: 10%;
-  width: 6.5rem;
-  height: 2.4rem;
-  content: "";
-  background: var(--color-yellow1);
-  clip-path: polygon(0 50%, 24% 4%, 100% 0, 76% 50%, 100% 100%, 24% 96%);
-  animation: fish-swim 7s ease-in-out infinite;
+  transform: translateX(clamp(-4rem, -5vw, 0rem));
 }
 
 .bg-beige p {
@@ -121,6 +72,7 @@ body {
   line-height: 0.85;
   text-wrap: balance;
   text-shadow: 0 0.08em 0 var(--color-prussianblue7);
+  animation: title-drift 5s ease-in-out infinite;
   transition: transform 500ms ease, color 500ms ease;
 }
 
@@ -144,16 +96,10 @@ footer {
   text-transform: uppercase;
 }
 
-@keyframes fish-swim {
+@keyframes title-drift {
   0%,
-  100% { transform: translateX(0) rotate(-3deg); }
-  50% { transform: translateX(-2rem) rotate(3deg); }
-}
-
-@keyframes bubbles-rise {
-  0%,
-  100% { transform: translateY(0); opacity: 0.65; }
-  50% { transform: translateY(-1.5rem); opacity: 1; }
+  100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-0.45rem) rotate(-1deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -167,16 +113,20 @@ footer {
 
 @media (max-width: 600px) {
   .bg-beige {
-    min-height: calc(100vh - 4.5rem);
+    min-height: 32rem;
     padding: 1.25rem;
   }
 
   .bg-beige:hover {
-    min-height: calc(100vh - 4.5rem);
+    min-height: 34rem;
     padding-block: 2rem;
   }
 
   .bg-beige > div {
-    padding: 2rem 1.5rem;
+    transform: none;
+  }
+
+  .bg-beige:hover > div {
+    transform: translateY(-0.5rem);
   }
 }
