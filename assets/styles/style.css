@@ -1,37 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,100..900;1,100..900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-sea-foam: #dff9f5;
-  --color-sea-surface: #087e8b;
-  --color-sea-deep: #063b55;
-  --color-sea-night: #032536;
-  --color-sun-yellow: #f4d35e;
-  --font-display: "Cormorant Garamond", Georgia, serif;
-  --font-body: "Jost", sans-serif;
+  --color-yellow1: #f2e676;
+  --color-palesky2: #d6edf7;
+  --color-skyblue3: #77ddf9;
+  --color-cloudysky4: #2497f0;
+  --color-smartblue5: #3263bf;
+  --color-yaleblue6: #294c6b;
+  --color-prussianblue7: #021a34;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Jost", sans-serif;
+  --font-main: "Archivo", sans-serif;
+  --font-title: "Merriweather Sans", sans-serif;
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  @apply m-0 p-0 box-border;
 }
 
 html {
-  min-width: 320px;
-  min-height: 100%;
-  scroll-behavior: smooth;
+  @apply size-4 scroll-smooth;
 }
 
 body {
+  @apply bg-prussianblue7 text-white font-main;
+  min-width: 320px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-  background: var(--color-sea-night);
-  color: var(--color-sea-foam);
-  font-family: var(--font-body);
 }
 
 .bg-beige {
@@ -43,94 +43,91 @@ body {
   place-items: center;
   padding: clamp(2rem, 8vw, 7rem);
   overflow: hidden;
-  background:
-    linear-gradient(180deg, rgba(3, 37, 54, 0.22), transparent 36%),
-    repeating-linear-gradient(174deg, transparent 0 7rem, rgba(223, 249, 245, 0.08) 7.1rem 7.2rem, transparent 7.3rem 12rem),
-    linear-gradient(145deg, #063b55 0%, #087e8b 52%, #19a7a8 100%);
+  border-radius: 0 0 22% 8% / 0 0 10% 5%;
+  background: linear-gradient(180deg, var(--color-cloudysky4) 0%, var(--color-smartblue5) 48%, var(--color-prussianblue7) 100%);
   transition: min-height 650ms ease, padding 650ms ease, border-radius 650ms ease;
-}
-
-/* The lower edge is the only decorative silhouette: a restrained wave. */
-.bg-beige::after {
-  position: absolute;
-  z-index: -1;
-  right: -5%;
-  bottom: -5rem;
-  left: -5%;
-  height: 11rem;
-  content: "";
-  background: var(--color-sea-night);
-  clip-path: polygon(0 47%, 12% 32%, 25% 48%, 39% 20%, 54% 44%, 68% 26%, 82% 47%, 100% 30%, 100% 100%, 0 100%);
-  transition: height 650ms ease, clip-path 650ms ease;
 }
 
 .bg-beige::before {
   position: absolute;
-  top: 13%;
-  right: 10%;
+  top: 10%;
+  right: 9%;
   width: 5rem;
-  height: 4rem;
+  height: 3.5rem;
   content: "";
-  border-top: 2px solid rgba(223, 249, 245, 0.55);
+  border-top: 2px solid var(--color-palesky2);
   border-radius: 50%;
-  box-shadow: -2rem 1.8rem 0 -0.1rem rgba(223, 249, 245, 0.35), 2.5rem 3rem 0 -0.2rem rgba(223, 249, 245, 0.3);
+  opacity: 0.7;
+  box-shadow: -2rem 1.8rem 0 -0.1rem var(--color-skyblue3), 2.5rem 3rem 0 -0.2rem var(--color-palesky2);
   animation: bubbles-rise 6s ease-in-out infinite;
+}
+
+.bg-beige::after {
+  position: absolute;
+  z-index: -1;
+  right: -5%;
+  bottom: -6rem;
+  left: -5%;
+  height: 12rem;
+  content: "";
+  background: var(--color-prussianblue7);
+  clip-path: polygon(0 48%, 13% 25%, 27% 48%, 41% 21%, 55% 46%, 70% 28%, 84% 49%, 100% 30%, 100% 100%, 0 100%);
+  transition: height 650ms ease, clip-path 650ms ease;
 }
 
 .bg-beige:hover {
   min-height: 108vh;
   padding-block: clamp(3rem, 10vw, 9rem);
-  border-radius: 0 0 12% 7% / 0 0 7% 4%;
+  border-radius: 0 0 42% 28% / 0 0 16% 10%;
 }
 
 .bg-beige:hover::after {
-  height: 15rem;
-  clip-path: polygon(0 35%, 12% 55%, 25% 29%, 39% 62%, 54% 34%, 68% 57%, 82% 30%, 100% 52%, 100% 100%, 0 100%);
+  height: 16rem;
+  clip-path: polygon(0 34%, 13% 58%, 27% 28%, 41% 62%, 55% 33%, 70% 57%, 84% 30%, 100% 52%, 100% 100%, 0 100%);
 }
 
 .bg-beige > div {
   position: relative;
   width: min(100%, 760px);
   padding: clamp(2.25rem, 7vw, 5.5rem);
-  border: 1px solid rgba(223, 249, 245, 0.35);
-  border-top: 4px solid var(--color-sun-yellow);
-  background: rgba(3, 37, 54, 0.42);
+  border-top: 4px solid var(--color-yellow1);
+  background: rgba(2, 26, 52, 0.3);
   transition: transform 650ms ease, background 650ms ease;
 }
 
 .bg-beige:hover > div {
   transform: translateY(-0.8rem);
-  background: rgba(3, 37, 54, 0.56);
+  background: rgba(2, 26, 52, 0.5);
 }
 
 .bg-beige > div::before {
   position: absolute;
-  top: -3.4rem;
+  top: -3.2rem;
   right: 10%;
   width: 6.5rem;
   height: 2.4rem;
   content: "";
-  background: var(--color-sun-yellow);
+  background: var(--color-yellow1);
   clip-path: polygon(0 50%, 24% 4%, 100% 0, 76% 50%, 100% 100%, 24% 96%);
   animation: fish-swim 7s ease-in-out infinite;
 }
 
 .bg-beige p {
   max-width: 10ch;
-  color: var(--color-sea-foam);
-  font-family: var(--font-display);
+  color: var(--color-palesky2);
+  font-family: var(--font-title);
   font-size: clamp(3.5rem, 12vw, 9rem);
-  font-weight: 700;
-  line-height: 0.82;
+  font-weight: 800;
+  line-height: 0.85;
   text-wrap: balance;
-  text-shadow: 0 0.08em 0 var(--color-sea-night);
-  transition: transform 500ms ease, letter-spacing 500ms ease;
+  text-shadow: 0 0.08em 0 var(--color-prussianblue7);
+  transition: transform 500ms ease, color 500ms ease;
 }
 
 .bg-beige p:hover {
+  color: var(--color-yellow1);
   cursor: default;
   transform: translateY(-0.55rem);
-  letter-spacing: 0.01em;
 }
 
 footer {
@@ -138,9 +135,10 @@ footer {
   display: grid;
   place-items: center;
   padding: 1.25rem 1.5rem;
-  border-top: 1px solid rgba(223, 249, 245, 0.2);
-  background: var(--color-sea-night);
-  color: rgba(223, 249, 245, 0.75);
+  border-top: 1px solid var(--color-yaleblue6);
+  background: var(--color-prussianblue7);
+  color: var(--color-skyblue3);
+  font-family: var(--font-main);
   font-size: 0.8rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
