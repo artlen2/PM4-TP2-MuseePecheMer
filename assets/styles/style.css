@@ -1,236 +1,181 @@
 @import "tailwindcss";
 
 @theme {
-  --color-yellow1: #f2e676;
-  --color-palesky2: #d6edf7;
-  --color-skyblue3: #77ddf9;
-  --color-cloudysky4: #2497f0;
-  --color-smartblue5: #3263bf;
-  --color-yaleblue6: #294c6b;
-  --color-prussianblue7: #021a34;
-  --font-serif: "Cormorant Garamond", Georgia, serif;
-  --font-sans: "Jost", sans-serif;
+  --color-sea-foam: #dff9f5;
+  --color-sea-surface: #087e8b;
+  --color-sea-deep: #063b55;
+  --color-sea-night: #032536;
+  --color-sun-yellow: #f4d35e;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Jost", sans-serif;
 }
 
 *,
 *::before,
 *::after {
-  @apply m-0 p-0 box-border;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-  @apply size-4 scroll-smooth;
-
-  body {
-    @apply bg-cloudysky4 text-palesky2 font-sans;
-  }
+  min-width: 320px;
+  min-height: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
-  min-width: 320px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  background: var(--color-sea-night);
+  color: var(--color-sea-foam);
+  font-family: var(--font-body);
 }
 
 .bg-beige {
   position: relative;
   isolation: isolate;
   display: grid;
-  place-items: center;
   flex: 1;
   min-height: 100vh;
-  padding: clamp(2rem, 7vw, 6rem);
+  place-items: center;
+  padding: clamp(2rem, 8vw, 7rem);
   overflow: hidden;
   background:
-    radial-gradient(circle at 18% 20%, rgba(214, 237, 247, 0.24) 0 1px, transparent 2px),
-    radial-gradient(circle at 82% 72%, rgba(214, 237, 247, 0.2) 0 1px, transparent 2px),
-    linear-gradient(168deg, transparent 0 69%, rgba(2, 26, 52, 0.3) 69.3% 70%, transparent 70.3%),
-    linear-gradient(145deg, #0d4d75 0%, #126e9b 48%, #2497f0 100%);
-  background-size: 34px 34px, 48px 48px, 100% 100%, 100% 100%;
+    linear-gradient(180deg, rgba(3, 37, 54, 0.22), transparent 36%),
+    repeating-linear-gradient(174deg, transparent 0 7rem, rgba(223, 249, 245, 0.08) 7.1rem 7.2rem, transparent 7.3rem 12rem),
+    linear-gradient(145deg, #063b55 0%, #087e8b 52%, #19a7a8 100%);
+  transition: min-height 650ms ease, padding 650ms ease, border-radius 650ms ease;
 }
 
-.bg-beige::before,
+/* The lower edge is the only decorative silhouette: a restrained wave. */
 .bg-beige::after {
   position: absolute;
   z-index: -1;
+  right: -5%;
+  bottom: -5rem;
+  left: -5%;
+  height: 11rem;
   content: "";
-  border: 1px solid rgba(214, 237, 247, 0.22);
+  background: var(--color-sea-night);
+  clip-path: polygon(0 47%, 12% 32%, 25% 48%, 39% 20%, 54% 44%, 68% 26%, 82% 47%, 100% 30%, 100% 100%, 0 100%);
+  transition: height 650ms ease, clip-path 650ms ease;
+}
+
+.bg-beige::before {
+  position: absolute;
+  top: 13%;
+  right: 10%;
+  width: 5rem;
+  height: 4rem;
+  content: "";
+  border-top: 2px solid rgba(223, 249, 245, 0.55);
   border-radius: 50%;
-  transform: rotate(-12deg);
+  box-shadow: -2rem 1.8rem 0 -0.1rem rgba(223, 249, 245, 0.35), 2.5rem 3rem 0 -0.2rem rgba(223, 249, 245, 0.3);
+  animation: bubbles-rise 6s ease-in-out infinite;
 }
 
-.bg-beige::before {
-  width: min(58vw, 620px);
-  height: min(58vw, 620px);
-  top: -22%;
-  right: -12%;
+.bg-beige:hover {
+  min-height: 108vh;
+  padding-block: clamp(3rem, 10vw, 9rem);
+  border-radius: 0 0 12% 7% / 0 0 7% 4%;
 }
 
-.bg-beige::after {
-  width: min(42vw, 460px);
-  height: min(42vw, 460px);
-  bottom: -20%;
-  left: -10%;
-}
-
-.bg-beige::before {
-  box-shadow:
-    120px 270px 0 -18px rgba(214, 237, 247, 0.3),
-    180px 340px 0 -26px rgba(214, 237, 247, 0.2),
-    -22px 420px 0 -22px rgba(214, 237, 247, 0.22);
-  animation: drift 11s ease-in-out infinite alternate;
+.bg-beige:hover::after {
+  height: 15rem;
+  clip-path: polygon(0 35%, 12% 55%, 25% 29%, 39% 62%, 54% 34%, 68% 57%, 82% 30%, 100% 52%, 100% 100%, 0 100%);
 }
 
 .bg-beige > div {
   position: relative;
+  width: min(100%, 760px);
+  padding: clamp(2.25rem, 7vw, 5.5rem);
+  border: 1px solid rgba(223, 249, 245, 0.35);
+  border-top: 4px solid var(--color-sun-yellow);
+  background: rgba(3, 37, 54, 0.42);
+  transition: transform 650ms ease, background 650ms ease;
 }
 
-.bg-beige > div::before,
-.bg-beige > div::after {
-  position: absolute;
-  content: "";
-  pointer-events: none;
+.bg-beige:hover > div {
+  transform: translateY(-0.8rem);
+  background: rgba(3, 37, 54, 0.56);
 }
 
 .bg-beige > div::before {
-  width: 7rem;
-  height: 3rem;
-  top: -3.5rem;
-  right: 12%;
-  border-radius: 100% 0 100% 0;
-  background: var(--color-yellow1);
-  opacity: 0.9;
-  transform: rotate(-12deg);
-  clip-path: polygon(0 50%, 25% 5%, 100% 0, 76% 50%, 100% 100%, 25% 95%);
-  animation: fish-swim 6s ease-in-out infinite;
-}
-
-.bg-beige > div::after {
-  width: 0.7rem;
-  height: 0.7rem;
-  top: -4.5rem;
-  right: 28%;
-  border: 2px solid rgba(214, 237, 247, 0.78);
-  border-radius: 50%;
-  box-shadow:
-    1.5rem -2rem 0 -0.12rem rgba(214, 237, 247, 0.72),
-    3.1rem -3.2rem 0 -0.2rem rgba(214, 237, 247, 0.6),
-    -1.2rem -2.8rem 0 -0.22rem rgba(214, 237, 247, 0.52);
-  animation: bubbles-rise 5s ease-in infinite;
-}
-
-.bg-beige > div {
-  width: min(100%, 720px);
-  padding: clamp(2rem, 6vw, 5rem);
-  border-left: 4px solid var(--color-palesky2);
-  background: rgba(5, 44, 68, 0.34);
-  box-shadow: 18px 18px 0 rgba(5, 44, 68, 0.12);
-  backdrop-filter: blur(4px);
+  position: absolute;
+  top: -3.4rem;
+  right: 10%;
+  width: 6.5rem;
+  height: 2.4rem;
+  content: "";
+  background: var(--color-sun-yellow);
+  clip-path: polygon(0 50%, 24% 4%, 100% 0, 76% 50%, 100% 100%, 24% 96%);
+  animation: fish-swim 7s ease-in-out infinite;
 }
 
 .bg-beige p {
-  position: relative;
-  display: inline-block;
-  max-width: 11ch;
-  color: var(--color-palesky2);
-  font-size: clamp(3rem, 11vw, 8rem);
+  max-width: 10ch;
+  color: var(--color-sea-foam);
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 12vw, 9rem);
   font-weight: 700;
-  line-height: 0.9;
-  letter-spacing: -0.04em;
+  line-height: 0.82;
   text-wrap: balance;
-  text-shadow: 0 0.08em 0 rgba(2, 26, 52, 0.28);
-  transition: transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1), text-shadow 500ms ease;
-}
-
-.bg-beige p::after {
-  position: absolute;
-  width: 0.65rem;
-  height: 0.65rem;
-  top: -1rem;
-  right: 0.2rem;
-  content: "";
-  border: 2px solid rgba(214, 237, 247, 0.86);
-  border-radius: 50%;
-  opacity: 0.7;
-  transition: transform 500ms ease;
+  text-shadow: 0 0.08em 0 var(--color-sea-night);
+  transition: transform 500ms ease, letter-spacing 500ms ease;
 }
 
 .bg-beige p:hover {
   cursor: default;
-  transform: translateY(-0.7rem) rotate(-2deg) scale(1.02);
-  text-shadow: 0 0.16em 0 rgba(2, 26, 52, 0.24), 0 0 1.2rem rgba(214, 237, 247, 0.42);
-}
-
-.bg-beige p:hover::after {
-  transform: translate(1rem, -2.5rem) scale(1.5);
+  transform: translateY(-0.55rem);
+  letter-spacing: 0.01em;
 }
 
 footer {
-  min-height: 4rem;
+  min-height: 4.5rem;
   display: grid;
   place-items: center;
-  padding: 1rem 1.5rem;
-  background: #052c44;
-  color: rgba(214, 237, 247, 0.72);
-}
-
-@keyframes drift {
-  from {
-    transform: rotate(-12deg) translate3d(-1rem, 0, 0);
-  }
-
-  to {
-    transform: rotate(-8deg) translate3d(1rem, 0.8rem, 0);
-  }
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid rgba(223, 249, 245, 0.2);
+  background: var(--color-sea-night);
+  color: rgba(223, 249, 245, 0.75);
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 @keyframes fish-swim {
   0%,
-  100% {
-    transform: translateX(0) rotate(-12deg);
-  }
-
-  50% {
-    transform: translateX(-2rem) rotate(-4deg);
-  }
+  100% { transform: translateX(0) rotate(-3deg); }
+  50% { transform: translateX(-2rem) rotate(3deg); }
 }
 
 @keyframes bubbles-rise {
-  0% {
-    opacity: 0;
-    transform: translateY(1.5rem) scale(0.8);
-  }
-
-  25%,
-  75% {
-    opacity: 0.9;
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateY(-4rem) scale(1.15);
-  }
+  0%,
+  100% { transform: translateY(0); opacity: 0.65; }
+  50% { transform: translateY(-1.5rem); opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bg-beige::before,
-  .bg-beige > div::before,
-  .bg-beige > div::after {
-    animation: none;
-  }
-
-  .bg-beige p,
-  .bg-beige p::after {
-    transition: none;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
 @media (max-width: 600px) {
   .bg-beige {
-    min-height: calc(100vh - 4rem);
+    min-height: calc(100vh - 4.5rem);
     padding: 1.25rem;
+  }
+
+  .bg-beige:hover {
+    min-height: calc(100vh - 4.5rem);
+    padding-block: 2rem;
   }
 
   .bg-beige > div {
