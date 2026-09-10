@@ -38,13 +38,15 @@ body {
  
 .site-header {
   width: 100%;
-  min-height: clamp(6rem, 12vh, 8rem);
+  min-height: clamp(4.25rem, 8vh, 5.75rem);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem clamp(1.5rem, 5vw, 5rem) 1.5rem;
-  background: var(--color-prussianblue7);
-  border-radius: 0 0 50% 50% / 0 0 24% 24%;
+  padding: 0.75rem clamp(1.5rem, 5vw, 5rem) 1.1rem;
+  overflow: hidden;
+  background: rgba(2, 26, 52, 0.78);
+  backdrop-filter: blur(5px);
+  border-radius: 0 0 50% 50% / 0 0 34% 34%;
 }
 
 .site-nav {
@@ -73,7 +75,7 @@ body {
   left: 0;
   height: 2px;
   content: "";
-  background: var(--color-yellow1);
+  background: var(--color-palesky2);
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 300ms ease;
@@ -159,8 +161,9 @@ footer {
  
 @media (max-width: 600px) {
   .site-header {
-    padding: 1.25rem 1rem 2rem;
-    border-radius: 0 0 25% 25% / 0 0 8% 8%;
+    min-height: 4rem;
+    padding: 0.75rem 1rem 1rem;
+    border-radius: 0 0 28% 28% / 0 0 16% 16%;
   }
 
   .site-nav {
