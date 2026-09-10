@@ -44,10 +44,11 @@ body {
   padding: clamp(2rem, 7vw, 6rem);
   overflow: hidden;
   background:
-    radial-gradient(circle at 14% 18%, rgba(214, 237, 247, 0.22) 0 1px, transparent 2px),
-    radial-gradient(circle at 82% 72%, rgba(214, 237, 247, 0.18) 0 1px, transparent 2px),
+    radial-gradient(circle at 18% 20%, rgba(214, 237, 247, 0.24) 0 1px, transparent 2px),
+    radial-gradient(circle at 82% 72%, rgba(214, 237, 247, 0.2) 0 1px, transparent 2px),
+    linear-gradient(168deg, transparent 0 69%, rgba(2, 26, 52, 0.3) 69.3% 70%, transparent 70.3%),
     linear-gradient(145deg, #0d4d75 0%, #126e9b 48%, #2497f0 100%);
-  background-size: 34px 34px, 48px 48px, 100% 100%;
+  background-size: 34px 34px, 48px 48px, 100% 100%, 100% 100%;
 }
 
 .bg-beige::before,
@@ -74,6 +75,52 @@ body {
   left: -10%;
 }
 
+.bg-beige::before {
+  box-shadow:
+    120px 270px 0 -18px rgba(214, 237, 247, 0.3),
+    180px 340px 0 -26px rgba(214, 237, 247, 0.2),
+    -22px 420px 0 -22px rgba(214, 237, 247, 0.22);
+  animation: drift 11s ease-in-out infinite alternate;
+}
+
+.bg-beige > div {
+  position: relative;
+}
+
+.bg-beige > div::before,
+.bg-beige > div::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.bg-beige > div::before {
+  width: 7rem;
+  height: 3rem;
+  top: -3.5rem;
+  right: 12%;
+  border-radius: 100% 0 100% 0;
+  background: var(--color-yellow1);
+  opacity: 0.9;
+  transform: rotate(-12deg);
+  clip-path: polygon(0 50%, 25% 5%, 100% 0, 76% 50%, 100% 100%, 25% 95%);
+  animation: fish-swim 6s ease-in-out infinite;
+}
+
+.bg-beige > div::after {
+  width: 0.7rem;
+  height: 0.7rem;
+  top: -4.5rem;
+  right: 28%;
+  border: 2px solid rgba(214, 237, 247, 0.78);
+  border-radius: 50%;
+  box-shadow:
+    1.5rem -2rem 0 -0.12rem rgba(214, 237, 247, 0.72),
+    3.1rem -3.2rem 0 -0.2rem rgba(214, 237, 247, 0.6),
+    -1.2rem -2.8rem 0 -0.22rem rgba(214, 237, 247, 0.52);
+  animation: bubbles-rise 5s ease-in infinite;
+}
+
 .bg-beige > div {
   width: min(100%, 720px);
   padding: clamp(2rem, 6vw, 5rem);
@@ -84,6 +131,8 @@ body {
 }
 
 .bg-beige p {
+  position: relative;
+  display: inline-block;
   max-width: 11ch;
   color: var(--color-palesky2);
   font-size: clamp(3rem, 11vw, 8rem);
@@ -91,6 +140,31 @@ body {
   line-height: 0.9;
   letter-spacing: -0.04em;
   text-wrap: balance;
+  text-shadow: 0 0.08em 0 rgba(2, 26, 52, 0.28);
+  transition: transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1), text-shadow 500ms ease;
+}
+
+.bg-beige p::after {
+  position: absolute;
+  width: 0.65rem;
+  height: 0.65rem;
+  top: -1rem;
+  right: 0.2rem;
+  content: "";
+  border: 2px solid rgba(214, 237, 247, 0.86);
+  border-radius: 50%;
+  opacity: 0.7;
+  transition: transform 500ms ease;
+}
+
+.bg-beige p:hover {
+  cursor: default;
+  transform: translateY(-0.7rem) rotate(-2deg) scale(1.02);
+  text-shadow: 0 0.16em 0 rgba(2, 26, 52, 0.24), 0 0 1.2rem rgba(214, 237, 247, 0.42);
+}
+
+.bg-beige p:hover::after {
+  transform: translate(1rem, -2.5rem) scale(1.5);
 }
 
 footer {
@@ -100,6 +174,57 @@ footer {
   padding: 1rem 1.5rem;
   background: #052c44;
   color: rgba(214, 237, 247, 0.72);
+}
+
+@keyframes drift {
+  from {
+    transform: rotate(-12deg) translate3d(-1rem, 0, 0);
+  }
+
+  to {
+    transform: rotate(-8deg) translate3d(1rem, 0.8rem, 0);
+  }
+}
+
+@keyframes fish-swim {
+  0%,
+  100% {
+    transform: translateX(0) rotate(-12deg);
+  }
+
+  50% {
+    transform: translateX(-2rem) rotate(-4deg);
+  }
+}
+
+@keyframes bubbles-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(1.5rem) scale(0.8);
+  }
+
+  25%,
+  75% {
+    opacity: 0.9;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-4rem) scale(1.15);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-beige::before,
+  .bg-beige > div::before,
+  .bg-beige > div::after {
+    animation: none;
+  }
+
+  .bg-beige p,
+  .bg-beige p::after {
+    transition: none;
+  }
 }
 
 @media (max-width: 600px) {
