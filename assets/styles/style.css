@@ -56,19 +56,32 @@ body {
 }
 
 .nav-link {
+  position: relative;
+  display: inline-block;
   color: var(--color-palesky2);
   font-family: var(--font-main);
-  font-size: clamp(1rem, 1.8vw, 1.5rem);
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-size: clamp(0.8rem, 1.35vw, 1.15rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
-  transition: color 250ms ease, transform 250ms ease;
 }
 
-.nav-link:hover,
-.nav-link:focus-visible {
-  color: var(--color-yellow1);
-  transform: translateY(-0.2rem);
+.nav-link::after {
+  position: absolute;
+  right: 0;
+  bottom: -0.45rem;
+  left: 0;
+  height: 2px;
+  content: "";
+  background: var(--color-yellow1);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 300ms ease;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
 }
 
 .nav-link:focus-visible {
