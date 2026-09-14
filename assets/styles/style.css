@@ -38,22 +38,20 @@ body {
  
 .site-header {
   width: 100%;
+}
+
+.site-nav {
+  width: 100%;
   min-height: clamp(2.6rem, 5.5vh, 4rem);
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  flex-wrap: wrap;
   padding: 0.4rem clamp(1rem, 4vw, 4rem) 0.75rem;
   overflow: hidden;
   background: rgba(2, 26, 52, 0.16);
   backdrop-filter: blur(5px);
   border-radius: 0 0 18% 64% / 0 0 28% 72%;
-}
-
-.site-nav {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: wrap;
   gap: clamp(0.65rem, 2vw, 1.75rem);
 }
 
@@ -104,9 +102,10 @@ body {
   width: min(100%, 1100px);
   text-align: center;
 }
- 
-.hero-content p {
+
+.hero-content h1 {
   max-width: 100%;
+  margin: 0 auto;
   color: transparent;
   background: linear-gradient(110deg, var(--color-palesky2) 10%, var(--color-skyblue3) 48%, var(--color-yellow1) 86%);
   background-size: 180% 100%;
@@ -121,13 +120,30 @@ body {
   letter-spacing: -0.04em;
   text-wrap: balance;
   animation: title-drift 100s ease-in-out infinite;
-    transition: background-position 700ms ease, transform 500ms ease;
+  transition: background-position 700ms ease, transform 500ms ease;
 }
- 
-.hero-content p:hover {
+
+.hero-content h1:hover {
   cursor: default;
   background-position: 100% 50%;
   transform: translateY(-0.45rem) scale(1.02);
+}
+ 
+.hero-content p {
+  max-width: 42rem;
+  margin: 0 auto;
+  color: var(--color-palesky2);
+  font-family: var(--font-main);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+@keyframes title-drift {
+  0%,
+  100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-0.45rem) rotate(-1deg); }
 }
  
 footer {
@@ -144,12 +160,6 @@ footer {
   text-transform: uppercase;
 }
  
-@keyframes title-drift {
-  0%,
-  100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-0.45rem) rotate(-1deg); }
-}
- 
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -160,7 +170,7 @@ footer {
 }
  
 @media (max-width: 600px) {
-  .site-header {
+  .site-nav {
     min-height: 2.35rem;
     padding: 0.45rem 1rem 0.7rem;
     border-radius: 0 0 14% 48% / 0 0 18% 48%;
