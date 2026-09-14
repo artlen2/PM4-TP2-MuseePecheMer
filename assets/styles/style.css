@@ -104,8 +104,9 @@ body {
 }
 
 .hero-content h1 {
-  max-width: 100%;
+  max-width: 80%;
   margin: 0 auto;
+  margin-bottom: 8.5rem;
   color: transparent;
   background: linear-gradient(110deg, var(--color-palesky2) 10%, var(--color-skyblue3) 48%, var(--color-yellow1) 86%);
   background-size: 180% 100%;
@@ -114,7 +115,7 @@ body {
   -webkit-background-clip: text;
   mix-blend-mode: screen;
   font-family: var(--font-main);
-  font-size: clamp(5rem, 14vw, 11rem);
+  font-size: clamp(40px, 8vw, 6rem);
   font-weight: 800;
   line-height: 0.9;
   letter-spacing: -0.04em;
