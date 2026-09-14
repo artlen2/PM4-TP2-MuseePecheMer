@@ -243,14 +243,14 @@ body {
   background: linear-gradient(180deg, var(--color-cloudysky4) 0%, var(--color-smartblue5) 48%, var(--color-prussianblue7) 100%);
 }
 .hero-content {
-  width: min(50%, 500px);
+  width: min(100%, 100%);
   text-align: center;
 }
 .hero-content h1 {
   max-width: 100%;
   margin: 0 auto;
-  <<<<<<< HEAD margin-bottom: 7.5rem;
-  ======= >>>>>>> 2a9d8df268c86777567c8c38f79146f7ad39ab6b color: transparent;
+  margin-bottom: 15.5rem;
+  color: transparent;
   background: linear-gradient(110deg, var(--color-palesky2) 10%, var(--color-skyblue3) 48%, var(--color-yellow1) 86%);
   background-size: 180% 100%;
   background-position: 0% 50%;
@@ -258,7 +258,7 @@ body {
   -webkit-background-clip: text;
   mix-blend-mode: screen;
   font-family: var(--font-main);
-  font-size: clamp(5rem, 14vw, 11rem);
+  font-size: 4.5rem;
   font-weight: 800;
   line-height: 0.9;
   letter-spacing: -0.04em;
@@ -269,6 +269,7 @@ body {
 .hero-content h1:hover {
   cursor: default;
   background-position: 100% 50%;
+  transition: background-position 1000ms ease, transform 1000ms ease;
   transform: translateY(-0.45rem) scale(1.02);
 }
 .hero-content p {
