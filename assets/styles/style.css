@@ -38,9 +38,30 @@ body {
  
 .site-header {
   width: 100%;
+  height: 100%;
+}
+
+.site-header:has(.hero-video) {
+  display: grid;
+  grid-template-areas: "hero";
+  place-items: center;
+  width: 100vw;
+  min-height: clamp(30rem, 82vh, 56rem);
+  overflow: hidden;
+}
+
+.hero-video {
+  grid-area: hero;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
 }
 
 .site-nav {
+  position: relative;
+  z-index: 2;
   width: 100%;
   min-height: clamp(2.6rem, 5.5vh, 4rem);
   display: flex;
@@ -99,6 +120,9 @@ body {
 }
  
 .hero-content {
+  grid-area: hero;
+  position: relative;
+  z-index: 1;
   width: min(100%, 100%);
   text-align: center;
 }
@@ -107,19 +131,16 @@ body {
   max-width: 100%;
   margin: 0 auto;
   margin-bottom: 15.5rem;
-  color: transparent;
-  background: linear-gradient(110deg, var(--color-palesky2) 10%, var(--color-skyblue3) 48%, var(--color-yellow1) 86%);
-  background-size: 180% 100%;
-  background-position: 0% 50%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  mix-blend-mode: screen;
+  transform: translateY(clamp(3rem, 10vh, 8rem));
+  color: #fff;
+  mix-blend-mode: difference;
   font-family: var(--font-main);
   font-size: 4.5rem;
   font-weight: 800;
   line-height: 0.9;
   letter-spacing: -0.04em;
   text-wrap: balance;
+  text-align: center;
   animation: title-drift 100s ease-in-out infinite;
   transition: background-position 700ms ease, transform 500ms ease;
 }
