@@ -128,30 +128,25 @@ body {
 }
 
 .hero-content h1 {
+  --title-rest: clamp(2rem, 18vh, 12rem);
   max-width: 100%;
   margin: 0 auto;
   margin-bottom: 15.5rem;
-  transform: translateY(clamp(3rem, 10vh, 8rem));
-  color: #fff;
+  transform: translateY(var(--title-rest));
+  color: #ffff;
   mix-blend-mode: difference;
   font-family: var(--font-main);
-  font-size: 4.5rem;
+  font-size: 4rem;
   font-weight: 800;
   line-height: 0.9;
   letter-spacing: -0.04em;
   text-wrap: balance;
   text-align: center;
-  animation: title-drift 100s ease-in-out infinite;
-  transition: background-position 700ms ease, transform 500ms ease;
+  text-transform: uppercase;
+  animation: title-float 6s ease-in-out infinite;
+  transition: transform 500ms ease;
 }
 
-.hero-content h1:hover {
-  cursor: default;
-  background-position: 100% 50%;
-  transition: background-position 1000ms ease, transform 1000ms ease;
-  transform: translateY(-0.45rem) scale(1.02);
-}
- 
 .hero-content p {
   max-width: 42rem;
   margin: 0 auto;
@@ -163,10 +158,10 @@ body {
   letter-spacing: 0;
 }
 
-@keyframes title-drift {
+@keyframes title-float {
   0%,
-  100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-0.45rem) rotate(-1deg); }
+  100%{transform: translateY(calc(var(--title-rest) + 1rem))  rotate(-1deg); }
+  50% { transform: translateY(calc(var(--title-rest) - 1rem)) rotate(1deg); }
 }
  
 footer {
