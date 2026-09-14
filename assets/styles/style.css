@@ -99,13 +99,13 @@ body {
 }
  
 .hero-content {
-  width: min(100%, 1100px);
+  width: min(50%, 500px);
   text-align: center;
 }
 
 .hero-content h1 {
-  max-width: 100%;
-  margin: 0 auto;
+  max-width: 50%;
+  margin: 0 auto 2.5rem;
   color: transparent;
   background: linear-gradient(110deg, var(--color-palesky2) 10%, var(--color-skyblue3) 48%, var(--color-yellow1) 86%);
   background-size: 180% 100%;
@@ -114,8 +114,8 @@ body {
   -webkit-background-clip: text;
   mix-blend-mode: screen;
   font-family: var(--font-main);
-  font-size: clamp(5rem, 14vw, 11rem);
-  font-weight: 800;
+  font-size: clamp(0.25rem, 0.25vw, 0.25rem);
+  font-weight: 500px ;
   line-height: 0.9;
   letter-spacing: -0.04em;
   text-wrap: balance;
