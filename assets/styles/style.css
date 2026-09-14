@@ -170,7 +170,7 @@ footer {
     transition-duration: 3ms !important;
   }
 }
- 
+
 @media (max-width: 600px) {
   .site-nav {
     min-height: 2.35rem;
