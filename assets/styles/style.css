@@ -43,12 +43,18 @@ html {
 }
 
 body {
-  @apply bg-prussianblue7 text-white font-main;
+
   min-width: 320px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  background: linear-gradient(
+    180deg,
+    var(--color-cloudysky4) 0%,
+    var(--color-smartblue5) 48%,
+    var(--color-prussianblue7) 100%
+  );
 }
 
 .site-header {
@@ -131,12 +137,6 @@ body {
   display: grid;
   place-items: center;
   padding: clamp(3rem, 8vw, 8rem) clamp(1.5rem, 8vw, 10rem);
-  background: linear-gradient(
-    180deg,
-    var(--color-cloudysky4) 0%,
-    var(--color-smartblue5) 48%,
-    var(--color-prussianblue7) 100%
-  );
 }
 
 .hero-content {
@@ -237,7 +237,7 @@ footer {
 @media (max-width: 600px) {
   .site-nav {
     min-height: 2.35rem;
-    padding: 0.45rem 1rem 0.7rem;
+    padding: 0.45rem 0rem 7rem;
     border-radius: 0 0 14% 48% / 0 0 18% 48%;
   }
 
