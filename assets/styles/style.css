@@ -61,7 +61,7 @@ body {
   grid-template-areas: "hero";
   place-items: center;
   width: 100vw;
-  min-height: clamp(30rem, 82vh, 56rem);
+  min-height: clamp(15rem, 45vh, 32rem);
   overflow: hidden;
 }
 
@@ -84,9 +84,9 @@ body {
   justify-content: flex-start;
   flex-wrap: wrap;
   padding: 0.4rem clamp(1rem, 4vw, 4rem) 0.75rem;
-  overflow: hidden;
-  background: rgba(2, 26, 52, 0.16);
-  backdrop-filter: blur(5px);
+  overflow: visible;
+  background: transparent;
+  backdrop-filter: none;
   border-radius: 0 0 18% 64% / 0 0 28% 72%;
   gap: clamp(0.65rem, 2vw, 1.75rem);
 }
@@ -182,8 +182,8 @@ body {
 
 @keyframes title-float {
   0%,
-  100% { transform: translateY(0.45rem) rotate(1deg); }
-  50% { transform: translateY(-0.45rem) rotate(-1deg); }
+  100% { transform: translateY(0.45rem) rotate(0.5deg); }
+  50% { transform: translateY(-0.45rem) rotate(-0.5deg); }
 }
 
 footer {
