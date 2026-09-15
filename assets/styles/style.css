@@ -186,8 +186,8 @@ body {
 
 @keyframes title-float {
   0%,
-  100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-0.45rem) rotate(-1deg); }
+  100% { transform: translateY(1rem) rotate(2deg); }
+  50% { transform: translateY(-1rem) rotate(-2deg); }
 }
 
 footer {
