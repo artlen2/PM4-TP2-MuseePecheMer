@@ -37,13 +37,12 @@
 }
 
 html {
-  @apply scroll-smooth;
+  scroll-behavior: smooth;
   width: 100%;
-  min-height: 100%;
+  font-size: 16px;
 }
 
 body {
-
   min-width: 320px;
   min-height: 100vh;
   display: flex;
@@ -58,7 +57,6 @@ body {
 }
 
 .site-header {
-  width: 90vh;
   height: 90vh;
 }
 
@@ -104,7 +102,7 @@ body {
   display: inline-block;
   color: var(--color-palesky2);
   font-family: var(--font-main);
-  font-size: 0.7rem ;
+  font-size: 0.7rem;
   font-weight: 400;
   letter-spacing: 0.03em;
   text-transform: uppercase;
@@ -163,7 +161,9 @@ body {
   letter-spacing: -0.04em;
   text-wrap: balance;
   text-align: center;
-  transition: background-position 700ms ease, transform 500ms ease;
+  transition:
+    background-position 700ms ease,
+    transform 500ms ease;
 }
 
 .subhero-content {
@@ -188,9 +188,10 @@ body {
   letter-spacing: -0.04em;
   text-wrap: balance;
   text-align: center;
-  transition: background-position 700ms ease, transform 500ms ease;
+  transition:
+    background-position 700ms ease,
+    transform 500ms ease;
 }
-
 
 .title-float {
   animation: title-float 100s ease-in-out infinite;
@@ -209,8 +210,12 @@ body {
 
 @keyframes title-float {
   0%,
-  100% { transform: translateY(0.45rem) rotate(0.5deg); }
-  50% { transform: translateY(-0.45rem) rotate(-0.5deg); }
+  100% {
+    transform: translateY(0.45rem) rotate(0.5deg);
+  }
+  50% {
+    transform: translateY(-0.45rem) rotate(-0.5deg);
+  }
 }
 
 footer {
