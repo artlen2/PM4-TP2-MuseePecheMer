@@ -72,10 +72,12 @@ body {
 }
 
 .hero-video {
-  grid-area: hero;
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: 0;
   width: 100%;
-  height: 100%;
+  height: clamp(15rem, 45vh, 32rem);
   object-fit: cover;
   pointer-events: none;
 }
