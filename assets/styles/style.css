@@ -14,6 +14,19 @@
   --font-main: "Archivo", sans-serif;
   --font-title: "Merriweather Sans", sans-serif;
 }
+:root {
+  --color-yellow1: #f2e676;
+  --color-palesky2: #d6edf7;
+  --color-skyblue3: #77ddf9;
+  --color-cloudysky4: #2497f0;
+  --color-smartblue5: #3263bf;
+  --color-yaleblue6: #294c6b;
+  --color-prussianblue7: #021a34;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Jost", sans-serif;
+  --font-main: "Archivo", sans-serif;
+  --font-title: "Merriweather Sans", sans-serif;
+}
 
 *,
 *::before,
