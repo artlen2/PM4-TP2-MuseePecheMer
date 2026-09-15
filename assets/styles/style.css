@@ -193,6 +193,11 @@ body {
     transform 500ms ease;
 }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> bf82e9f4b821d6bea57a77dff5b8f0dd4dc3ace6
 .title-float {
   animation: title-float 100s ease-in-out infinite;
 }
