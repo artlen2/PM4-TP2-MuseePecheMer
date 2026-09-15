@@ -142,7 +142,6 @@ body {
 .hero-content {
   grid-area: hero;
   position: relative;
-  z-index: 1;
   width: min(100%, 100%);
   text-align: center;
 }
@@ -164,6 +163,32 @@ body {
   text-align: center;
   transition: background-position 700ms ease, transform 500ms ease;
 }
+
+.subhero-content {
+  grid-area: hero;
+  position: absolute;
+  bottom: 0.5rem;
+  left: 1rem;
+  margin-bottom: 11rem;
+  text-align: bottom left;
+}
+
+.subhero-content h1 {
+  --title-rest: clamp(4rem, 18vh, 12rem);
+  max-width: 100%;
+  transform: translateY(var(--title-rest));
+  color: #ffff;
+  mix-blend-mode: difference;
+  font-family: var(--font-main);
+  font-size: 10rem;
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+  text-align: center;
+  transition: background-position 700ms ease, transform 500ms ease;
+}
+
 
 .title-float {
   animation: title-float 100s ease-in-out infinite;
