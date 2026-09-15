@@ -162,15 +162,11 @@ body {
   letter-spacing: -0.04em;
   text-wrap: balance;
   text-align: center;
-  animation: title-drift 100s ease-in-out infinite;
   transition: background-position 700ms ease, transform 500ms ease;
 }
 
-.hero-content h1:hover {
-  cursor: default;
-  background-position: 100% 50%;
-  transition: background-position 1000ms ease, transform 1000ms ease;
-  transform: translateY(-0.45rem) scale(1.02);
+.title-float {
+  animation: title-float 100s ease-in-out infinite;
 }
 
 .hero-content p {
