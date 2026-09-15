@@ -1,113 +1,159 @@
 <!doctype html>
 <html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Musée des pêches et de la mer Gaspé</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Musée des pêches et de la mer Gaspé</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
+  <body>
+    <nav class="site-nav site-header" aria-label="Navigation principale">
+      <a class="nav-link" href="index.html">Accueil</a>
+      <a class="nav-link" href="blog.html">Blog</a>
+      <a class="nav-link" href="tarification.html">Tarifs</a>
+      <a class="nav-link" href="information.html">Informations</a>
+      <a class="nav-link" href="mini-jeu.html">Jeu</a>
+    </nav>
 
-<body>
-  <nav class="site-nav site-header" aria-label="Navigation principale">
-    <a class="nav-link" href="index.html">Accueil</a>
-    <a class="nav-link" href="blog.html">Blog</a>
-    <a class="nav-link" href="tarification.html">Tarifs</a>
-    <a class="nav-link" href="information.html">Informations</a>
-    <a class="nav-link" href="mini-jeu.html">Jeu</a>
-  </nav>
-  
-  <header class="site-header">
-    <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
-      <source src="assets/images/video/jellyfish2.mp4" type="video/mp4" />
-    </video>
-    <div class="hero-content">
-      <h1>Musée des pêches et de la mer Gaspé</h1>
-    </div>
-  </header>
+    <header class="site-header">
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        aria-hidden="true"
+      >
+        <source src="assets/images/video/jellyfish2.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-content">
+        <h1>MUSÉE DES PÊCHES ET DE LA MER GASPÉ</h1>
+      </div>
+    </header>
 
-  
- 
+    <main class="page-main gap-50">
+      <div id="blog" class="gap-5 flex flex-col">
+        <h2 class="text-3xl font-bold">Expositions</h2>
 
-
-  <main class="page-main">
-    <div class="content">
-      <h2>Expositions</h2>
-
-      <div class="content">
-        <h3>Les gardiens de la mer</h3>
-        <p>Un parcours immersif sur les savoirs autochtones liés à la pêche, à la navigation et au respect des cycles
-          marins, présenté en collaboration avec des communautés locales.</p>
-        <div class="image-container">
-          <img src="./assets/images-client/gardien-de-la-mer.png" alt="Pêcheurs au bord de la mer" />
-          <p>Cette exposition rend hommage aux pêcheurs, aux familles et aux communautés qui ont bâti leur vie autour de
-            la mer. À travers des témoignages audio, des photographies anciennes et des objets de la vie quotidienne, on
-            découvre l’importance de la pêche dans l’identité gaspésienne.
-
-            Le visiteur est plongé dans le quotidien de ces « gardiens de la mer » : le départ au lever du soleil, les
-            filets lancés au large, les tempêtes imprévisibles et la solidarité entre équipages. Une section interactive
-            permet même d’entendre des récits de marins, enregistrés directement dans leur patois et accent d’époque,
-            donnant une dimension vivante et humaine à l’expérience.
-
-            L’exposition rappelle que la mer n’était pas seulement une ressource, mais aussi un espace spirituel et
-            culturel, marqué par des traditions transmises de génération en génération. Elle met en lumière à quel point
-            la pêche est plus qu’un métier : c’est une vocation, un mode de vie, une mémoire vivante
-          </p>
-        </div>
-
-        <div class="content">
-          <h3>Le golfe fragile</h3>
-          <p>Une exposition interactive sur les écosystèmes du Saint-Laurent : baleines, homards, morues et plancton, et
-            les menaces posées par les changements climatiques.</p>
-          <div class="image-container">
-            <img src="./assets/images-client/golfe-fragile.jpg" alt="Images intérieur de musée aquatique" />
-            <p>Cette exposition propose une immersion dans l’écosystème unique du golfe du Saint-Laurent, un milieu
-              riche mais vulnérable. À l’aide de maquettes, d’aquariums et de projections vidéo, les visiteurs explorent
-              la diversité des espèces marines et les liens qui les unissent dans un équilibre délicat.
-
-              Le parcours met en évidence les menaces qui pèsent sur ce milieu : pollution plastique, surpêche,
-              réchauffement des eaux, disparition d’habitats essentiels. Les visiteurs peuvent expérimenter des
-              installations interactives où leurs choix (par exemple de techniques de pêche ou de modes de consommation)
-              influencent la santé virtuelle d’un écosystème reconstitué.
-
-              « Le golfe fragile » invite à une réflexion collective : comment protéger un espace naturel qui nourrit
-              des communautés humaines tout en abritant une biodiversité exceptionnelle ? L’exposition souligne
-              l’importance d’une gestion durable et responsable, qui conditionne l’avenir de la mer et de ceux qui en
-              dépendent.
+        <div class="content grid grid-cols-3 gap-8">
+          <div class="flex flex-col gap-2 justify-between">
+            <h3 class="text-xl">Les gardiens de la mer</h3>
+            <p>
+              Un parcours immersif sur les savoirs autochtones liés à la pêche,
+              à la navigation et au respect des cycles marins, présenté en
+              collaboration avec des communautés locales.
             </p>
+            <img
+              src="./assets/images-client/gardien-de-la-mer.png"
+              alt="Pêcheurs au bord de la mer"
+            />
+
+            <a href="blog.html" class="border p-5">En savoir plus...</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="blog" class="gap-5 flex flex-col">
+        <h2 class="text-3xl font-bold">Expositions</h2>
+
+        <div class="content grid grid-cols-3 gap-8">
+          <div class="flex flex-col gap-4 border justify-between">
+            <h3>Les gardiens de la mer</h3>
+            <p>
+              Un parcours immersif sur les savoirs autochtones liés à la pêche,
+              à la navigation et au respect des cycles marins, présenté en
+              collaboration avec des communautés locales.
+            </p>
+            <img
+              src="./assets/images-client/gardien-de-la-mer.png"
+              alt="Pêcheurs au bord de la mer"
+            />
+            <p>
+              Cette exposition rend hommage aux pêcheurs, aux familles et aux
+              communautés qui ont bâti leur vie autour de la mer. À travers des
+              témoignages audio, des photographies anciennes et des objets de la
+              vie [...]
+            </p>
+
+            <a href="blog.html" class="border py-2 px-3 w-auto"
+              >En savoir plus...</a
+            >
           </div>
 
-          <div class="content">
-            <h3>Trésors engloutis</h3>
-            <p>Plongez dans l’histoire maritime grâce à des maquettes de navires, des cartes anciennes et des artefacts
-              récupérés des fonds du golfe.</p>
+          <div>
+            <h3>Le golfe fragile</h3>
+            <p>
+              Une exposition interactive sur les écosystèmes du Saint-Laurent :
+              baleines, homards, morues et plancton, et les menaces posées par
+              les changements climatiques.
+            </p>
             <div class="image-container">
-              <img src="./assets/images-client/tresors-engloutis.jpg" alt="Vue sous-marine d'un débris maritime" />
-              <p>Mystérieuse et captivante, cette exposition transporte les visiteurs au fond des mers, là où reposent
-                les vestiges de navires disparus. À travers des artefacts retrouvés lors de fouilles archéologiques
-                sous-marines — ancres, porcelaines, outils de navigation — on découvre des récits de naufrages qui ont
-                marqué l’histoire du golfe.
-
-                Des reconstitutions 3D et des projections immersives permettent de plonger virtuellement sous l’eau pour
-                explorer ces épaves, témoins silencieux de la navigation et du commerce maritime. Chaque objet raconté
-                dévoile une facette du quotidien des marins d’autrefois : une bouteille de rhum, un sextant usé, une
-                lettre jamais envoyée.
-
-                Au-delà du mystère et du romantisme des naufrages, l’exposition met aussi en lumière le travail des
-                archéologues et plongeurs qui consacrent leur vie à protéger ce patrimoine fragile. Elle rappelle que
-                ces trésors ne sont pas seulement des reliques, mais des fragments d’histoires humaines, liés à la mer
-                et à ses dangers.
-
+              <img
+                src="./assets/images-client/golfe-fragile.jpg"
+                alt="Images intérieur de musée aquatique"
+              />
+              <p>
+                Cette exposition propose une immersion dans l’écosystème unique
+                du golfe du Saint-Laurent, un milieu riche mais vulnérable. À
+                l’aide de maquettes, d’aquariums et de projections vidéo, les
+                visiteurs explorent la diversité des espèces marines et les
+                liens qui les unissent dans un équilibre délicat. Le parcours
+                met en évidence les menaces qui pèsent sur ce milieu : pollution
+                plastique, surpêche, réchauffement des eaux, disparition
+                d’habitats essentiels. Les visiteurs peuvent expérimenter des
+                installations interactives où leurs choix (par exemple de
+                techniques de pêche ou de modes de consommation) influencent la
+                santé virtuelle d’un écosystème reconstitué. « Le golfe fragile
+                » invite à une réflexion collective : comment protéger un espace
+                naturel qui nourrit des communautés humaines tout en abritant
+                une biodiversité exceptionnelle ? L’exposition souligne
+                l’importance d’une gestion durable et responsable, qui
+                conditionne l’avenir de la mer et de ceux qui en dépendent.
               </p>
             </div>
+          </div>
 
+          <div>
+            <h3>Trésors engloutis</h3>
+            <p>
+              Plongez dans l’histoire maritime grâce à des maquettes de navires,
+              des cartes anciennes et des artefacts récupérés des fonds du
+              golfe.
+            </p>
+            <div class="image-container">
+              <img
+                src="./assets/images-client/tresors-engloutis.jpg"
+                alt="Vue sous-marine d'un débris maritime"
+              />
+              <p>
+                Mystérieuse et captivante, cette exposition transporte les
+                visiteurs au fond des mers, là où reposent les vestiges de
+                navires disparus. À travers des artefacts retrouvés lors de
+                fouilles archéologiques sous-marines — ancres, porcelaines,
+                outils de navigation — on découvre des récits de naufrages qui
+                ont marqué l’histoire du golfe. Des reconstitutions 3D et des
+                projections immersives permettent de plonger virtuellement sous
+                l’eau pour explorer ces épaves, témoins silencieux de la
+                navigation et du commerce maritime. Chaque objet raconté dévoile
+                une facette du quotidien des marins d’autrefois : une bouteille
+                de rhum, un sextant usé, une lettre jamais envoyée. Au-delà du
+                mystère et du romantisme des naufrages, l’exposition met aussi
+                en lumière le travail des archéologues et plongeurs qui
+                consacrent leur vie à protéger ce patrimoine fragile. Elle
+                rappelle que ces trésors ne sont pas seulement des reliques,
+                mais des fragments d’histoires humaines, liés à la mer et à ses
+                dangers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div id="tarif" class="content"></div>
+    </main>
 
-
-
-  </main>
-
-  <footer>Musée de la pêche et de la mer</footer>
-</body>
-
+    <footer>Musée de la pêche et de la mer</footer>
+  </body>
 </html>
