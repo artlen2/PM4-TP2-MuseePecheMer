@@ -262,3 +262,7 @@ footer {
     width: 100%;
   }
 }
+
+.btn{
+  color: var(--color-prussianblue7);
+}
