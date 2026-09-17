@@ -46,6 +46,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   display: flex;
+  color: white;
   flex-direction: column;
   overflow-x: hidden;
   background: linear-gradient(
