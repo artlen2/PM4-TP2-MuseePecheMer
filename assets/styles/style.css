@@ -219,6 +219,12 @@ body {
   }
 }
 
+h2 {
+  text-decoration: underline;
+  text-decoration-color: #f2e676;
+  text-underline-offset: 0.2em;
+}
+
 footer {
   min-height: 4.5rem;
   display: grid;
