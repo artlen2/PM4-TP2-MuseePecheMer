@@ -66,10 +66,11 @@ document.addEventListener("DOMContentLoaded", () => {
   container.style.width = "100vw";
   container.style.height = "100vh";
   container.style.pointerEvents = "none";
-  container.style.zIndex = "999";
+  container.style.zIndex = "0";
   canvas.style.display = "block";
   canvas.style.width = "100%";
   canvas.style.height = "100%";
+  canvas.style.zIndex = "0";
   container.appendChild(canvas);
   document.body.appendChild(container);
 
