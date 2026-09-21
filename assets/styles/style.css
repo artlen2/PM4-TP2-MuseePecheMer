@@ -423,6 +423,15 @@ h2.tarifs-title {
   top: -5rem;
 }
 
+/* General */
+.h2-title{
+  @apply text-7xl font-bold;
+}
+
+.h3-title {
+  @apply text-2xl font-bold;
+}
+
 /* ==== Tarifs ==== */
 .season {
   @apply text-2xl font-bold;
@@ -434,3 +443,6 @@ h2.tarifs-title {
 .time-schedule {
   @apply text-base pb-2;
 }
+
+
+/* === Burger === */
