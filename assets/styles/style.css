@@ -349,6 +349,7 @@ footer {
   }
 }
 
+
 .btn button{
 background-color: white; 
 border: none;
@@ -362,6 +363,7 @@ display: inline-block;
 }
 
 .btn button:hover {
+cursor: pointer;
 background-color: #d6d6d6; 
   transition: 0.6s;
 }
@@ -422,3 +424,4 @@ h2.tarifs-title {
   position: relative;
   top: -5rem;
 }
+
