@@ -93,22 +93,22 @@ document.addEventListener("DOMContentLoaded", () => {
       this.y = initial
         ? headerBottom + Math.random() * Math.max(0, height - headerBottom)
         : height + 20;
-      this.radius = Math.random() * 3 + 1.5;
-      this.baseVx = (Math.random() - 0.5) * 0.3;
-      this.baseVy = -(Math.random() * 0.4 + 0.2);
+      this.radius = Math.random() * 4.8 + 2.8;
+      this.baseVx = (Math.random() - 0.5) * 0.24;
+      this.baseVy = -(Math.random() * 0.28 + 0.18);
       this.vx = this.baseVx;
       this.vy = this.baseVy;
       this.angle = Math.random() * Math.PI * 2;
-      this.frequency = 0.01 + Math.random() * 0.02;
-      this.amplitude = 0.2 + Math.random() * 0.5;
-      this.alpha = Math.random() * 0.14 + 0.06;
-      this.color = `hsl(${195 + Math.random() * 30}, ${55 + Math.random() * 30}%, ${35 + Math.random() * 30}%)`;
+      this.frequency = 0.007 + Math.random() * 0.014;
+      this.amplitude = 0.12 + Math.random() * 0.22;
+      this.alpha = Math.random() * 0.18 + 0.16;
+      this.color = `hsl(${195 + Math.random() * 24}, ${72 + Math.random() * 18}%, ${60 + Math.random() * 15}%)`;
     }
 
     update() {
       const headerBottom = getHeaderBottom();
       this.angle += this.frequency;
-      this.vx = this.baseVx + Math.sin(this.angle) * this.amplitude * 0.1;
+      this.vx = this.baseVx + Math.sin(this.angle) * this.amplitude * 0.08;
 
       if (mouse.x !== null && mouse.y !== null) {
         const dx = mouse.x - this.x;
@@ -117,8 +117,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (distance > 0 && distance < mouse.radius) {
           const force = 1 - distance / mouse.radius;
-          this.vx -= (dx / distance) * force * 0.6 + mouse.vx * 0.05;
-          this.vy -= (dy / distance) * force * 0.6 + mouse.vy * 0.05;
+          this.vx -= (dx / distance) * force * 0.4 + mouse.vx * 0.03;
+          this.vy -= (dy / distance) * force * 0.4 + mouse.vy * 0.03;
         }
       }
 
@@ -140,8 +140,11 @@ document.addEventListener("DOMContentLoaded", () => {
       context.beginPath();
       context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
       context.fillStyle = this.color;
+      context.shadowColor = this.color;
+      context.shadowBlur = 16;
       context.globalAlpha = this.alpha;
       context.fill();
+      context.shadowBlur = 0;
       context.globalAlpha = 1;
     }
   }
@@ -164,7 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   resize();
-  const particleCount = Math.max(50, Math.floor((width * height) / 15000));
+  const particleCount = Math.max(72, Math.floor((width * height) / 12000));
   for (let index = 0; index < particleCount; index += 1) {
     bubbles.push(new Bubble());
   }
