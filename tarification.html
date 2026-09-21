@@ -63,56 +63,45 @@
     </div>
 
     <main class="page-main gap-50">
-      <div class="content gap-16 flex flex-col enfant">
-        <h2 class="text-7xl font-bold">Horaire</h2>
-        <div class="flex flex-col gap-6">
-          <p class="w-full text-center">Juin à septembre</p>
-          <div class="flex flex-row gap-10">
-            <p
-              class="py-1! w-1/2 text-center rounded-2xl border bg-yaleblue6/35"
-            >
-              Tout les jours
-            </p>
-            <p class="py-1! w-1/2 text-center rounded-2xl border">9 h à 18 h</p>
-          </div>
-          <p class="w-full text-center">Octobre à mai</p>
-          <div class="flex flex-row gap-10">
-            <p
-              class="py-1! w-1/2 text-center rounded-2xl border bg-yaleblue6/35"
-            >
-              Mercredi au Dimanche
-            </p>
-            <p class="py-1! w-1/2 text-center rounded-2xl border">
-              10 h à 17 h
-            </p>
-          </div>
-          <div class="flex flex-row gap-10">
-            <p
-              class="py-1! w-1/2 text-center rounded-2xl border bg-yaleblue6/35"
-            >
-              Lundi et mardi
-            </p>
-            <p class="py-1! w-1/2 text-center rounded-2xl border">Fermé</p>
-          </div>
-          <p class="w-full text-center">
-            24, 25, 31 décembre et le 1er janvier
-          </p>
-          <div class="flex flex-row gap-10">
-            <p class="py-1! w-1/2 text-center rounded-2xl border">Fermé</p>
+      <section class="enfant w-full grid grid-cols-1 md:grid-cols-2 gap-52">
+        <div class="content gap-16 flex flex-col">
+          <h2 class="text-7xl font-bold">Horaire</h2>
+          <div class="flex flex-col gap-12">
+            <div>
+              <h3 class="season">Juin à Septembre</h3>
+              <p class="date-schedule">Tout les jours</p>
+              <p class="time-schedule">9 h à 18 h</p>
+            </div>
+            <div>
+              <h3 class="season">Octobre à Mai</h3>
+              <div>
+                <p class="date-schedule">Mercredi au Dimanche</p>
+                <p class="time-schedule">10 h à 17 h</p>
+              </div>
+              <div>
+                <p class="date-schedule">Lundi et mardi</p>
+                <p class="time-schedule">Fermé</p>
+              </div>
+            </div>
+            <div>
+              <h3 class="season">Vacances d'hiver</h3>
+              <p class="date-schedule">24, 25, 31 Déc. & 1er Jan.</p>
+              <p class="time-schedule text">Fermé</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="enfant">
-        <h2 class="text-7xl font-bold tarifs-title">Tarifs</h2>
-        <ul>
-          <li>Adulte : 12 $</li>
-          <li>Étudiant / Aîné : 8 $</li>
-          <li>Enfant (6-12 ans) : 5 $</li>
-          <li>Famille (2 adultes + 2 enfants) : 30 $</li>
-          <li>Gratuit pour les enfants de moins de 6 ans</li>
-        </ul>
-      </div>
+        <div class="content gap-16 flex flex-col">
+          <h2 class="text-7xl font-bold">Tarifs</h2>
+          <ul class="flex flex-col gap-2">
+            <li>Adulte : 12 $</li>
+            <li>Étudiant / Aîné : 8 $</li>
+            <li>Enfant (6-12 ans) : 5 $</li>
+            <li>Famille (2 adultes + 2 enfants) : 30 $</li>
+            <li>Gratuit pour les enfants de moins de 6 ans</li>
+          </ul>
+        </div>
+      </section>
     </main>
 
     <footer>

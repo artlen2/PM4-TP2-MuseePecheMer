@@ -422,3 +422,15 @@ h2.tarifs-title {
   position: relative;
   top: -5rem;
 }
+
+/* ==== Tarifs ==== */
+.season {
+  @apply text-2xl font-bold;
+}
+
+.date-schedule {
+  @apply text-lg pt-2;
+}
+.time-schedule {
+  @apply text-base pb-2;
+}
