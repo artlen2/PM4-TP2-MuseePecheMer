@@ -63,7 +63,290 @@
       </div>
     </div>
 
-    <main class="page-main"></main>
+<main class="page-main reservation-main">
+
+  <section class="reservation-intro">
+    <div class="reservation-number">01</div>
+
+    <div>
+      <p class="reservation-quote">RÉSERVER VOTRE VISITE</p>
+
+      <h2 class="reservation-title">
+        Votre visite,
+        <span>commence ici.</span>
+      </h2>
+
+      <p class="reservation-description">
+        Choisissez votre date, votre heure et le nombre de visiteurs
+        pour préparer votre expérience au Musée de la pêche et de la mer.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- progression -->
+
+  <section class="reservation-progress">
+
+    <div class="progress-step completed">
+      <span>✓</span>
+      <p>VISITE</p>
+    </div>
+
+    <div class="progress-line completed"></div>
+
+    <div class="progress-step active">
+      <span>02</span>
+      <p>BILLETS</p>
+    </div>
+
+    <div class="progress-line"></div>
+
+    <div class="progress-step">
+      <span>03</span>
+      <p>INFORMATIONS</p>
+    </div>
+
+    <div class="progress-line"></div>
+
+    <div class="progress-step">
+      <span>04</span>
+      <p>CONFIRMATION</p>
+    </div>
+
+  </section>
+
+
+  <!-- contenu -->
+
+  <section class="reservation-layout">
+
+    <div class="reservation-form">
+
+
+      <!-- date -->
+
+      <div class="reservation-block">
+
+        <div class="reservation-block-heading">
+          <span>01</span>
+          <h3>Choisissez votre date</h3>
+        </div>
+
+        <div class="reservation-calendar">
+
+          <div class="calendar-header">
+            <button type="button">←</button>
+            <h4>SEPTEMBRE 2026</h4>
+            <button type="button">→</button>
+          </div>
+
+          <div class="calendar-weekdays">
+            <span>LUN</span>
+            <span>MAR</span>
+            <span>MER</span>
+            <span>JEU</span>
+            <span>VEN</span>
+            <span>SAM</span>
+            <span>DIM</span>
+          </div>
+
+          <div class="calendar-days">
+            <button type="button">1</button>
+            <button type="button">2</button>
+            <button type="button">3</button>
+            <button type="button">4</button>
+            <button type="button">5</button>
+            <button type="button">6</button>
+            <button type="button">7</button>
+            <button type="button">8</button>
+            <button type="button">9</button>
+            <button type="button">10</button>
+            <button type="button">11</button>
+            <button type="button">12</button>
+            <button type="button">13</button>
+            <button type="button">14</button>
+            <button type="button">15</button>
+            <button type="button">16</button>
+            <button type="button">17</button>
+            <button type="button">18</button>
+            <button type="button">19</button>
+            <button type="button">20</button>
+            <button type="button" class="selected">21</button>
+            <button type="button">22</button>
+            <button type="button">23</button>
+            <button type="button">24</button>
+            <button type="button">25</button>
+            <button type="button">26</button>
+            <button type="button">27</button>
+            <button type="button">28</button>
+            <button type="button">29</button>
+            <button type="button">30</button>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- heure -->
+
+      <div class="reservation-block">
+
+        <div class="reservation-block-heading">
+          <span>02</span>
+          <h3>Choisissez votre heure</h3>
+        </div>
+
+        <div class="time-slots">
+          <button type="button">10:00</button>
+          <button type="button">11:30</button>
+          <button type="button" class="selected">13:00</button>
+          <button type="button">14:30</button>
+          <button type="button">16:00</button>
+        </div>
+
+      </div>
+
+
+      <!-- billets -->
+
+      <div class="reservation-block">
+
+        <div class="reservation-block-heading">
+          <span>03</span>
+          <h3>Combien serez-vous ?</h3>
+        </div>
+
+        <div class="ticket-list">
+
+          <div class="ticket-row">
+            <div>
+              <strong>Adulte</strong>
+              <small>8,00 $ / personne</small>
+            </div>
+
+            <div class="ticket-counter">
+              <button type="button">−</button>
+              <span>2</span>
+              <button type="button">+</button>
+            </div>
+          </div>
+
+          <div class="ticket-row">
+            <div>
+              <strong>Étudiant</strong>
+              <small>6,00 $ / personne</small>
+            </div>
+
+            <div class="ticket-counter">
+              <button type="button">−</button>
+              <span>1</span>
+              <button type="button">+</button>
+            </div>
+          </div>
+
+          <div class="ticket-row">
+            <div>
+              <strong>Enfant</strong>
+              <small>4,00 $ / personne</small>
+            </div>
+
+            <div class="ticket-counter">
+              <button type="button">−</button>
+              <span>0</span>
+              <button type="button">+</button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- panier -->
+
+    <aside class="reservation-cart">
+
+      <div class="cart-top">
+        <span>VOTRE RÉSERVATION</span>
+        <span class="cart-number">01</span>
+      </div>
+
+      <div class="cart-content">
+
+        <p class="cart-quote">
+          MUSÉE DE LA PÊCHE ET DE LA MER
+        </p>
+
+        <h3>Votre visite</h3>
+
+        <div class="cart-details">
+
+          <div>
+            <span>DATE</span>
+            <strong>21 septembre 2026</strong>
+          </div>
+
+          <div>
+            <span>HEURE</span>
+            <strong>13:00</strong>
+          </div>
+
+        </div>
+
+        <div class="cart-tickets">
+
+          <div>
+            <span>2 × Adultes</span>
+            <strong>16,00 $</strong>
+          </div>
+
+          <div>
+            <span>1 × Étudiant</span>
+            <strong>6,00 $</strong>
+          </div>
+
+        </div>
+
+        <div class="cart-total">
+          <span>TOTAL</span>
+          <strong>22,00 $</strong>
+        </div>
+
+        <button class="reservation-button" type="button">
+          CONTINUER
+          <span>→</span>
+        </button>
+
+        <p class="cart-note">
+          Vos places sont réservées temporairement pendant
+          la prochaine étape.
+        </p>
+
+      </div>
+
+    </aside>
+
+  </section>
+
+
+  <!-- bas de page -->
+
+  <section class="reservation-bottom">
+
+    <span>2026</span>
+
+    <h2>
+      À très
+      <span>bientôt.</span>
+    </h2>
+
+  </section>
+
+</main>
 
     <footer>
       Musée de la pêche et de la mer, Contact info@museedespeches.ca | (418)

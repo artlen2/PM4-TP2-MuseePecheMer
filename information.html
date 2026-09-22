@@ -9,7 +9,7 @@
     <script src="./assets/scripts/h2-animation.js" defer></script>
   </head>
 
-  <body>
+  <body class = "info-page reveal">
     <nav
       class="site-nav flex justify-between!"
       aria-label="Navigation principale"
@@ -63,46 +63,203 @@
       </div>
     </div>
 
-    <main class="page-main gap-50">
-      <div class="enfant w-full gap-8 flex flex-col">
-        <h2 class="h2-title">Informations pour les visiteurs</h2>
+   <main class="page-main info-main">
 
-        <div>
-          <h3 class="h3-title">Adresse</h3>
-          <ul>
-            <li>Ancien entrepôt maritime, Quai de Gaspé, Gaspésie, QC</li>
-          </ul>
-        </div>
 
-        <div>
-          <h3 class="h3-title">Accès</h3>
-          <ul>
-            <li>
-              Stationnement gratuit à proximité, accès adapté pour les personnes
-              à mobilité réduite
-            </li>
-          </ul>
-        </div>
+  <div class="scroll-word scroll-word-left" aria-hidden="true">
+    MUSÉE DES PÈCHES
+  </div>
 
-        <div>
-          <h3 class="h3-title">Services</h3>
-          <ul>
-            <li>
-              Boutique spécialisée en artisanat maritime et produits locaux
-            </li>
-            <li>Café du Musée avec vue sur le fleuve</li>
-            <li>Visites guidées disponibles (français, anglais)</li>
-          </ul>
-        </div>
+  <div class="scroll-word scroll-word-right" aria-hidden="true">
+    ET DE LA MER
+  </div>
 
-        <div>
-          <h3 class="h3-title">Contact</h3>
-          <ul>
-            <li>info@museedespeches.ca | (418) 555-2025</li>
-          </ul>
-        </div>
+  <section class="info-intro reveal">
+    <div class="info-intro-number">01</div>
+
+    <div class="info-intro-content">
+      <p class="info-kicker">VISITER LE MUSÉE</p>
+
+      <h2 class="h2-title">
+        Informations
+        <span>pour les visiteurs</span>
+      </h2>
+
+      <p class="info-description">
+        Retrouvez toutes les informations nécessaires pour préparer
+        votre visite au Musée de la pêche et de la mer.
+      </p>
+    </div>
+  </section>
+
+
+  <section class="info-grid">
+
+    <!-- adresse -->
+    <article class="info-card reveal">
+      <div class="info-card-top">
+        <span class="info-card-number">01</span>
+        <span class="info-card-label">LOCALISATION</span>
       </div>
-    </main>
+
+      <div class="info-card-content">
+        <h3>Adresse</h3>
+
+        <p>
+          Ancien entrepôt maritime,<br>
+          Quai de Gaspé,<br>
+          Gaspésie, QC
+        </p>
+      </div>
+
+      <span class="info-arrow">↗</span>
+    </article>
+
+
+    <!-- acces -->
+    <article class="info-card reveal">
+      <div class="info-card-top">
+        <span class="info-card-number">02</span>
+        <span class="info-card-label">ACCÈS</span>
+      </div>
+
+      <div class="info-card-content">
+        <h3>Accès</h3>
+
+        <p>
+          Stationnement gratuit à proximité.
+          Accès adapté pour les personnes
+          à mobilité réduite.
+        </p>
+      </div>
+
+      <span class="info-arrow">↗</span>
+    </article>
+
+
+    <!-- services -->
+    <article class="info-card info-card-services reveal">
+      <div class="info-card-top">
+        <span class="info-card-number">03</span>
+        <span class="info-card-label">SUR PLACE</span>
+      </div>
+
+      <div class="info-card-content">
+        <h3>Services</h3>
+
+        <ul class="services-list">
+          <li>
+            <span>01</span>
+            Boutique spécialisée en artisanat maritime et produits locaux
+          </li>
+
+          <li>
+            <span>02</span>
+            Café du Musée avec vue sur le fleuve
+          </li>
+
+          <li>
+            <span>03</span>
+            Visites guidées disponibles
+           
+          </li>
+        </ul>
+      </div>
+
+      <span class="info-arrow">↗</span>
+    </article>
+
+
+    <!-- contact -->
+    <article class="info-card info-card-contact reveal">
+      <div class="info-card-top">
+        <span class="info-card-number">04</span>
+        <span class="info-card-label">NOUS JOINDRE</span>
+      </div>
+
+      <div class="info-card-content">
+        <h3>Contact</h3>
+
+        <a href="mailto:info@museedespeches.ca">
+          info@museedespeches.ca
+        </a>
+
+        <a href="tel:4185552025">
+          (418) 555-2025
+        </a>
+      </div>
+
+      <span class="info-arrow">↗</span>
+    </article>
+
+  </section>
+
+
+  <!-- section en bas-->
+  <section class="info-bottom reveal">
+    <div class="info-bottom-number">2026</div>
+
+    <div>
+      <p class="info-kicker">MUSÉE DE LA PÊCHE ET DE LA MER</p>
+
+      <h2>
+        À bientôt
+        <span>à Gaspé.</span>
+      </h2>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  const revealElements = document.querySelectorAll(".reveal");
+
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.15,
+    }
+  );
+
+  revealElements.forEach((element) => {
+    revealObserver.observe(element);
+  });
+
+
+  const infoMain = document.querySelector(".info-main");
+const leftWord = document.querySelector(".scroll-word-left");
+const rightWord = document.querySelector(".scroll-word-right");
+
+function animateScrollWords() {
+  if (!infoMain || !leftWord || !rightWord) return;
+
+  const rect = infoMain.getBoundingClientRect();
+
+  //scroll position
+  const scrollProgress = -rect.top;
+
+  // mouvements opposés sur les cotés
+  leftWord.style.transform =
+    `translate3d(0, ${scrollProgress * 0.18}px, 0)`;
+
+  rightWord.style.transform =
+    `translate3d(0, ${scrollProgress * -0.12}px, 0)`;
+}
+
+window.addEventListener("scroll", animateScrollWords, {
+  passive: true
+});
+
+animateScrollWords();
+
+</script>
 
     <footer>
       Musée de la pêche et de la mer, Contact info@museedespeches.ca | (418)
