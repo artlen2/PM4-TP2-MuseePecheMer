@@ -6,11 +6,30 @@
     <title>RÉSERVATION</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/png" href="./favicon3.png" />
-    <script src="./assets/scripts/h2-animation.js" defer></script>
+    <script src="./assets/scripts/script.js" defer></script>
     <script src="./assets/scripts/reservation.js"></script>
   </head>
 
   <body>
+    <div class="drawer" id="drawer">
+      <a class="drawer-link" href="index.html " onclick="closeDrawer()"
+        >Accueil</a
+      >
+      <a class="drawer-link" href="blog.html" onclick="closeDrawer()">Blogue</a>
+      <a class="drawer-link" href="tarification.html" onclick="closeDrawer()"
+        >Tarifs</a
+      >
+      <a class="drawer-link" href="reservation.html" onclick="closeDrawer()"
+        >Réservation</a
+      >
+      <a class="drawer-link" href="information.html" onclick="closeDrawer()"
+        >Information</a
+      >
+      <a class="drawer-link" href="mini-jeu.html" onclick="closeDrawer()"
+        >Jeu</a
+      >
+    </div>
+
     <nav
       class="site-nav flex justify-between!"
       aria-label="Navigation principale"
@@ -20,7 +39,7 @@
           <img src="favicon.png" alt="logo du site" />
         </a>
       </div>
-      <div class="flex gap-5">
+      <div class="nav-links flex gap-5">
         <a class="nav-link" href="index.html">Accueil</a>
         <a class="nav-link" href="blog.html">Blogue</a>
         <a class="nav-link" href="tarification.html">Tarifs</a>
@@ -28,6 +47,15 @@
         <a class="nav-link" href="information.html">Information</a>
         <a class="nav-link" href="mini-jeu.html">Jeu</a>
       </div>
+      <button
+        class="burger"
+        id="burger"
+        type="button"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+      >
+        <span></span><span></span><span></span>
+      </button>
     </nav>
 
     <header class="site-header">

@@ -9,6 +9,25 @@
   </head>
 
   <body class="blog-page">
+    <div class="drawer" id="drawer">
+      <a class="drawer-link" href="index.html " onclick="closeDrawer()"
+        >Accueil</a
+      >
+      <a class="drawer-link" href="blog.html" onclick="closeDrawer()">Blogue</a>
+      <a class="drawer-link" href="tarification.html" onclick="closeDrawer()"
+        >Tarifs</a
+      >
+      <a class="drawer-link" href="reservation.html" onclick="closeDrawer()"
+        >Réservation</a
+      >
+      <a class="drawer-link" href="information.html" onclick="closeDrawer()"
+        >Information</a
+      >
+      <a class="drawer-link" href="mini-jeu.html" onclick="closeDrawer()"
+        >Jeu</a
+      >
+    </div>
+
     <nav
       class="site-nav flex justify-between!"
       aria-label="Navigation principale"
@@ -18,7 +37,7 @@
           <img src="favicon.png" alt="logo du site" />
         </a>
       </div>
-      <div class="flex gap-5">
+      <div class="nav-links flex gap-5">
         <a class="nav-link" href="index.html">Accueil</a>
         <a class="nav-link" href="blog.html">Blogue</a>
         <a class="nav-link" href="tarification.html">Tarifs</a>
@@ -26,6 +45,15 @@
         <a class="nav-link" href="information.html">Information</a>
         <a class="nav-link" href="mini-jeu.html">Jeu</a>
       </div>
+      <button
+        class="burger"
+        id="burger"
+        type="button"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+      >
+        <span></span><span></span><span></span>
+      </button>
     </nav>
 
     <header class="site-header">
@@ -142,57 +170,96 @@
       </div> -->
         </article>
 
-    <article>
+        <article>
+          <div class="relative">
+            <img
+              src="./assets/images-client/baleines.jpg"
+              class="h-44 w-full aspect-[3/2] lg:aspect-[3/4] lg:h-[32rem] object-cover shadow-lg"
+            />
+            <div
+              class="lg:rounded-l-[5px] lg:rounded-t-[5px] bg-white lg:absolute bottom-8 -right-14 lg:w-[19rem] px-8 py-6 lg:h-96 shadow"
+            >
+              <span class="inline-block text-sm text-gray-500"
+                >21. Oct, 2025</span
+              >
+              <h2 class="text-2xl font-bold leading-tight mt-1.5 mb-2.5">
+                Baleines du Saint-Laurent :<br />
+                géantes discrètes
+              </h2>
+              <a
+                href="#"
+                class="inline-block text-blue-400 text-sm capitalize hover:underline"
+                >nouvel article</a
+              >
+              <p class="text-gray-800 mt-7 mb-7 lg:mb-14 leading-relaxed">
+                Retour sur l’époque où la morue faisait vivre des milliers de
+                familles gaspésiennes… et sur les conséquences du moratoire de
+                1992 qui a bouleversé toute une région. Pendant des siècles, la
+                morue a représenté une ressource vitale pour les communautés de
+                la Gaspésie et de l’ensemble du golfe du Saint-Laurent. Facile à
+                conserver grâce au salage et au séchage, elle était non
+                seulement la base de l’alimentation locale, mais aussi une
+                marchandise très prisée dans les échanges commerciaux à
+                l’international..
+              </p>
+              <a
+                href="#"
+                class="flex justify-end items-center uppercase text-blue-800 font-semibold text-sm hover:underline"
+                ><span class="mr-4 block w-10 h-0.5 bg-blue-800"></span>Lire
+                plus</a
+              >
+            </div>
+          </div>
+        </article>
 
-      <div class="relative">
-        <img src="./assets/images-client/baleines.jpg" class="h-44 w-full aspect-[3/2] lg:aspect-[3/4] lg:h-[32rem] object-cover shadow-lg">
-        <div class="lg:rounded-l-[5px] lg:rounded-t-[5px] bg-white lg:absolute bottom-8 -right-14 lg:w-[19rem] px-8 py-6 lg:h-96 shadow">
-          <span class="inline-block text-sm text-gray-500">21. Oct, 2025</span>
-          <h2 class="text-2xl font-bold leading-tight mt-1.5 mb-2.5">Baleines du Saint-Laurent :<br /> géantes discrètes</h2>
-          <a href="#" class="inline-block text-blue-400 text-sm capitalize hover:underline">nouvel article</a>
-          <p class="text-gray-800 mt-7 mb-7 lg:mb-14 leading-relaxed">  Retour sur l’époque où la morue faisait vivre des milliers de
-            familles gaspésiennes… et sur les conséquences du moratoire de 1992
-            qui a bouleversé toute une région. Pendant des siècles, la morue a
-            représenté une ressource vitale pour les communautés de la Gaspésie
-            et de l’ensemble du golfe du Saint-Laurent. Facile à conserver grâce
-            au salage et au séchage, elle était non seulement la base de
-            l’alimentation locale, mais aussi une marchandise très prisée dans
-            les échanges commerciaux à l’international..</p>
-          <a href="#" class="flex justify-end items-center uppercase text-blue-800 font-semibold text-sm hover:underline"><span class="mr-4 block w-10 h-0.5 bg-blue-800"></span>Lire plus</a>
-        </div>
-      </div>
-    </article>
-
- <article>
-      <div class="relative">
-        <img src="./assets/images-client/morue.jpg" class="h-44 w-full aspect-[3/2] lg:aspect-[3/4] lg:h-[32rem] object-cover shadow-lg">
-        <div class="lg:rounded-l-[5px] lg:rounded-t-[5px] bg-white lg:absolute bottom-8 -right-14 lg:w-[19rem] px-8 py-6 lg:h-96 shadow">
-          <span class="inline-block text-sm text-gray-500">22. Fev, 2025</span>
-          <h2 class="text-2xl font-bold leading-tight mt-1.5 mb-2.5">La morue :<br /> un poisson emblématique</h2>
-          <a href="#" class="inline-block text-blue-400 text-sm capitalize hover:underline">nouvel article</a>
-          <p class="text-gray-800 mt-7 mb-7 lg:mb-14 leading-relaxed">  Un article qui explique la présence des rorquals et des bélugas dans
-            le golfe, les menaces qui pèsent sur eux et les moyens mis en place
-            pour leur protection. Les baleines qui fréquentent le Saint-Laurent
-            sont parmi les créatures les plus impressionnantes de la planète.
-            Qu’il s’agisse du majestueux rorqual bleu, du curieux béluga ou
-            encore du puissant cachalot, chacune de ces espèces joue un rôle
-            essentiel dans l’équilibre fragile des écosystèmes marins. Pourtant,
-            ces géants marins demeurent mystérieux et souvent difficiles à
-            observer..</p>
-          <a href="#" class="flex justify-end items-center uppercase text-blue-800 font-semibold text-sm hover:underline"><span class="mr-4 block w-10 h-0.5 bg-blue-800"></span>Lire plus</a>
-        </div>
-      </div>
-    </article>
-
-  </section>
-
-</main>
-
+        <article>
+          <div class="relative">
+            <img
+              src="./assets/images-client/morue.jpg"
+              class="h-44 w-full aspect-[3/2] lg:aspect-[3/4] lg:h-[32rem] object-cover shadow-lg"
+            />
+            <div
+              class="lg:rounded-l-[5px] lg:rounded-t-[5px] bg-white lg:absolute bottom-8 -right-14 lg:w-[19rem] px-8 py-6 lg:h-96 shadow"
+            >
+              <span class="inline-block text-sm text-gray-500"
+                >22. Fev, 2025</span
+              >
+              <h2 class="text-2xl font-bold leading-tight mt-1.5 mb-2.5">
+                La morue :<br />
+                un poisson emblématique
+              </h2>
+              <a
+                href="#"
+                class="inline-block text-blue-400 text-sm capitalize hover:underline"
+                >nouvel article</a
+              >
+              <p class="text-gray-800 mt-7 mb-7 lg:mb-14 leading-relaxed">
+                Un article qui explique la présence des rorquals et des bélugas
+                dans le golfe, les menaces qui pèsent sur eux et les moyens mis
+                en place pour leur protection. Les baleines qui fréquentent le
+                Saint-Laurent sont parmi les créatures les plus impressionnantes
+                de la planète. Qu’il s’agisse du majestueux rorqual bleu, du
+                curieux béluga ou encore du puissant cachalot, chacune de ces
+                espèces joue un rôle essentiel dans l’équilibre fragile des
+                écosystèmes marins. Pourtant, ces géants marins demeurent
+                mystérieux et souvent difficiles à observer..
+              </p>
+              <a
+                href="#"
+                class="flex justify-end items-center uppercase text-blue-800 font-semibold text-sm hover:underline"
+                ><span class="mr-4 block w-10 h-0.5 bg-blue-800"></span>Lire
+                plus</a
+              >
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
 
     <footer>
       Musée de la pêche et de la mer, Contact info@museedespeches.ca | (418)
       555-2025
     </footer>
-    <script src="./assets/scripts/h2-animation.js"></script>
+    <script src="./assets/scripts/script.js"></script>
   </body>
 </html>
