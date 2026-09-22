@@ -66,11 +66,10 @@ document.addEventListener("DOMContentLoaded", () => {
   container.style.width = "100vw";
   container.style.height = "100vh";
   container.style.pointerEvents = "none";
-  container.style.zIndex = "0";
+  container.style.zIndex = "999";
   canvas.style.display = "block";
   canvas.style.width = "100%";
   canvas.style.height = "100%";
-  canvas.style.zIndex = "0";
   container.appendChild(canvas);
   document.body.appendChild(container);
 
@@ -95,13 +94,13 @@ document.addEventListener("DOMContentLoaded", () => {
         ? headerBottom + Math.random() * Math.max(0, height - headerBottom)
         : height + 20;
       this.radius = Math.random() * 4.8 + 2.8;
-      this.baseVx = (Math.random() - 0.5) * 0.18;
-      this.baseVy = -(Math.random() * 0.2 + 0.12);
+      this.baseVx = (Math.random() - 0.5) * 0.24;
+      this.baseVy = -(Math.random() * 0.28 + 0.18);
       this.vx = this.baseVx;
       this.vy = this.baseVy;
       this.angle = Math.random() * Math.PI * 2;
-      this.frequency = 0.004 + Math.random() * 0.008;
-      this.amplitude = 0.08 + Math.random() * 0.12;
+      this.frequency = 0.007 + Math.random() * 0.014;
+      this.amplitude = 0.12 + Math.random() * 0.22;
       this.alpha = Math.random() * 0.18 + 0.16;
       this.color = `hsl(${195 + Math.random() * 24}, ${72 + Math.random() * 18}%, ${60 + Math.random() * 15}%)`;
     }
@@ -109,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
     update() {
       const headerBottom = getHeaderBottom();
       this.angle += this.frequency;
-      this.vx = this.baseVx + Math.sin(this.angle) * this.amplitude * 0.05;
+      this.vx = this.baseVx + Math.sin(this.angle) * this.amplitude * 0.08;
 
       if (mouse.x !== null && mouse.y !== null) {
         const dx = mouse.x - this.x;
@@ -118,13 +117,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (distance > 0 && distance < mouse.radius) {
           const force = 1 - distance / mouse.radius;
-          this.vx -= (dx / distance) * force * 0.25 + mouse.vx * 0.02;
-          this.vy -= (dy / distance) * force * 0.25 + mouse.vy * 0.02;
+          this.vx -= (dx / distance) * force * 0.4 + mouse.vx * 0.03;
+          this.vy -= (dy / distance) * force * 0.4 + mouse.vy * 0.03;
         }
       }
 
-      this.vx += (this.baseVx - this.vx) * 0.03;
-      this.vy += (this.baseVy - this.vy) * 0.03;
+      this.vx += (this.baseVx - this.vx) * 0.05;
+      this.vy += (this.baseVy - this.vy) * 0.05;
       this.x += this.vx;
       this.y += this.vy;
 
@@ -242,12 +241,19 @@ document.addEventListener("DOMContentLoaded", () => {
     ripple.style.zIndex = "9997";
     document.body.appendChild(ripple);
 
-    ripple.animate(
-      [
-        { width: "0px", height: "0px", opacity: 1 },
-        { width: "90px", height: "90px", opacity: 0, borderColor: "rgba(255, 255, 255, 0)" },
-      ],
-      { duration: 700, easing: "ease-out", fill: "forwards" },
-    ).finished.then(() => ripple.remove());
+    ripple
+      .animate(
+        [
+          { width: "0px", height: "0px", opacity: 1 },
+          {
+            width: "90px",
+            height: "90px",
+            opacity: 0,
+            borderColor: "rgba(255, 255, 255, 0)",
+          },
+        ],
+        { duration: 700, easing: "ease-out", fill: "forwards" },
+      )
+      .finished.then(() => ripple.remove());
   }
 });
