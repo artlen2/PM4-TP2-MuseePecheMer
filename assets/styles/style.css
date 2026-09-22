@@ -367,19 +367,18 @@ footer {
 }
 
 .blog-card {
-
   padding: 1.25rem 1.5rem;
 
-   font-family: var(--font-main);
-  font-size: 0.80rem;
+  font-family: var(--font-main);
+  font-size: 0.8rem;
   font-weight: 400;
   background-color: rgba(250, 250, 250, 0.973);
   color: rgb(52, 97, 156);
   border-radius: 1px;
- 
+
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.253);
-  
+
   cursor: pointer;
   transition:
     background 250ms ease,
@@ -435,7 +434,7 @@ h2.tarifs-title {
 }
 
 /* General */
-.h2-title{
+.h2-title {
   @apply text-7xl font-bold;
 }
 
@@ -455,10 +454,7 @@ h2.tarifs-title {
   @apply text-base pb-2;
 }
 
-
-
 /* page info */
-
 
 /* variables */
 
@@ -473,7 +469,6 @@ h2.tarifs-title {
   --info-yellow: #e6d65c;
 }
 
-
 /* le main */
 
 .info-page .info-main {
@@ -486,14 +481,10 @@ h2.tarifs-title {
 
   display: block;
 
-  padding:
-    clamp(6rem, 12vw, 12rem)
-    0
-    clamp(6rem, 12vw, 12rem);
+  padding: clamp(6rem, 12vw, 12rem) 0 clamp(6rem, 12vw, 12rem);
 
   color: var(--info-ink);
 }
-
 
 /* intro */
 
@@ -520,12 +511,10 @@ h2.tarifs-title {
     transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-
 .info-page .info-intro.visible {
   opacity: 1;
   transform: translateX(0);
 }
-
 
 .info-page .info-intro-number {
   padding-top: 0.4rem;
@@ -539,11 +528,9 @@ h2.tarifs-title {
   color: var(--info-muted);
 }
 
-
 .info-page .info-intro-content {
   max-width: 850px;
 }
-
 
 .info-page .info-kicker {
   margin-bottom: 1.5rem;
@@ -559,7 +546,6 @@ h2.tarifs-title {
 
   color: var(--info-blue);
 }
-
 
 /* grand titre */
 
@@ -585,13 +571,11 @@ h2.tarifs-title {
   filter: none;
 }
 
-
 .info-page .info-intro .h2-title span {
   display: block;
 
   color: var(--info-muted);
 }
-
 
 .info-page .info-description {
   max-width: 540px;
@@ -607,7 +591,6 @@ h2.tarifs-title {
   color: #f7ebdd;
 }
 
-
 /* grille info */
 
 .info-page .info-grid {
@@ -621,7 +604,6 @@ h2.tarifs-title {
 
   border-left: 1px solid var(--info-line);
 }
-
 
 /* cartes info */
 
@@ -656,13 +638,11 @@ h2.tarifs-title {
     box-shadow 350ms ease;
 }
 
-
 .info-page .info-card.visible {
   opacity: 1;
 
   transform: translateX(0);
 }
-
 
 /* l'animation qui ne marche pas */
 
@@ -670,11 +650,9 @@ h2.tarifs-title {
   transform: translateX(70px);
 }
 
-
 .info-page .info-card:nth-child(even).visible {
   transform: translateX(0);
 }
-
 
 /* barre supérieure */
 
@@ -695,23 +673,18 @@ h2.tarifs-title {
 
   transform-origin: left;
 
-  transition:
-    transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 
 .info-page .info-card:hover {
   background: #fbfcfa;
 
-  box-shadow:
-    0 20px 45px rgba(16, 43, 67, 0.08);
+  box-shadow: 0 20px 45px rgba(16, 43, 67, 0.08);
 }
-
 
 .info-page .info-card:hover::before {
   transform: scaleX(1);
 }
-
 
 /* haut de la carte */
 
@@ -723,7 +696,6 @@ h2.tarifs-title {
   align-items: center;
 }
 
-
 .info-page .info-card-number {
   font-family: var(--font-main);
 
@@ -732,7 +704,6 @@ h2.tarifs-title {
 
   color: #ffbc78;
 }
-
 
 .info-page .info-card-label {
   font-family: var(--font-main);
@@ -744,7 +715,6 @@ h2.tarifs-title {
 
   color: var(--info-blue);
 }
-
 
 /* contenu de la carte */
 
@@ -764,7 +734,6 @@ h2.tarifs-title {
   color: var(--info-ink);
 }
 
-
 .info-page .info-card-content p {
   max-width: 400px;
 
@@ -776,7 +745,6 @@ h2.tarifs-title {
 
   color: var(--info-text);
 }
-
 
 /* la tite fleche */
 
@@ -792,15 +760,12 @@ h2.tarifs-title {
 
   color: var(--info-blue);
 
-  transition:
-    transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 
 .info-page .info-card:hover .info-arrow {
   transform: translate(5px, -5px);
 }
-
 
 /* services*/
 
@@ -809,7 +774,6 @@ h2.tarifs-title {
 
   min-height: 420px;
 }
-
 
 .info-page .services-list {
   max-width: 850px;
@@ -820,7 +784,6 @@ h2.tarifs-title {
 
   border-top: 1px solid var(--info-line);
 }
-
 
 .info-page .services-list li {
   display: grid;
@@ -842,7 +805,6 @@ h2.tarifs-title {
   color: var(--info-text);
 }
 
-
 .info-page .services-list li > span {
   font-size: 0.65rem;
 
@@ -850,7 +812,6 @@ h2.tarifs-title {
 
   color: #423f3c;
 }
-
 
 .info-page .services-list small {
   display: block;
@@ -866,7 +827,6 @@ h2.tarifs-title {
   color: var(--info-muted);
 }
 
-
 /* contact */
 
 .info-page .info-card-contact {
@@ -875,27 +835,22 @@ h2.tarifs-title {
   color: white;
 }
 
-
 .info-page .info-card-contact::before {
   background: var(--info-yellow);
 }
 
-
 .info-page .info-card-contact:hover {
   background: #203f5b;
 }
-
 
 .info-page .info-card-contact .info-card-number,
 .info-page .info-card-contact .info-card-label {
   color: rgba(255, 255, 255, 0.65);
 }
 
-
 .info-page .info-card-contact h3 {
   color: white;
 }
-
 
 .info-page .info-card-contact a {
   display: block;
@@ -919,13 +874,11 @@ h2.tarifs-title {
     border-color 250ms ease;
 }
 
-
 .info-page .info-card-contact a:hover {
   opacity: 0.7;
 
   border-color: white;
 }
-
 
 /* section bas */
 
@@ -952,13 +905,11 @@ h2.tarifs-title {
     transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-
 .info-page .info-bottom.visible {
   opacity: 1;
 
   transform: translateX(0);
 }
-
 
 .info-page .info-bottom-number {
   padding-top: 0.4rem;
@@ -969,7 +920,6 @@ h2.tarifs-title {
 
   color: var(--info-muted);
 }
-
 
 .info-page .info-bottom h2 {
   margin: 0;
@@ -995,25 +945,21 @@ h2.tarifs-title {
   filter: none;
 }
 
-
 .info-page .info-bottom h2 span {
   display: block;
 
   color: var(--info-muted);
 }
 
-
 /* RESPONSIVE */
 
 @media (max-width: 700px) {
-
   .info-page .info-main {
     width: min(100% - 2rem, 88rem);
 
     padding-top: 5rem;
     padding-bottom: 6rem;
   }
-
 
   .info-page .info-intro {
     grid-template-columns: 1fr;
@@ -1025,18 +971,15 @@ h2.tarifs-title {
     transform: translateY(40px);
   }
 
-
   .info-page .info-intro.visible {
     transform: translateY(0);
   }
-
 
   .info-page .info-grid {
     grid-template-columns: 1fr;
 
     margin-top: 4rem;
   }
-
 
   .info-page .info-card {
     min-height: 330px;
@@ -1046,17 +989,14 @@ h2.tarifs-title {
     transform: translateY(45px);
   }
 
-
   .info-page .info-card:nth-child(even) {
     transform: translateY(45px);
   }
-
 
   .info-page .info-card.visible,
   .info-page .info-card:nth-child(even).visible {
     transform: translateY(0);
   }
-
 
   .info-page .info-card-services {
     grid-column: auto;
@@ -1064,11 +1004,9 @@ h2.tarifs-title {
     min-height: 400px;
   }
 
-
   .info-page .info-card-content h3 {
     font-size: 2.5rem;
   }
-
 
   .info-page .info-bottom {
     grid-template-columns: 1fr;
@@ -1080,18 +1018,14 @@ h2.tarifs-title {
     transform: translateY(40px);
   }
 
-
   .info-page .info-bottom.visible {
     transform: translateY(0);
   }
-
 }
-
 
 /* ACCESSIBILITÉ */
 
 @media (prefers-reduced-motion: reduce) {
-
   .info-page .info-intro,
   .info-page .info-card,
   .info-page .info-bottom {
@@ -1105,7 +1039,6 @@ h2.tarifs-title {
   .info-page .info-card:hover {
     transform: none;
   }
-
 }
 
 /* mots sur les cotés*/
@@ -1129,7 +1062,6 @@ h2.tarifs-title {
 
   color: #48a4cf79;
 
-
   writing-mode: vertical-rl;
   white-space: nowrap;
 
@@ -1139,14 +1071,12 @@ h2.tarifs-title {
   will-change: transform;
 }
 
-
 /* gauche */
 
 .info-page .scroll-word-left {
   left: -0.55em;
   top: 5%;
 }
-
 
 /* droite */
 
@@ -1156,14 +1086,12 @@ h2.tarifs-title {
   writing-mode: vertical-lr;
 }
 
-
 /* contenu devant les mots */
 
 .info-page .info-main > section {
   position: relative;
   z-index: 1;
 }
-
 
 /* */
 
@@ -1183,7 +1111,6 @@ body {
   padding: clamp(6rem, 10vw, 10rem) 0 clamp(6rem, 10vw, 10rem);
   color: #f7ebdd;
 }
-
 
 /* intro page */
 
@@ -1249,7 +1176,6 @@ body {
   line-height: 1.7;
   color: #f7ebdd;
 }
-
 
 /* progression */
 
@@ -1334,7 +1260,6 @@ body {
   background: #24d1f0;
 }
 
-
 /* layour formulaire et panier */
 
 .reservation-layout {
@@ -1343,7 +1268,6 @@ body {
   gap: clamp(3rem, 6vw, 7rem);
   align-items: start;
 }
-
 
 /*bloc formulaire- */
 
@@ -1373,7 +1297,6 @@ body {
   line-height: 1;
   color: #f7ebdd;
 }
-
 
 /* calendrier */
 
@@ -1460,13 +1383,13 @@ body {
   font-weight: 700;
 }
 
-
-/* hoarires- */
+/* horaire */
 
 .time-slots {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 0.75rem;
+  margin-bottom: clamp(1rem, 2vw, 4rem);
 }
 
 .time-slots button {
@@ -1496,7 +1419,6 @@ body {
   background: #24d1f0;
   color: #102b43;
 }
-
 
 /* billet */
 
@@ -1564,7 +1486,6 @@ body {
   font-family: var(--font-main);
   color: #f7ebdd;
 }
-
 
 /* faux panier */
 
@@ -1720,6 +1641,41 @@ body {
   transform: translateY(-2px);
 }
 
+.reservation-confirmation-actions {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.reservation-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(247, 235, 221, 0.28);
+  background: rgba(255, 255, 255, 0.03);
+  color: #f7ebdd;
+  text-decoration: none;
+  text-align: center;
+  font-family: var(--font-main);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition:
+    background 250ms ease,
+    border-color 250ms ease,
+    transform 250ms ease;
+}
+
+.reservation-action-btn:hover,
+.reservation-action-btn:focus-visible {
+  background: rgba(36, 209, 240, 0.12);
+  border-color: rgba(36, 209, 240, 0.6);
+  transform: translateY(-1px);
+}
+
 .cart-note {
   margin-top: 1.25rem;
   font-family: var(--font-main);
@@ -1727,7 +1683,6 @@ body {
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.7);
 }
-
 
 /* section bas de la page */
 
@@ -1778,7 +1733,6 @@ body {
   color: #f7ebdd;
 }
 
-
 /* anims */
 
 .reservation-intro,
@@ -1812,11 +1766,9 @@ body {
   }
 }
 
-
 /* responsive */
 
 @media (max-width: 1000px) {
-
   .reservation-layout {
     grid-template-columns: minmax(0, 1fr) 360px;
     gap: 3rem;
@@ -1825,12 +1777,9 @@ body {
   .time-slots {
     grid-template-columns: repeat(3, 1fr);
   }
-
 }
 
-
 @media (max-width: 800px) {
-
   .reservation-main {
     width: min(100% - 2rem, 88rem);
   }
@@ -1858,12 +1807,9 @@ body {
   .progress-line {
     min-width: 2rem;
   }
-
 }
 
-
 @media (max-width: 600px) {
-
   .reservation-main {
     padding-top: 5rem;
     padding-bottom: 5rem;
@@ -1906,19 +1852,15 @@ body {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-
 }
-
 
 /* accessibilité */
 
 @media (prefers-reduced-motion: reduce) {
-
   .reservation-intro,
   .reservation-progress,
   .reservation-layout,
   .reservation-bottom {
     animation: none;
   }
-
 }
