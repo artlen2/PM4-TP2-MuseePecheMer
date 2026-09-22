@@ -222,7 +222,7 @@
               <div class="ticket-row" data-ticket="adult">
                 <div>
                   <strong>Adulte</strong>
-                  <small>8,00 $ / personne</small>
+                  <small>12,00 $ / personne</small>
                 </div>
 
                 <div class="ticket-counter">
@@ -235,7 +235,20 @@
               <div class="ticket-row" data-ticket="student">
                 <div>
                   <strong>Étudiant</strong>
-                  <small>6,00 $ / personne</small>
+                  <small>8,00 $ / personne</small>
+                </div>
+
+                <div class="ticket-counter">
+                  <button type="button" data-action="decrease">−</button>
+                  <span>0</span>
+                  <button type="button" data-action="increase">+</button>
+                </div>
+              </div>
+
+              <div class="ticket-row" data-ticket="senior">
+                <div>
+                  <strong>Aîné</strong>
+                  <small>8,00 $ / personne</small>
                 </div>
 
                 <div class="ticket-counter">
@@ -247,8 +260,34 @@
 
               <div class="ticket-row" data-ticket="child">
                 <div>
-                  <strong>Enfant</strong>
-                  <small>4,00 $ / personne</small>
+                  <strong>Enfant (6-12 ans)</strong>
+                  <small>5,00 $ / personne</small>
+                </div>
+
+                <div class="ticket-counter">
+                  <button type="button" data-action="decrease">−</button>
+                  <span>0</span>
+                  <button type="button" data-action="increase">+</button>
+                </div>
+              </div>
+
+              <div class="ticket-row" data-ticket="under6">
+                <div>
+                  <strong>Enfant de moins de 6 ans</strong>
+                  <small>Gratuit</small>
+                </div>
+
+                <div class="ticket-counter">
+                  <button type="button" data-action="decrease">−</button>
+                  <span>0</span>
+                  <button type="button" data-action="increase">+</button>
+                </div>
+              </div>
+
+              <div class="ticket-row" data-ticket="family">
+                <div>
+                  <strong>Famille</strong>
+                  <small>30,00 $ / forfait (2 adultes + 2 enfants)</small>
                 </div>
 
                 <div class="ticket-counter">
@@ -318,6 +357,18 @@
               CONFIRMER LA RÉSERVATION
               <span>→</span>
             </button>
+
+            <div class="reservation-confirmation-actions" hidden>
+              <a href="information.html" class="reservation-action-btn">
+                Infos du musée
+              </a>
+              <a href="evenement.html" class="reservation-action-btn">
+                Événements en cours
+              </a>
+              <a href="index.html" class="reservation-action-btn">
+                Retour à l'accueil
+              </a>
+            </div>
           </div>
         </div>
 
