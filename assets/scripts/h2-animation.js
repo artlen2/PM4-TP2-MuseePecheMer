@@ -257,19 +257,3 @@ document.addEventListener("DOMContentLoaded", () => {
       .finished.then(() => ripple.remove());
   }
 });
-
-// MOBILE DRAWER
-const drawer = document.getElementById("drawer"),
-  burger = document.getElementById("burger");
-function toggleDrawer() {
-  drawer.classList.toggle("open");
-  burger.classList.toggle("open");
-  document.body.style.overflow = drawer.classList.contains("open")
-    ? "hidden"
-    : "";
-}
-function closeDrawer() {
-  drawer.classList.remove("open");
-  burger.classList.remove("open");
-  document.body.style.overflow = "";
-}
