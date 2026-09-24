@@ -50,12 +50,34 @@ body {
   color: white;
   flex-direction: column;
   overflow-x: hidden;
-  background: linear-gradient(
+
+  background: var(--color-prussianblue7);
+  background-image: linear-gradient(
     180deg,
-    var(--color-cloudysky4) 0%,
-    var(--color-smartblue5) 48%,
+    var(--color-cloudysky4) 0,
+    var(--color-smartblue5) 800px,
+    var(--color-yaleblue6) 2400px,
     var(--color-prussianblue7) 100%
   );
+  font-family: var(--font-main);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-yellow1);
+  outline-offset: 3px;
 }
 
 /* ============ NAVIGATION ============ */
@@ -1175,14 +1197,6 @@ h2.tarifs-title {
 .info-page .info-main > section {
   position: relative;
   z-index: 1;
-}
-
-/* */
-
-html,
-body {
-  max-width: 100%;
-  overflow-x: hidden;
 }
 
 /* ============ RESERVATION PAGE ============ */

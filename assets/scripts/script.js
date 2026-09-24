@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const titles = document.querySelectorAll("h2");
+  const children = document.querySelectorAll(".page-main .enfant");
 
   const observer = new IntersectionObserver(
     (entries, currentObserver) => {
@@ -18,6 +19,21 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   titles.forEach((title) => observer.observe(title));
+
+  const childObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle("visible", entry.isIntersecting);
+      });
+    },
+    {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.15,
+    },
+  );
+
+  children.forEach((child) => childObserver.observe(child));
 
   // Appareils tactiles et mouvement réduit : pas de bulles ni de curseur animé
   if (
