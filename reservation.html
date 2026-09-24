@@ -113,343 +113,328 @@
 
       <!-- progression -->
 
-      <section class="reservation-progress">
-        <div class="progress-step completed">
-          <span>✓</span>
+      <section class="reservation-progress" aria-label="Progression">
+        <button
+          type="button"
+          class="progress-step active"
+          aria-label="Étape 1 : PLANIFIER"
+        >
+          <span>01</span>
           <p>PLANIFIER</p>
-        </div>
-
-        <div class="progress-line completed"></div>
-
-        <div class="progress-step active">
+        </button>
+        <div class="progress-line"></div>
+        <button
+          type="button"
+          class="progress-step"
+          aria-label="Étape 2 : HEURE"
+        >
           <span>02</span>
           <p>HEURE</p>
-        </div>
-
+        </button>
         <div class="progress-line"></div>
-
-        <div class="progress-step">
+        <button
+          type="button"
+          class="progress-step"
+          aria-label="Étape 3 : BILLETS"
+        >
           <span>03</span>
-          <p>INFORMATIONS</p>
-        </div>
-
+          <p>BILLETS</p>
+        </button>
         <div class="progress-line"></div>
-
-        <div class="progress-step">
+        <button
+          type="button"
+          class="progress-step"
+          aria-label="Étape 4 : COORDONNÉES"
+        >
           <span>04</span>
+          <p>COORDONNÉES</p>
+        </button>
+        <div class="progress-line"></div>
+        <button
+          type="button"
+          class="progress-step"
+          aria-label="Étape 5 : CONFIRMATION"
+        >
+          <span>05</span>
           <p>CONFIRMATION</p>
-        </div>
+        </button>
       </section>
-
-      <!-- contenu -->
-
       <section class="reservation-layout">
         <div class="reservation-form">
-          <!-- date -->
-
           <div class="reservation-block" id="calendar">
             <div class="reservation-block-heading">
               <span>01</span>
               <h3>Choisissez votre date</h3>
             </div>
-
             <div class="reservation-calendar">
               <div class="calendar-header">
-                <button type="button">←</button>
-                <h4>SEPTEMBRE 2026</h4>
-                <button type="button">→</button>
+                <button type="button" id="prev" aria-label="Mois précédent">
+                  ←
+                </button>
+                <h4 id="cal-title" aria-live="polite"></h4>
+                <button type="button" id="next" aria-label="Mois suivant">
+                  →
+                </button>
               </div>
-
               <div class="calendar-weekdays">
-                <span>LUN</span>
-                <span>MAR</span>
-                <span>MER</span>
-                <span>JEU</span>
-                <span>VEN</span>
-                <span>SAM</span>
-                <span>DIM</span>
+                <span>LUN</span><span>MAR</span><span>MER</span><span>JEU</span
+                ><span>VEN</span><span>SAM</span><span>DIM</span>
               </div>
-
-              <div class="calendar-days">
-                <button type="button">1</button>
-                <button type="button">2</button>
-                <button type="button">3</button>
-                <button type="button">4</button>
-                <button type="button">5</button>
-                <button type="button">6</button>
-                <button type="button">7</button>
-                <button type="button">8</button>
-                <button type="button">9</button>
-                <button type="button">10</button>
-                <button type="button">11</button>
-                <button type="button">12</button>
-                <button type="button">13</button>
-                <button type="button">14</button>
-                <button type="button">15</button>
-                <button type="button">16</button>
-                <button type="button">17</button>
-                <button type="button">18</button>
-                <button type="button">19</button>
-                <button type="button">20</button>
-                <button type="button" class="selected">21</button>
-                <button type="button">22</button>
-                <button type="button">23</button>
-                <button type="button">24</button>
-                <button type="button">25</button>
-                <button type="button">26</button>
-                <button type="button">27</button>
-                <button type="button">28</button>
-                <button type="button">29</button>
-                <button type="button">30</button>
-              </div>
+              <div class="calendar-days" id="cal-days"></div>
             </div>
-
-            <button
-              type="button"
-              class="reservation-step-button reservation-button"
-            >
-              CONFIRMER LA DATE
-              <span>→</span>
+            <p class="cal-note">
+              Fermé le lundi et le mardi d'octobre à mai, ainsi que les 24, 25,
+              31 décembre et le 1er janvier.
+            </p>
+            <p class="step-error" role="alert"></p>
+            <button type="button" class="next reservation-button">
+              CONFIRMER LA DATE<span>→</span>
             </button>
           </div>
-
-          <!-- heure -->
-
-          <div class="reservation-block" id="hour">
+          <div class="reservation-block" id="hour" hidden>
             <div class="reservation-block-heading">
               <span>02</span>
               <h3>Choisissez votre heure</h3>
             </div>
-
             <div class="time-slots">
-              <button type="button">10:00</button>
-              <button type="button">11:30</button>
-              <button type="button" class="selected">13:00</button>
-              <button type="button">14:30</button>
-              <button type="button">16:00</button>
+              <button type="button" aria-pressed="false">10:00</button
+              ><button type="button" aria-pressed="false">11:30</button
+              ><button type="button" aria-pressed="false">13:00</button
+              ><button type="button" aria-pressed="false">14:30</button
+              ><button type="button" aria-pressed="false">16:00</button>
             </div>
-
-            <button
-              type="button"
-              class="reservation-step-button reservation-button"
-            >
-              CONFIRMER L'HEURE
-              <span>→</span>
+            <p class="step-error" role="alert"></p>
+            <button type="button" class="next reservation-button">
+              CONFIRMER L'HEURE<span>→</span>
             </button>
           </div>
-
-          <!-- billets -->
-
-          <div class="reservation-block" id="person">
+          <div class="reservation-block" id="tickets" hidden>
             <div class="reservation-block-heading">
               <span>03</span>
               <h3>Combien serez-vous ?</h3>
             </div>
-
             <div class="ticket-list">
               <div class="ticket-row" data-ticket="adult">
                 <div>
-                  <strong>Adulte</strong>
-                  <small>12,00 $ / personne</small>
+                  <strong>Adulte</strong><small>12,00 $ / personne</small>
                 </div>
-
                 <div class="ticket-counter">
-                  <button type="button" data-action="decrease">−</button>
-                  <span>0</span>
-                  <button type="button" data-action="increase">+</button>
+                  <button
+                    type="button"
+                    data-action="decrease"
+                    aria-label="Retirer un billet Adulte"
+                  >
+                    −</button
+                  ><span aria-live="polite">0</span
+                  ><button
+                    type="button"
+                    data-action="increase"
+                    aria-label="Ajouter un billet Adulte"
+                  >
+                    +
+                  </button>
                 </div>
               </div>
-
               <div class="ticket-row" data-ticket="student">
                 <div>
-                  <strong>Étudiant</strong>
-                  <small>8,00 $ / personne</small>
+                  <strong>Étudiant</strong><small>8,00 $ / personne</small>
                 </div>
-
                 <div class="ticket-counter">
-                  <button type="button" data-action="decrease">−</button>
-                  <span>0</span>
-                  <button type="button" data-action="increase">+</button>
+                  <button
+                    type="button"
+                    data-action="decrease"
+                    aria-label="Retirer un billet Étudiant"
+                  >
+                    −</button
+                  ><span aria-live="polite">0</span
+                  ><button
+                    type="button"
+                    data-action="increase"
+                    aria-label="Ajouter un billet Étudiant"
+                  >
+                    +
+                  </button>
                 </div>
               </div>
-
               <div class="ticket-row" data-ticket="senior">
-                <div>
-                  <strong>Aîné</strong>
-                  <small>8,00 $ / personne</small>
-                </div>
-
+                <div><strong>Aîné</strong><small>8,00 $ / personne</small></div>
                 <div class="ticket-counter">
-                  <button type="button" data-action="decrease">−</button>
-                  <span>0</span>
-                  <button type="button" data-action="increase">+</button>
+                  <button
+                    type="button"
+                    data-action="decrease"
+                    aria-label="Retirer un billet Aîné"
+                  >
+                    −</button
+                  ><span aria-live="polite">0</span
+                  ><button
+                    type="button"
+                    data-action="increase"
+                    aria-label="Ajouter un billet Aîné"
+                  >
+                    +
+                  </button>
                 </div>
               </div>
-
               <div class="ticket-row" data-ticket="child">
                 <div>
-                  <strong>Enfant (6-12 ans)</strong>
-                  <small>5,00 $ / personne</small>
+                  <strong>Enfant (6-12 ans)</strong
+                  ><small>5,00 $ / personne</small>
                 </div>
-
                 <div class="ticket-counter">
-                  <button type="button" data-action="decrease">−</button>
-                  <span>0</span>
-                  <button type="button" data-action="increase">+</button>
+                  <button
+                    type="button"
+                    data-action="decrease"
+                    aria-label="Retirer un billet Enfant (6-12 ans)"
+                  >
+                    −</button
+                  ><span aria-live="polite">0</span
+                  ><button
+                    type="button"
+                    data-action="increase"
+                    aria-label="Ajouter un billet Enfant (6-12 ans)"
+                  >
+                    +
+                  </button>
                 </div>
               </div>
-
               <div class="ticket-row" data-ticket="under6">
                 <div>
-                  <strong>Enfant de moins de 6 ans</strong>
-                  <small>Gratuit</small>
+                  <strong>Enfant de moins de 6 ans</strong
+                  ><small>Gratuit</small>
                 </div>
-
                 <div class="ticket-counter">
-                  <button type="button" data-action="decrease">−</button>
-                  <span>0</span>
-                  <button type="button" data-action="increase">+</button>
+                  <button
+                    type="button"
+                    data-action="decrease"
+                    aria-label="Retirer un billet Enfant de moins de 6 ans"
+                  >
+                    −</button
+                  ><span aria-live="polite">0</span
+                  ><button
+                    type="button"
+                    data-action="increase"
+                    aria-label="Ajouter un billet Enfant de moins de 6 ans"
+                  >
+                    +
+                  </button>
                 </div>
               </div>
-
               <div class="ticket-row" data-ticket="family">
                 <div>
-                  <strong>Famille</strong>
-                  <small>30,00 $ / forfait (2 adultes + 2 enfants)</small>
+                  <strong>Famille</strong
+                  ><small>30,00 $ / forfait (2 adultes + 2 enfants)</small>
                 </div>
-
                 <div class="ticket-counter">
-                  <button type="button" data-action="decrease">−</button>
-                  <span>0</span>
-                  <button type="button" data-action="increase">+</button>
+                  <button
+                    type="button"
+                    data-action="decrease"
+                    aria-label="Retirer un billet Famille"
+                  >
+                    −</button
+                  ><span aria-live="polite">0</span
+                  ><button
+                    type="button"
+                    data-action="increase"
+                    aria-label="Ajouter un billet Famille"
+                  >
+                    +
+                  </button>
                 </div>
               </div>
             </div>
-
-            <button
-              type="button"
-              class="reservation-step-button reservation-button"
-            >
-              CONFIRMER LES BILLETS
-              <span>→</span>
+            <p class="step-error" role="alert"></p>
+            <button type="button" class="next reservation-button">
+              CONFIRMER LES BILLETS<span>→</span>
             </button>
           </div>
-
-          <div class="reservation-block" id="confirmation" hidden>
+          <div class="reservation-block" id="contact" hidden>
             <div class="reservation-block-heading">
               <span>04</span>
+              <h3>Vos coordonnées</h3>
+            </div>
+            <form id="contact-form" novalidate>
+              <div class="form-row">
+                <div class="field">
+                  <label for="prenom">Prénom</label
+                  ><input
+                    id="prenom"
+                    name="prenom"
+                    type="text"
+                    autocomplete="given-name"
+                  /><span class="msg" id="m-prenom"></span>
+                </div>
+                <div class="field">
+                  <label for="nom">Nom</label
+                  ><input
+                    id="nom"
+                    name="nom"
+                    type="text"
+                    autocomplete="family-name"
+                  /><span class="msg" id="m-nom"></span>
+                </div>
+              </div>
+              <div class="field">
+                <label for="courriel">Courriel</label
+                ><input
+                  id="courriel"
+                  name="courriel"
+                  type="email"
+                  autocomplete="email"
+                /><span class="msg" id="m-courriel"></span>
+              </div>
+              <div class="field">
+                <label for="tel">Téléphone (facultatif)</label
+                ><input
+                  id="tel"
+                  name="tel"
+                  type="tel"
+                  autocomplete="tel"
+                /><span class="msg" id="m-tel"></span>
+              </div>
+            </form>
+            <p class="step-error" role="alert"></p>
+            <button type="button" class="next reservation-button">
+              VÉRIFIER MA RÉSERVATION<span>→</span>
+            </button>
+          </div>
+          <div class="reservation-block" id="confirmation" hidden>
+            <div class="reservation-block-heading">
+              <span>05</span>
               <h3>Confirmation</h3>
             </div>
-
-            <div class="reservation-calendar" style="padding: 2rem">
-              <p
-                style="
-                  margin: 0 0 1rem;
-                  font-family: var(--font-main);
-                  font-size: 0.8rem;
-                  letter-spacing: 0.1em;
-                  text-transform: uppercase;
-                  color: #423f3c;
-                "
-              >
-                Réservation prête
-              </p>
-              <h4
-                style="
-                  margin: 0 0 1rem;
-                  font-family: var(--font-title);
-                  font-size: clamp(2rem, 4vw, 3rem);
-                  color: #102b43;
-                "
-              >
-                Votre visite est confirmée.
-              </h4>
-              <p
-                style="
-                  margin: 0;
-                  font-family: var(--font-main);
-                  line-height: 1.7;
-                  color: #423f3c;
-                "
-              >
-                Vous recevrez un rappel par e-mail avant votre visite. Vous
-                pouvez modifier votre réservation à tout moment avant la date
-                prévue.
-              </p>
-            </div>
-
-            <button
-              type="button"
-              class="reservation-step-button reservation-button"
-            >
-              CONFIRMER LA RÉSERVATION
-              <span>→</span>
+            <div class="reservation-calendar" id="recap"></div>
+            <p class="step-error" role="alert"></p>
+            <button type="button" id="confirm" class="reservation-button">
+              CONFIRMER LA RÉSERVATION<span>→</span>
             </button>
-
-            <div class="reservation-confirmation-actions" hidden>
-              <a href="information.html" class="reservation-action-btn">
-                Infos du musée
-              </a>
-              <a href="evenement.html" class="reservation-action-btn">
-                Événements en cours
-              </a>
-              <a href="index.html" class="reservation-action-btn">
-                Retour à l'accueil
-              </a>
-            </div>
           </div>
         </div>
-
-        <!-- panier -->
-
         <aside class="reservation-cart" id="cart">
           <div class="cart-top">
-            <span>VOTRE RÉSERVATION</span>
-            <span class="cart-number">01</span>
+            <span>VOTRE RÉSERVATION</span><span class="cart-number">01</span>
           </div>
-
           <div class="cart-content">
-            <p class="cart-quote">MUSÉE DE LA PÊCHE ET DE LA MER</p>
-
+            <p class="cart-quote">MUSÉE DES PÊCHES ET DE LA MER</p>
             <h3>Votre visite</h3>
-
             <div class="cart-details">
               <div>
-                <span>DATE</span>
-                <strong id="cart-date">21 septembre 2026</strong>
+                <span>DATE</span><strong id="cart-date">À choisir</strong>
               </div>
-
               <div>
-                <span>HEURE</span>
-                <strong id="cart-time">13:00</strong>
+                <span>HEURE</span><strong id="cart-time">À choisir</strong>
               </div>
             </div>
-
-            <div class="cart-tickets" id="cart-tickets">
-              <div>
-                <span>2 × Adultes</span>
-                <strong>16,00 $</strong>
-              </div>
-
-              <div>
-                <span>1 × Étudiant</span>
-                <strong>6,00 $</strong>
-              </div>
-            </div>
-
+            <div class="cart-tickets" id="cart-tickets"></div>
+            <div class="cart-tickets cart-taxes" id="cart-taxes"></div>
             <div class="cart-total">
-              <span>TOTAL</span>
-              <strong id="cart-total">22,00 $</strong>
+              <span>TOTAL</span><strong id="cart-total">0,00 $</strong>
             </div>
-
             <p class="cart-note">
-              Vos places sont réservées temporairement pendant la prochaine
-              étape.
+              Taxes incluses dans le total : TPS 5 % et TVQ 9,975 %.
             </p>
           </div>
         </aside>
       </section>
-
       <!-- bas de page -->
 
       <section class="reservation-bottom">

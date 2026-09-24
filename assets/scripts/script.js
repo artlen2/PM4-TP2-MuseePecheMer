@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   const titles = document.querySelectorAll("h2");
-  const children = document.querySelectorAll(".page-main .enfant");
 
   const observer = new IntersectionObserver(
     (entries, currentObserver) => {
@@ -20,189 +19,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   titles.forEach((title) => observer.observe(title));
 
-  const childObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        entry.target.classList.toggle("visible", entry.isIntersecting);
-      });
-    },
-    {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.15,
-    },
-  );
-
-  children.forEach((child) => childObserver.observe(child));
-
-  const canvas = document.createElement("canvas");
-  const container = document.createElement("div");
-  const context = canvas.getContext("2d");
-  const bubbles = [];
-  const header = document.querySelector(".site-header");
-  const mouse = {
-    x: null,
-    y: null,
-    radius: 120,
-    vx: 0,
-    vy: 0,
-    lastX: null,
-    lastY: null,
-  };
-  let width = 0;
-  let height = 0;
-  let animationFrame;
-
-  function getHeaderBottom() {
-    if (!header) {
-      return 0;
-    }
-
-    return Math.max(0, Math.min(height, header.getBoundingClientRect().bottom));
-  }
-
-  container.style.position = "fixed";
-  container.style.inset = "0";
-  container.style.width = "100vw";
-  container.style.height = "100vh";
-  container.style.pointerEvents = "none";
-  container.style.zIndex = "999";
-  canvas.style.display = "block";
-  canvas.style.width = "100%";
-  canvas.style.height = "100%";
-  container.appendChild(canvas);
-  document.body.appendChild(container);
-
-  function resize() {
-    const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = width * pixelRatio;
-    canvas.height = height * pixelRatio;
-    context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-  }
-
-  class Bubble {
-    constructor() {
-      this.reset(true);
-    }
-
-    reset(initial = false) {
-      this.x = Math.random() * width;
-      const headerBottom = getHeaderBottom();
-      this.y = initial
-        ? headerBottom + Math.random() * Math.max(0, height - headerBottom)
-        : height + 20;
-      this.radius = Math.random() * 4.8 + 2.8;
-      this.baseVx = (Math.random() - 0.5) * 0.24;
-      this.baseVy = -(Math.random() * 0.28 + 0.18);
-      this.vx = this.baseVx;
-      this.vy = this.baseVy;
-      this.angle = Math.random() * Math.PI * 2;
-      this.frequency = 0.007 + Math.random() * 0.014;
-      this.amplitude = 0.12 + Math.random() * 0.22;
-      this.alpha = Math.random() * 0.18 + 0.16;
-      this.color = `hsl(${195 + Math.random() * 24}, ${72 + Math.random() * 18}%, ${60 + Math.random() * 15}%)`;
-    }
-
-    update() {
-      const headerBottom = getHeaderBottom();
-      this.angle += this.frequency;
-      this.vx = this.baseVx + Math.sin(this.angle) * this.amplitude * 0.08;
-
-      if (mouse.x !== null && mouse.y !== null) {
-        const dx = mouse.x - this.x;
-        const dy = mouse.y - this.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance > 0 && distance < mouse.radius) {
-          const force = 1 - distance / mouse.radius;
-          this.vx -= (dx / distance) * force * 0.4 + mouse.vx * 0.03;
-          this.vy -= (dy / distance) * force * 0.4 + mouse.vy * 0.03;
-        }
-      }
-
-      this.vx += (this.baseVx - this.vx) * 0.05;
-      this.vy += (this.baseVy - this.vy) * 0.05;
-      this.x += this.vx;
-      this.y += this.vy;
-
-      if (
-        this.y - this.radius < headerBottom ||
-        this.x < -50 ||
-        this.x > width + 50
-      ) {
-        this.reset();
-      }
-    }
-
-    draw() {
-      context.beginPath();
-      context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      context.fillStyle = this.color;
-      context.shadowColor = this.color;
-      context.shadowBlur = 16;
-      context.globalAlpha = this.alpha;
-      context.fill();
-      context.shadowBlur = 0;
-      context.globalAlpha = 1;
-    }
-  }
-
-  function animate() {
-    context.clearRect(0, 0, width, height);
-    const headerBottom = getHeaderBottom();
-    context.save();
-    context.beginPath();
-    context.rect(0, headerBottom, width, height - headerBottom);
-    context.clip();
-    bubbles.forEach((bubble) => {
-      bubble.update();
-      bubble.draw();
-    });
-    context.restore();
-    mouse.vx *= 0.9;
-    mouse.vy *= 0.9;
-    animationFrame = requestAnimationFrame(animate);
-  }
-
-  resize();
-  const particleCount = Math.max(72, Math.floor((width * height) / 12000));
-  for (let index = 0; index < particleCount; index += 1) {
-    bubbles.push(new Bubble());
-  }
-
-  window.addEventListener("resize", resize);
-  window.addEventListener("mousemove", (event) => {
-    if (mouse.lastX !== null && mouse.lastY !== null) {
-      mouse.vx = (event.clientX - mouse.lastX) * 0.15;
-      mouse.vy = (event.clientY - mouse.lastY) * 0.15;
-    }
-    mouse.x = event.clientX;
-    mouse.y = event.clientY;
-    mouse.lastX = event.clientX;
-    mouse.lastY = event.clientY;
-  });
-  window.addEventListener("mouseleave", () => {
-    mouse.x = null;
-    mouse.y = null;
-    mouse.vx = 0;
-    mouse.vy = 0;
-    mouse.lastX = null;
-    mouse.lastY = null;
-  });
-
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    cancelAnimationFrame(animationFrame);
-  } else {
-    animate();
-  }
+  // Appareils tactiles et mouvement réduit : pas de bulles ni de curseur animé
+  if (
+    window.matchMedia("(pointer: coarse), (prefers-reduced-motion: reduce)")
+      .matches
+  )
+    return;
 
   const fish = document.createElement("div");
   let lastMoveTime = 0;
 
   document.body.style.cursor = "auto";
-  fish.innerHTML = `<img id="fish-cursor" src="https://cdn-icons-png.flaticon.com/32/3065/3065416.png" alt="" style="position: fixed; pointer-events: none; width: 32px; height: 32px; transform: translate(-50%, -50%); z-index: 9999;">`;
+  fish.innerHTML = `<img id="fish-cursor" src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Cpath fill=%27%23f2e676%27 d=%27M3 16c5-8 13-9 19-3l7-5v16l-7-5c-6 6-14 5-19-3z%27/%3E%3Ccircle cx=%277.5%27 cy=%2715%27 r=%271.4%27 fill=%27%23021a34%27/%3E%3C/svg%3E" alt="" style="position: fixed; pointer-events: none; width: 32px; height: 32px; transform: translate(-50%, -50%); z-index: 9999;">`;
   fish.style.position = "fixed";
   fish.style.pointerEvents = "none";
   fish.style.fontSize = "26px";
@@ -300,3 +128,60 @@ document.addEventListener("keydown", (event) => {
     closeDrawer();
   }
 });
+
+// Lien de la page courante
+document.querySelectorAll(".nav-link").forEach((a) => {
+  const page = location.pathname.split("/").pop() || "index.html";
+  if (a.getAttribute("href") === page) a.setAttribute("aria-current", "page");
+});
+
+// Jauge de profondeur : la page descend dans le golfe (0 à 500 m)
+(() => {
+  const MAX = 500;
+  const g = document.createElement("div");
+  g.className = "gauge";
+  g.setAttribute("aria-hidden", "true");
+  g.innerHTML =
+    '<i class="gauge-line"></i><i class="gauge-dot"></i><p class="gauge-txt"><b></b><span></span></p>';
+  document.body.appendChild(g);
+  const b = g.querySelector("b"),
+    z = g.querySelector("span");
+  let busy = false;
+  const range = () =>
+    Math.max(1, document.documentElement.scrollHeight - innerHeight);
+  function maj() {
+    busy = false;
+    const p = Math.min(1, Math.max(0, scrollY / range()));
+    const m = Math.round(p * MAX);
+    b.textContent = m + " m";
+    z.textContent =
+      m < 3 ? "Surface" : m < 200 ? "Zone lumineuse" : "Zone crépusculaire";
+    g.style.setProperty("--p", p);
+  }
+  function reperes() {
+    document.querySelectorAll(".contour").forEach((c) => {
+      const y = c.getBoundingClientRect().top + scrollY;
+      c.textContent = Math.round(Math.min(1, y / range()) * MAX) + " m";
+    });
+  }
+  addEventListener(
+    "scroll",
+    () => {
+      if (!busy) {
+        busy = true;
+        requestAnimationFrame(maj);
+      }
+    },
+    { passive: true },
+  );
+  addEventListener("resize", () => {
+    maj();
+    reperes();
+  });
+  addEventListener("load", () => {
+    maj();
+    reperes();
+  });
+  maj();
+  reperes();
+})();
