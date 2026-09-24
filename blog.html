@@ -3,10 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blogue - Musée des pêches et de la mer Gaspé</title>
+    <title>Blogue</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/png" href="./favicon3.png" />
-    <script src="./assets/scripts/script.js" defer></script>
   </head>
 
   <body class="blog-page">
@@ -77,57 +76,46 @@
       </div>
     </header>
 
-    <main class="page-main">
-      <section>
-        <p class="lead">
-          Voici notre section blogue, avec des articles sur la pêche, la mer et
-          les événements du musée. Vous trouverez des informations sur les
-          espèces marines, des conseils pour la pêche durable, et des récits
-          captivants sur la vie maritime à Gaspé.
-        </p>
+    <main class="relative min-h-screen py-14 page-main gap-10">
+      <section class="reservation-intro">
+        <div class="reservation-number">01</div>
+
+        <div>
+          <p class="reservation-quote">SECTION BLOGUE</p>
+
+          <h2 class="reservation-title">
+            C'est pas grave
+            <span>si tu t'en-fish.</span>
+          </h2>
+
+          <p class="reservation-description">
+            Mais c'est ici que ce trouve notre section blogue, avec des articles
+            sur la pêche, la mer et les événements du musée. Vous trouverez ici
+            des informations sur les espèces marines, des conseils pour la pêche
+            durable, et des récits captivants sur la vie maritime à Gaspé.
+          </p>
+        </div>
       </section>
 
-      <section id="expositions">
-        <p class="contour"></p>
-
-        <h2>
-          C'est pas grave
-          <span>si tu t'en-fish.</span>
-        </h2>
-
+      <section
+        class="px-5 grid sm:grid-cols-2 lg:flex items-center justify-center gap-16 lg:gap-28 xl:gap-44 relative z-10 min-h-screen"
+      >
         <article>
           <div class="relative">
             <img
               src="./assets/images-client/avenir-durable.jpg"
-              class="h-fit w-full aspect-3/2 lg:aspect-3/4 lg:h-128 object-cover shadow-lg"
+              class="blog-card-img"
             />
-            <div
-              class="lg:rounded-l-[30px] lg:rounded-t-[30px] bg-white lg:absolute bottom-8 -right-14 lg:w-76 px-8 py-6 shadow h-fit"
-            >
-              <span class="inline-block text-sm text-gray-500"
-                >13. Oct, 2025</span
-              >
-              <h2
-                class="text-2xl text-black font-bold leading-tight mt-1.5 mb-2.5"
-              >
-                Pêcher autrement : <br />l’avenir durable
-              </h2>
-              <a
-                href="#"
-                class="inline-block text-blue-400 text-sm capitalize hover:underline"
-                >nouvel article</a
-              >
-              <p class="text-gray-800 my-7 leading-relaxed">
+            <div class="blog-card">
+              <span>13. Oct, 2025</span>
+              <h2>Pêcher autrement : <br />l’avenir durable</h2>
+              <a href="#" class="blog-card-tag">nouvel article</a>
+              <p>
                 Présentation d’initiatives locales et de techniques modernes qui
                 cherchent à concilier pêche commerciale, protection de la
                 biodiversité et traditions maritimes...
               </p>
-              <a
-                href="#"
-                class="flex justify-end items-center uppercase text-blue-800 font-semibold text-sm hover:underline"
-                ><span class="mr-4 block w-10 h-0.5 bg-blue-800"></span>Lire
-                plus</a
-              >
+              <a href="#" class="blog-card-link"><span></span>Lire plus</a>
             </div>
           </div>
         </article>
@@ -136,82 +124,41 @@
           <div class="relative">
             <img
               src="./assets/images-client/baleines.jpg"
-              class="h-44 w-full aspect-[3/2] lg:aspect-[3/4] lg:h-[32rem] object-cover shadow-lg"
+              class="blog-card-img"
             />
-            <div
-              class="lg:rounded-l-[5px] lg:rounded-t-[5px] bg-white lg:absolute bottom-8 -right-14 lg:w-[19rem] px-8 py-6 lg:h-96 shadow"
-            >
-              <span class="inline-block text-sm text-gray-500"
-                >21. Oct, 2025</span
-              >
-              <h2 class="text-2xl font-bold leading-tight mt-1.5 mb-2.5">
+            <div class="blog-card">
+              <span>21. Oct, 2025</span>
+              <h2>
                 Baleines du Saint-Laurent :<br />
                 géantes discrètes
               </h2>
-              <a
-                href="#"
-                class="inline-block text-blue-400 text-sm capitalize hover:underline"
-                >nouvel article</a
-              >
-              <p class="text-gray-800 mt-7 mb-7 lg:mb-14 leading-relaxed">
+              <a href="#" class="blog-card-tag">nouvel article</a>
+              <p>
                 Retour sur l’époque où la morue faisait vivre des milliers de
                 familles gaspésiennes… et sur les conséquences du moratoire de
-                1992 qui a bouleversé toute une région. Pendant des siècles, la
-                morue a représenté une ressource vitale pour les communautés de
-                la Gaspésie et de l’ensemble du golfe du Saint-Laurent. Facile à
-                conserver grâce au salage et au séchage, elle était non
-                seulement la base de l’alimentation locale, mais aussi une
-                marchandise très prisée dans les échanges commerciaux à
-                l’international..
+                1992 qui a bouleversé toute une région...
               </p>
-              <a
-                href="#"
-                class="flex justify-end items-center uppercase text-blue-800 font-semibold text-sm hover:underline"
-                ><span class="mr-4 block w-10 h-0.5 bg-blue-800"></span>Lire
-                plus</a
-              >
+              <a href="#" class="blog-card-link"><span></span>Lire plus</a>
             </div>
           </div>
         </article>
 
         <article>
           <div class="relative">
-            <img
-              src="./assets/images-client/morue.jpg"
-              class="h-44 w-full aspect-[3/2] lg:aspect-[3/4] lg:h-[32rem] object-cover shadow-lg"
-            />
-            <div
-              class="lg:rounded-l-[5px] lg:rounded-t-[5px] bg-white lg:absolute bottom-8 -right-14 lg:w-[19rem] px-8 py-6 lg:h-96 shadow"
-            >
-              <span class="inline-block text-sm text-gray-500"
-                >22. Fev, 2025</span
-              >
-              <h2 class="text-2xl font-bold leading-tight mt-1.5 mb-2.5">
+            <img src="./assets/images-client/morue.jpg" class="blog-card-img" />
+            <div class="blog-card">
+              <span>22. Fev, 2025</span>
+              <h2>
                 La morue :<br />
                 un poisson emblématique
               </h2>
-              <a
-                href="#"
-                class="inline-block text-blue-400 text-sm capitalize hover:underline"
-                >nouvel article</a
-              >
-              <p class="text-gray-800 mt-7 mb-7 lg:mb-14 leading-relaxed">
+              <a href="#" class="blog-card-tag">nouvel article</a>
+              <p>
                 Un article qui explique la présence des rorquals et des bélugas
                 dans le golfe, les menaces qui pèsent sur eux et les moyens mis
-                en place pour leur protection. Les baleines qui fréquentent le
-                Saint-Laurent sont parmi les créatures les plus impressionnantes
-                de la planète. Qu’il s’agisse du majestueux rorqual bleu, du
-                curieux béluga ou encore du puissant cachalot, chacune de ces
-                espèces joue un rôle essentiel dans l’équilibre fragile des
-                écosystèmes marins. Pourtant, ces géants marins demeurent
-                mystérieux et souvent difficiles à observer..
+                en place pour leur protection...
               </p>
-              <a
-                href="#"
-                class="flex justify-end items-center uppercase text-blue-800 font-semibold text-sm hover:underline"
-                ><span class="mr-4 block w-10 h-0.5 bg-blue-800"></span>Lire
-                plus</a
-              >
+              <a href="#" class="blog-card-link"><span></span>Lire plus</a>
             </div>
           </div>
         </article>
