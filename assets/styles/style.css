@@ -2100,6 +2100,19 @@ body {
   object-fit: cover;
   border-radius: 28px 28px 28px 0;
 }
+.blog {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin-top: 2.5rem;
+}
+.blog img {
+  width: 100%;
+  aspect-ratio: 3/2;
+  margin-bottom: 1.25rem;
+  object-fit: cover;
+  border-radius: 28px 28px 28px 0;
+}
 .closing {
   text-align: center;
 }

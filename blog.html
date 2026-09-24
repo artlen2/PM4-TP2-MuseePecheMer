@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blogue</title>
+    <title>Blogue - Musée des pêches et de la mer Gaspé</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/png" href="./favicon3.png" />
+    <script src="./assets/scripts/script.js" defer></script>
   </head>
 
   <body class="blog-page">
@@ -63,7 +64,7 @@
         muted
         loop
         playsinline
-        preload="auto"
+        preload="metadata"
         aria-hidden="true"
       >
         <source src="./assets/images/video/underwater2.mp4" type="video/mp4" />
@@ -75,45 +76,25 @@
         <h1 class="mt-5!">GASPÉ</h1>
       </div>
     </header>
-    <div class="wp-block-cover ticss-7ede5f9f section">
-      <span
-        aria-hidden="true"
-        class="wp-block-cover__background has-custom-dark-blue-2-background-color has-background-dim-10 has-background-dim"
-      ></span>
-      <div class="wp-block-cover__inner-container">
-        <section>
-          <div class="air air1"></div>
-          <div class="air air2"></div>
-          <div class="air air3"></div>
-          <div class="air air4"></div>
-        </section>
-      </div>
-    </div>
 
-    <main class="relative min-h-screen py-14 page-main gap-10">
-      <section class="reservation-intro">
-        <div class="reservation-number">01</div>
-
-        <div>
-          <p class="reservation-quote">SECTION BLOGUE</p>
-
-          <h2 class="reservation-title">
-            C'est pas grave
-            <span>si tu t'en-fish.</span>
-          </h2>
-
-          <p class="reservation-description">
-            Mais c'est ici que ce trouve notre section blogue, avec des articles
-            sur la pêche, la mer et les événements du musée. Vous trouverez ici
-            des informations sur les espèces marines, des conseils pour la pêche
-            durable, et des récits captivants sur la vie maritime à Gaspé.
-          </p>
-        </div>
+    <main class="page-main">
+      <section>
+        <p class="lead">
+          Voici notre section blogue, avec des articles sur la pêche, la mer et
+          les événements du musée. Vous trouverez des informations sur les
+          espèces marines, des conseils pour la pêche durable, et des récits
+          captivants sur la vie maritime à Gaspé.
+        </p>
       </section>
 
-      <section
-        class="px-5 grid sm:grid-cols-2 lg:flex items-center justify-center gap-16 lg:gap-28 xl:gap-44 relative z-10 min-h-screen"
-      >
+      <section id="expositions">
+        <p class="contour"></p>
+
+        <h2>
+          C'est pas grave
+          <span>si tu t'en-fish.</span>
+        </h2>
+
         <article>
           <div class="relative">
             <img
@@ -149,25 +130,6 @@
               >
             </div>
           </div>
-          <!-- <div class="relative">
-        <img src="./assets/images-client/avenir-durable.jpg" class="w-full aspect-[3/2] lg:aspect-[3/4] h-44 lg:h-[32rem] object-cover shadow-lg">
-        <div class="lg:rounded-l-[5px] lg:rounded-t-[5px] bg-white lg:absolute bottom-8 -right-14 lg:w-[19rem] px-8 py-6 lg:h-96 shadow">
-          <span class="inline-block text-sm text-gray-500">13. Oct, 2025</span>
-          <h2 class="text-2xl font-bold leading-tight mt-1.5 mb-2.5">Pêcher autrement : <br />l’avenir durable</h2>
-          <a href="#" class="inline-block text-blue-400 text-sm capitalize hover:underline">nouvel article</a>
-          <p class="text-gray-800 my-7 leading-relaxed">Présentation d’initiatives locales et de techniques modernes qui
-            cherchent à concilier pêche commerciale, protection de la
-            biodiversité et traditions maritimes. La pêche fait partie
-            intégrante de l’identité gaspésienne, mais pour continuer à exister,
-            elle doit s’adapter aux réalités d’aujourd’hui. Les changements
-            climatiques, la surpêche et la fragilité des écosystèmes marins
-            obligent les pêcheurs à repenser leurs méthodes et à privilégier des
-            pratiques plus respectueuses de l’environnement. Pêcher autrement,
-            c’est assurer un avenir à la fois pour la mer et pour les
-            communautés qui en dépendent...</p>
-          <a href="#" class="flex justify-end items-center uppercase text-blue-800 font-semibold text-sm hover:underline"><span class="mr-4 block w-10 h-0.5 bg-blue-800"></span>Lire plus</a>
-        </div>
-      </div> -->
         </article>
 
         <article>
