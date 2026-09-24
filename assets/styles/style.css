@@ -9,6 +9,7 @@
   --color-smartblue5: #3263bf;
   --color-yaleblue6: #294c6b;
   --color-prussianblue7: #021a34;
+  --color-amber: #f8b569;
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Jost", sans-serif;
   --font-main: "Archivo", sans-serif;
@@ -22,6 +23,7 @@
   --color-smartblue5: #3263bf;
   --color-yaleblue6: #294c6b;
   --color-prussianblue7: #021a34;
+  --color-amber: #f8b569;
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Jost", sans-serif;
   --font-main: "Archivo", sans-serif;
@@ -135,81 +137,27 @@ video {
   justify-content: center;
   align-items: center;
   gap: 2.5rem;
+  padding-top: 4rem;
 }
 .drawer.open {
   display: flex;
 }
+
 .drawer-link {
-  font-family: var(--serif);
-  font-size: 2.2rem;
   line-height: 1.2;
-  color: var(--cream);
   text-decoration: none;
   transition: color 0.2s;
+
+  font-family: var(--font-title);
+  font-size: 1.9rem;
+  color: var(--color-palesky2);
 }
+
 .drawer-link:hover {
-  color: var(--amber);
+  color: var(--color-yellow1);
 }
 
 /* ============ HEADER / HERO ============ */
-
-/* waves */
-
-.air {
-  position: absolute;
-  bottom: -15vh !important;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  background: url(https://1.bp.blogspot.com/-xQUc-TovqDk/XdxogmMqIRI/AAAAAAAACvI/AizpnE509UMGBcTiLJ58BC6iViPYGYQfQCLcBGAsYHQ/s1600/wave.png);
-  background-size: 1000px 100px;
-  transform: rotate(180deg);
-  transform-origin: center;
-}
-.air.air1 {
-  animation: wave 30000ms linear infinite;
-  z-index: 1000;
-  opacity: 1;
-  animation-delay: 0s;
-  bottom: 0;
-}
-.air.air2 {
-  animation: wave2 15000ms linear infinite;
-  z-index: 999;
-  opacity: 0.5;
-  animation-delay: -5s;
-  bottom: 10px;
-}
-.air.air3 {
-  animation: wave 30000ms linear infinite;
-  z-index: 998;
-  opacity: 0.2;
-  animation-delay: -2s;
-  bottom: 15px;
-}
-section .air.air4 {
-  animation: wave2 5000ms linear infinite;
-  z-index: 997;
-  opacity: 0.7;
-  animation-delay: -5s;
-  bottom: 20px;
-}
-@keyframes wave {
-  0% {
-    background-position-x: 0px;
-  }
-  100% {
-    background-position-x: 1000px;
-  }
-}
-@keyframes wave2 {
-  0% {
-    background-position-x: 0px;
-  }
-  100% {
-    background-position-x: -1000px;
-  }
-}
 
 .site-header {
   height: 90vh;
@@ -229,15 +177,16 @@ section .air.air4 {
   top: -5%;
   left: 0;
   z-index: 0;
-  width: 110%;
-  height: 110%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   pointer-events: none;
+  inset: 0;
 }
 
 .site-nav {
   position: relative;
-  z-index: 2;
+  z-index: 200;
   width: 100%;
   min-height: clamp(2.6rem, 5.5vh, 4rem);
   display: flex;
@@ -261,6 +210,11 @@ section .air.air4 {
   font-weight: 400;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+}
+
+.nav-link[aria-current="page"]::after {
+  transform: scaleX(1);
+  background: var(--color-yellow1);
 }
 
 .nav-link::after {
@@ -325,11 +279,21 @@ section .air.air4 {
   grid-area: hero;
   position: absolute;
   bottom: 0.5rem;
-  left: 1rem;
-  margin-bottom: 11rem;
-  text-align: bottom left;
+  left: 2rem;
+  margin-bottom: 2rem;
 }
 
+.subhero-content .sub {
+  margin: 0;
+  color: #fff;
+  mix-blend-mode: difference;
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: clamp(4rem, 17vw, 11rem);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+}
+/* 
 .subhero-content h1 {
   --title-rest: clamp(4rem, 18vh, 12rem);
   max-width: 100%;
@@ -339,14 +303,14 @@ section .air.air4 {
   font-family: var(--font-main);
   font-size: 10rem;
   font-weight: 800;
-  line-height: 0.9;
+  line-height: 0.9; 
   letter-spacing: -0.04em;
   text-wrap: balance;
   text-align: center;
   transition:
     background-position 700ms ease,
     transform 500ms ease;
-}
+} */
 
 .title-float {
   animation: title-float 100s ease-in-out infinite;
@@ -391,17 +355,6 @@ h2.visible {
   transform: translateY(0) scale(1);
   filter: blur(0);
   animation: wave-float 4s ease-in-out 1.2s infinite alternate;
-}
-@keyframes wave-float {
-  0% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-6px) rotate(0.5deg);
-  }
-  100% {
-    transform: translateY(0) rotate(-0.5deg);
-  }
 }
 
 /* Footer */
@@ -471,6 +424,9 @@ footer {
     min-height: 2.35rem;
     padding: 0 2rem;
     border-radius: 0 0 14% 48% / 0 0 18% 48%;
+  }
+
+  .site-nav {
     gap: 0.6rem 0.9rem;
   }
 
@@ -488,8 +444,8 @@ footer {
   }
 
   .subhero-content {
-    left: 0.5rem;
-    margin-bottom: 8rem;
+    left: 1.5rem;
+    margin-bottom: 3.5rem;
   }
 
   .btn button {
@@ -591,43 +547,27 @@ h2.tarifs-title {
   --info-yellow: #e6d65c;
 }
 
-/* le main */
-
 .info-page .info-main {
   position: relative;
   z-index: 2;
-
   width: min(100% - 3rem, 88rem);
-
   margin: 0 auto;
-
   display: block;
-
   padding: clamp(6rem, 12vw, 12rem) 0 clamp(6rem, 12vw, 12rem);
-
   color: var(--info-ink);
 }
 
-/* intro */
-
 .info-page .info-intro {
   width: 100%;
-
   display: grid;
-
   grid-template-columns:
     clamp(3rem, 8vw, 8rem)
     minmax(0, 1fr);
-
   gap: clamp(2rem, 5vw, 6rem);
-
   padding-bottom: clamp(5rem, 9vw, 9rem);
-
   border-bottom: 1px solid var(--info-line);
-
   opacity: 0;
   transform: translateX(-80px);
-
   transition:
     opacity 900ms cubic-bezier(0.16, 1, 0.3, 1),
     transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -640,13 +580,10 @@ h2.tarifs-title {
 
 .info-page .info-intro-number {
   padding-top: 0.4rem;
-
   font-family: var(--font-main);
   font-size: 0.7rem;
   font-weight: 600;
-
   letter-spacing: 0.08em;
-
   color: var(--info-muted);
 }
 
@@ -656,16 +593,11 @@ h2.tarifs-title {
 
 .info-page .info-kicker {
   margin-bottom: 1.5rem;
-
   font-family: var(--font-main);
-
   font-size: 0.65rem;
   font-weight: 700;
-
   letter-spacing: 0.16em;
-
   text-transform: uppercase;
-
   color: var(--info-blue);
 }
 
@@ -673,21 +605,13 @@ h2.tarifs-title {
 
 .info-page .info-intro .h2-title {
   margin: 0;
-
   font-family: var(--font-title);
-
   font-size: clamp(3rem, 7vw, 7rem);
-
   font-weight: 600;
-
   line-height: 0.92;
-
   letter-spacing: -0.055em;
-
   text-decoration: none;
-
   color: var(--info-ink);
-
   opacity: 1;
   transform: none;
   filter: none;
@@ -695,21 +619,15 @@ h2.tarifs-title {
 
 .info-page .info-intro .h2-title span {
   display: block;
-
   color: var(--info-muted);
 }
 
 .info-page .info-description {
   max-width: 540px;
-
   margin-top: 2.5rem;
-
   font-family: var(--font-main);
-
   font-size: 1rem;
-
   line-height: 1.7;
-
   color: #f7ebdd;
 }
 
@@ -717,13 +635,9 @@ h2.tarifs-title {
 
 .info-page .info-grid {
   display: grid;
-
   grid-template-columns: repeat(2, minmax(0, 1fr));
-
   margin-top: clamp(4rem, 8vw, 8rem);
-
   border-top: 1px solid var(--info-line);
-
   border-left: 1px solid var(--info-line);
 }
 
@@ -731,28 +645,17 @@ h2.tarifs-title {
 
 .info-page .info-card {
   position: relative;
-
   min-height: 380px;
-
   padding: clamp(1.75rem, 3.5vw, 3.5rem);
-
   display: flex;
-
   flex-direction: column;
-
   justify-content: space-between;
-
   background: var(--info-white);
-
   border-right: 1px solid var(--info-line);
-
   border-bottom: 1px solid var(--info-line);
-
   overflow: hidden;
-
   opacity: 0;
   transform: translateX(-70px);
-
   transition:
     opacity 850ms cubic-bezier(0.16, 1, 0.3, 1),
     transform 850ms cubic-bezier(0.16, 1, 0.3, 1),
@@ -762,11 +665,10 @@ h2.tarifs-title {
 
 .info-page .info-card.visible {
   opacity: 1;
-
   transform: translateX(0);
 }
 
-/* l'animation qui ne marche pas */
+/* animation */
 
 .info-page .info-card:nth-child(even) {
   transform: translateX(70px);
@@ -780,27 +682,19 @@ h2.tarifs-title {
 
 .info-page .info-card::before {
   content: "";
-
   position: absolute;
-
   top: 0;
   left: 0;
-
   width: 100%;
   height: 3px;
-
   background: var(--info-blue);
-
   transform: scaleX(0);
-
   transform-origin: left;
-
   transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .info-page .info-card:hover {
   background: #fbfcfa;
-
   box-shadow: 0 20px 45px rgba(16, 43, 67, 0.08);
 }
 
@@ -812,29 +706,22 @@ h2.tarifs-title {
 
 .info-page .info-card-top {
   display: flex;
-
   justify-content: space-between;
-
   align-items: center;
 }
 
 .info-page .info-card-number {
   font-family: var(--font-main);
-
   font-size: 0.65rem;
   font-weight: 600;
-
   color: #ffbc78;
 }
 
 .info-page .info-card-label {
   font-family: var(--font-main);
-
   font-size: 0.6rem;
   font-weight: 700;
-
   letter-spacing: 0.14em;
-
   color: var(--info-blue);
 }
 
@@ -842,29 +729,19 @@ h2.tarifs-title {
 
 .info-page .info-card-content h3 {
   margin-bottom: 1.5rem;
-
   font-family: var(--font-title);
-
   font-size: clamp(2.2rem, 4vw, 4rem);
-
   font-weight: 600;
-
   line-height: 0.95;
-
   letter-spacing: -0.04em;
-
   color: var(--info-ink);
 }
 
 .info-page .info-card-content p {
   max-width: 400px;
-
   font-family: var(--font-main);
-
   font-size: 0.95rem;
-
   line-height: 1.7;
-
   color: var(--info-text);
 }
 
@@ -872,16 +749,11 @@ h2.tarifs-title {
 
 .info-page .info-arrow {
   position: absolute;
-
   right: 2rem;
   bottom: 2rem;
-
   font-family: var(--font-main);
-
   font-size: 1.3rem;
-
   color: var(--info-blue);
-
   transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -893,59 +765,40 @@ h2.tarifs-title {
 
 .info-page .info-card-services {
   grid-column: 1 / -1;
-
   min-height: 420px;
 }
 
 .info-page .services-list {
   max-width: 850px;
-
   margin-top: 2rem;
-
   list-style: none;
-
   border-top: 1px solid var(--info-line);
 }
 
 .info-page .services-list li {
   display: grid;
-
   grid-template-columns: 3rem 1fr;
-
   gap: 1rem;
-
   padding: 1.25rem 0;
-
   border-bottom: 1px solid var(--info-line);
-
   font-family: var(--font-main);
-
   font-size: 0.9rem;
-
   line-height: 1.5;
-
   color: var(--info-text);
 }
 
 .info-page .services-list li > span {
   font-size: 0.65rem;
-
   font-weight: 600;
-
   color: #423f3c;
 }
 
 .info-page .services-list small {
   display: block;
-
   margin-top: 0.35rem;
-
   font-size: 0.7rem;
-
   letter-spacing: 0.08em;
-
   text-transform: uppercase;
-
   color: var(--info-muted);
 }
 
@@ -953,7 +806,6 @@ h2.tarifs-title {
 
 .info-page .info-card-contact {
   background: var(--info-blue);
-
   color: white;
 }
 
