@@ -14,10 +14,6 @@
       <a class="drawer-link" href="index.html " onclick="closeDrawer()"
         >Accueil</a
       >
-      <a class="drawer-link" href="blog.html" onclick="closeDrawer()">Blogue</a>
-      <a class="drawer-link" href="tarification.html" onclick="closeDrawer()"
-        >Tarifs</a
-      >
       <a class="drawer-link" href="reservation.html" onclick="closeDrawer()"
         >Réservation</a
       >
@@ -29,19 +25,14 @@
       >
     </div>
 
-    <nav
-      class="site-nav flex justify-between!"
-      aria-label="Navigation principale"
-    >
+    <nav class="site-nav" aria-label="Navigation principale">
       <div>
         <a href="index.html">
-          <img src="favicon.png" alt="logo du site" />
+          <img src="favicon.png" alt="Musée des pêches et de la mer, accueil" />
         </a>
       </div>
-      <div class="nav-links flex gap-5">
+      <div class="nav-links">
         <a class="nav-link" href="index.html">Accueil</a>
-        <a class="nav-link" href="blog.html">Blogue</a>
-        <a class="nav-link" href="tarification.html">Tarifs</a>
         <a class="nav-link" href="reservation.html">Réservation</a>
         <a class="nav-link" href="information.html">Information</a>
         <a class="nav-link" href="mini-jeu.html">Jeu</a>
@@ -76,20 +67,6 @@
         <h1 class="mt-5!">GASPÉ</h1>
       </div>
     </header>
-    <div class="wp-block-cover ticss-7ede5f9f section">
-      <span
-        aria-hidden="true"
-        class="wp-block-cover__background has-custom-dark-blue-2-background-color has-background-dim-10 has-background-dim"
-      ></span>
-      <div class="wp-block-cover__inner-container">
-        <section>
-          <div class="air air1"></div>
-          <div class="air air2"></div>
-          <div class="air air3"></div>
-          <div class="air air4"></div>
-        </section>
-      </div>
-    </div>
 
     <main class="page-main info-main">
       <div class="scroll-word scroll-word-left" aria-hidden="true">
@@ -116,6 +93,47 @@
             visite au Musée de la pêche et de la mer.
           </p>
         </div>
+      </section>
+      <section>
+        <section class="enfant w-full grid grid-cols-1 md:grid-cols-2 gap-52">
+          <div class="content gap-16 flex flex-col">
+            <h2 class="h2-title">Horaire</h2>
+            <div class="flex flex-col gap-12">
+              <div>
+                <h3 class="season">Juin à Septembre</h3>
+                <p class="date-schedule">Tout les jours</p>
+                <p class="time-schedule">9 h à 18 h</p>
+              </div>
+              <div>
+                <h3 class="season">Octobre à Mai</h3>
+                <div>
+                  <p class="date-schedule">Mercredi au Dimanche</p>
+                  <p class="time-schedule">10 h à 17 h</p>
+                </div>
+                <div>
+                  <p class="date-schedule">Lundi et mardi</p>
+                  <p class="time-schedule">Fermé</p>
+                </div>
+              </div>
+              <div>
+                <h3 class="season">Vacances d'hiver</h3>
+                <p class="date-schedule">24, 25, 31 Déc. & 1er Jan.</p>
+                <p class="time-schedule text">Fermé</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="content gap-16 flex flex-col">
+            <h2 class="h2-title">Tarifs</h2>
+            <ul class="flex flex-col gap-2">
+              <li>Adulte : 12 $</li>
+              <li>Étudiant / Aîné : 8 $</li>
+              <li>Enfant (6-12 ans) : 5 $</li>
+              <li>Famille (2 adultes + 2 enfants) : 30 $</li>
+              <li>Gratuit pour les enfants de moins de 6 ans</li>
+            </ul>
+          </div>
+        </section>
       </section>
 
       <section class="info-grid">

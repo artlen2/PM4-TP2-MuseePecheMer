@@ -2378,30 +2378,3 @@ body {
     display: none;
   }
 }
-
-/* ==== PAGE BLOG === */
-
-.blog-card {
-  @apply lg:rounded-l-[30px] lg:rounded-t-[30px] bg-white lg:absolute bottom-8 -right-14 lg:w-76 px-8 py-6 shadow h-fit;
-}
-.blog-card-img {
-  @apply h-fit w-full aspect-3/2 lg:aspect-3/4 lg:h-128 object-cover shadow-lg;
-}
-.blog-card span {
-  @apply inline-block text-sm text-gray-500;
-}
-.blog-card h2 {
-  @apply text-2xl! text-black! font-bold leading-tight mt-1.5 mb-2.5;
-}
-.blog-card .blog-card-tag {
-  @apply inline-block text-blue-400 text-sm capitalize hover:underline;
-}
-.blog-card .blog-card-link {
-  @apply flex justify-end items-center uppercase text-blue-800 font-semibold text-sm hover:underline;
-}
-.blog-card .blog-card-link span {
-  @apply mr-4 block w-10 h-0.5 bg-blue-800;
-}
-.blog-card p {
-  @apply text-gray-800! my-7 leading-relaxed;
-}
