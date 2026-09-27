@@ -327,14 +327,14 @@ document.addEventListener("DOMContentLoaded", () => {
     creature.draggable = false;
     creature.setAttribute("aria-hidden", "true");
     creature.dataset.title = {
-      "crabe.png": "Le crabe",
-      "crevette.png": "La crevette",
-      "homard.png": "Le homard",
+      "crabe.png": "Crabe des neiges",
+      "crevette.png": "Crevette nordique",
+      "homard.png": "Homard gaspésien",
     }[filename];
     creature.dataset.description = {
-      "crabe.png": "Le crabe marche de côté sur les fonds marins et se cache souvent entre les rochers.",
-      "crevette.png": "La crevette nage en petits bonds et se faufile avec agilité dans l'eau.",
-      "homard.png": "Le homard du Saint-Laurent explore le fond avec ses longues antennes et ses pinces puissantes.",
+      "crabe.png": "Reconnaissable à ses longues pattes fines et sa carapace beige rosé, il vit dans les eaux froides et profondes du golfe. C'est l'une des pêches commerciales les plus importantes de la Gaspésie, récoltée surtout au printemps.",
+      "crevette.png": "Uniquement pêchée à l'état sauvage dans les eaux froides du Saint-Laurent, elle se distingue par son goût raffiné, légèrement sucré et une chair plus tendre que toute autre espèce.",
+      "homard.png": "Reconnu à travers le monde, le homard de la Gaspésie est recherché pour la qualité supérieure de sa chair. C'est en raison de sa carapace dure que sa chair, bien protégée des eaux froides et des fonds rocailleux du Saint-Laurent, est si blanche et abondante.",
     }[filename];
     addRoamer(creature, "creature", width);
     animals.push(creature);
@@ -351,8 +351,8 @@ document.addEventListener("DOMContentLoaded", () => {
   oyster.alt = "";
   oyster.draggable = false;
   oyster.setAttribute("aria-hidden", "true");
-  oyster.dataset.title = "L’huître";
-  oyster.dataset.description = "L’huître vit fixée au fond marin et filtre l’eau pour se nourrir.";
+  oyster.dataset.title = "Huître";
+  oyster.dataset.description = "Ce mollusque bivalve filtre l'eau pour se nourrir de plancton, jouant un rôle important dans la santé des écosystèmes côtiers. Moins commune dans les eaux froides du golfe que dans les Maritimes, elle reste appréciée pour sa fraîcheur iodée.";
   oyster.style.width = `${oysterWidth}px`;
 
   const oysterXRatio = randomBetween(0.08, 0.92);
