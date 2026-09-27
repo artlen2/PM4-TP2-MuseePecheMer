@@ -163,6 +163,165 @@ video {
   height: 90vh;
 }
 
+.game-page {
+  min-height: 100svh;
+  background: #031b2b;
+}
+
+.game-page .gauge {
+  display: none;
+}
+
+.dive-header {
+  position: relative;
+  isolation: isolate;
+  flex: 1;
+  width: 100%;
+  min-height: max(36rem, calc(100svh - 7rem));
+  height: auto;
+  overflow: hidden;
+  background: #06445a;
+}
+
+.dive-world {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 48% 0%, rgba(125, 238, 230, 0.36), transparent 43%),
+    linear-gradient(180deg, #23b8d2 0%, #0789b5 38%, #086b91 72%, #075473 100%);
+}
+
+.dive-field {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  overflow: hidden;
+  outline: none;
+  touch-action: none;
+}
+
+.diver {
+  position: absolute;
+  z-index: 4;
+  width: clamp(4.5rem, 8vw, 7rem);
+  aspect-ratio: 1.3;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.diver img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 6px rgba(2, 25, 35, 0.35));
+  user-select: none;
+}
+
+.diver.faces-left img {
+  transform: scaleX(-1);
+}
+
+.dive-controls {
+  position: absolute;
+  z-index: 8;
+  right: clamp(1rem, 4vw, 3.5rem);
+  bottom: 1.1rem;
+  display: grid;
+  justify-items: center;
+  gap: 0.25rem;
+  opacity: 0.86;
+}
+
+.dive-controls > div {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.dive-controls button {
+  display: grid;
+  width: 2.8rem;
+  height: 2.8rem;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(234, 242, 220, 0.48);
+  border-radius: 3px;
+  background: rgba(4, 36, 49, 0.55);
+  color: #f1edcf;
+  font-size: 1.4rem;
+  line-height: 1;
+  touch-action: none;
+  cursor: pointer;
+}
+
+.dive-controls button:active {
+  background: rgba(205, 214, 157, 0.55);
+  color: #092b39;
+}
+
+.dive-floor {
+  position: absolute;
+  z-index: 2;
+  right: -2%;
+  bottom: -1px;
+  left: -2%;
+  height: clamp(4rem, 10vh, 6.5rem);
+  background: linear-gradient(180deg, #ffe45c 0%, #f5b832 100%);
+  clip-path: polygon(0 27%, 12% 18%, 25% 24%, 39% 13%, 51% 22%, 66% 12%, 79% 20%, 91% 11%, 100% 17%, 100% 100%, 0 100%);
+}
+
+.dive-bubbles {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.drifting-bubble {
+  position: absolute;
+  bottom: -1rem;
+  left: var(--bubble-x);
+  width: var(--bubble-size);
+  height: var(--bubble-size);
+  border: 1px solid rgba(219, 246, 242, 0.66);
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, rgba(239, 255, 255, 0.5), rgba(190, 235, 238, 0.05) 65%);
+  box-shadow: inset -1px -1px 2px rgba(215, 247, 240, 0.28), 0 0 7px rgba(193, 242, 240, 0.14);
+  animation: bubble-rise var(--bubble-duration) linear var(--bubble-delay) infinite;
+}
+
+@keyframes bubble-rise {
+  0% { opacity: 0; transform: translate3d(0, 0, 0); }
+  12% { opacity: 0.8; }
+  88% { opacity: 0.65; }
+  100% { opacity: 0; transform: translate3d(var(--bubble-drift), -110vh, 0); }
+}
+
+@media (max-width: 700px) {
+  .dive-header {
+    min-height: max(39rem, calc(100svh - 6rem));
+  }
+
+  .dive-controls {
+    right: 0.8rem;
+    bottom: 0.8rem;
+    gap: 0.2rem;
+  }
+
+  .dive-controls button {
+    width: 2.55rem;
+    height: 2.55rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dive-bubbles {
+    display: none;
+  }
+}
+
 .site-header:has(.hero-video) {
   display: grid;
   grid-template-areas: "hero";
