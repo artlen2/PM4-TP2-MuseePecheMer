@@ -520,18 +520,6 @@ h2.tarifs-title {
   @apply text-2xl font-bold;
 }
 
-/* ==== Tarifs ==== */
-.season {
-  @apply text-2xl font-bold;
-}
-
-.date-schedule {
-  @apply text-lg pt-2;
-}
-.time-schedule {
-  @apply text-base pb-2;
-}
-
 /* ============ INFO PAGE ============ */
 
 /* variables */
@@ -565,7 +553,6 @@ h2.tarifs-title {
     minmax(0, 1fr);
   gap: clamp(2rem, 5vw, 6rem);
   padding-bottom: clamp(5rem, 9vw, 9rem);
-  border-bottom: 1px solid var(--info-line);
   opacity: 0;
   transform: translateX(-80px);
   transition:
@@ -631,12 +618,46 @@ h2.tarifs-title {
   color: #f7ebdd;
 }
 
+/* Horaire et tarifs (page Information) : mêmes rangées à pointillés que sur les autres pages */
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2.5rem, 6vw, 5rem);
+  width: 100%;
+}
+
+.schedule-grid h3 {
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 700px) {
+  .schedule-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==== Tarifs ==== */
+.season {
+  font: 700 1.4rem / 1.2 var(--font-title);
+  color: #fff;
+  padding-top: 2rem;
+}
+
+.date-schedule {
+  padding-top: 0.5rem;
+  font-size: 1.05rem;
+}
+.time-schedule {
+  padding-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
 /* grille info */
 
 .info-page .info-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: clamp(4rem, 8vw, 8rem);
+  margin-top: clamp(2rem, 4vw, 4rem);
   border-top: 1px solid var(--info-line);
   border-left: 1px solid var(--info-line);
 }
@@ -858,22 +879,14 @@ h2.tarifs-title {
 
 .info-page .info-bottom {
   display: grid;
-
   grid-template-columns:
     clamp(3rem, 8vw, 8rem)
     minmax(0, 1fr);
-
   gap: clamp(2rem, 5vw, 6rem);
-
   margin-top: clamp(7rem, 14vw, 14rem);
-
   padding-top: clamp(4rem, 7vw, 7rem);
-
-  border-top: 1px solid var(--info-line);
-
   opacity: 0;
   transform: translateX(-80px);
-
   transition:
     opacity 900ms cubic-bezier(0.16, 1, 0.3, 1),
     transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -881,41 +894,27 @@ h2.tarifs-title {
 
 .info-page .info-bottom.visible {
   opacity: 1;
-
   transform: translateX(0);
 }
 
 .info-page .info-bottom-number {
   padding-top: 0.4rem;
-
   font-family: var(--font-main);
-
   font-size: 0.7rem;
-
   color: var(--info-muted);
 }
 
 .info-page .info-bottom h2 {
   margin: 0;
-
   font-family: var(--font-title);
-
   font-size: clamp(3rem, 7vw, 7rem);
-
   font-weight: 600;
-
   line-height: 0.9;
-
   letter-spacing: -0.055em;
-
   text-decoration: none;
-
   color: var(--info-ink);
-
   opacity: 1;
-
   transform: none;
-
   filter: none;
 }
 
@@ -2245,7 +2244,6 @@ h2.tarifs-title {
   }
 }
 
-
 /* pop up expositions */
 
 .expo-card {
@@ -2333,7 +2331,8 @@ h2.tarifs-title {
   box-shadow: 0 40px 90px rgba(2, 26, 52, 0.55);
   transform: translateY(70px) scale(0.94);
   opacity: 0;
-  animation: expo-card-panel-in 550ms cubic-bezier(0.16, 1, 0.3, 1) 90ms forwards;
+  animation: expo-card-panel-in 550ms cubic-bezier(0.16, 1, 0.3, 1) 90ms
+    forwards;
 }
 
 .expo-card.closing .expo-card-panel {
@@ -2455,7 +2454,7 @@ h2.tarifs-title {
 }
 
 /* poisson */
- 
+
 .fish-buddy-wrap {
   position: fixed;
   left: clamp(1rem, 4vw, 2.5rem);
@@ -2466,7 +2465,7 @@ h2.tarifs-title {
   align-items: flex-start;
   gap: 0.75rem;
 }
- 
+
 /* poisson */
 .fish-buddy {
   width: 3rem;
@@ -2477,27 +2476,31 @@ h2.tarifs-title {
   place-items: center;
   font-size: 2rem;
   cursor: pointer;
-  background: linear-gradient(135deg, var(--color-skyblue3), var(--color-cloudysky4));
+  background: linear-gradient(
+    135deg,
+    var(--color-skyblue3),
+    var(--color-cloudysky4)
+  );
   box-shadow:
     0 12px 30px rgba(2, 26, 52, 0.45),
     0 0 0 4px rgba(255, 255, 255, 0.12);
   animation: fish-swim 3.4s ease-in-out infinite;
   transition: transform 200ms ease;
 }
- 
+
 .fish-buddy-img {
   display: block;
   width: 90%;
   height: 90%;
   object-fit: contain;
-  pointer-events: none; 
+  pointer-events: none;
 }
- 
+
 .fish-buddy:hover,
 .fish-buddy:focus-visible {
   transform: scale(1.08);
 }
- 
+
 /* animation*/
 @keyframes fish-swim {
   0%,
@@ -2508,7 +2511,7 @@ h2.tarifs-title {
     transform: translateY(-10px) rotate(4deg);
   }
 }
- 
+
 /* bulle de dialogue qui affiche la blague */
 .fish-bubble {
   position: relative;
@@ -2521,11 +2524,11 @@ h2.tarifs-title {
   transform-origin: bottom left;
   animation: fish-bubble-in 320ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
- 
+
 .fish-bubble[hidden] {
   display: none;
 }
- 
+
 @keyframes fish-bubble-in {
   from {
     opacity: 0;
@@ -2536,7 +2539,7 @@ h2.tarifs-title {
     transform: scale(1) translateY(0);
   }
 }
- 
+
 .fish-bubble-quote {
   margin: 0 0 0.4rem;
   font: 700 0.65rem var(--font-main);
@@ -2544,7 +2547,7 @@ h2.tarifs-title {
   text-transform: uppercase;
   color: var(--color-yellow1);
 }
- 
+
 .fish-bubble-text {
   margin: 0 0 1rem;
   font-family: var(--font-main);
@@ -2552,14 +2555,14 @@ h2.tarifs-title {
   line-height: 1.55;
   color: #fff;
 }
- 
+
 .fish-bubble-actions {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
 }
- 
+
 .fish-bubble-next {
   border: 0;
   border-radius: 999px;
@@ -2572,13 +2575,13 @@ h2.tarifs-title {
     transform 150ms ease,
     background 150ms ease;
 }
- 
+
 .fish-bubble-next:hover,
 .fish-bubble-next:focus-visible {
   background: #fff;
   transform: translateY(-1px);
 }
- 
+
 .fish-bubble-close {
   border: 0;
   background: transparent;
@@ -2587,14 +2590,12 @@ h2.tarifs-title {
   line-height: 1;
   cursor: pointer;
 }
- 
+
 .fish-bubble-close:hover,
 .fish-bubble-close:focus-visible {
   color: #fff;
 }
- 
 
- 
 @media (max-width: 600px) {
   .fish-buddy {
     width: 4rem;
@@ -2605,7 +2606,7 @@ h2.tarifs-title {
     max-width: min(84vw, 18rem);
   }
 }
- 
+
 @media (prefers-reduced-motion: reduce) {
   .fish-buddy {
     animation: none;
@@ -2616,4 +2617,3 @@ h2.tarifs-title {
     transform: none;
   }
 }
- 
