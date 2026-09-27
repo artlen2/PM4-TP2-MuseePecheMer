@@ -3,8 +3,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const diver = document.querySelector("#diver");
   const diverImage = diver?.querySelector("img");
   const bubbleLayer = document.querySelector("#diveBubbles");
+  const photoFrame = document.querySelector("#photoFrame");
+  const photoFlash = document.querySelector("#photoFlash");
+  const photoModal = document.querySelector("#photoModal");
+  const photoTitle = document.querySelector("#photoTitle");
+  const photoImage = document.querySelector("#photoImage");
+  const photoDescription = document.querySelector("#photoDescription");
 
-  if (!field || !diver || !diverImage || !bubbleLayer) return;
+  if (!field || !diver || !diverImage || !bubbleLayer || !photoFrame || !photoFlash || !photoModal) return;
 
   const heldDirections = new Set();
   const keyDirections = new Map([
@@ -23,6 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastFrameChange = 0;
   let spritesAvailable = true;
   const roamers = [];
+  const animals = [];
+  let framedAnimal = null;
+  let pendingPhotoTimer = 0;
 
   function setFrame(frame) {
     if (!spritesAvailable) return;
@@ -124,6 +133,80 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function updatePhotoTarget() {
+    const diverBounds = diver.getBoundingClientRect();
+    const diverX = diverBounds.left + diverBounds.width / 2;
+    const diverY = diverBounds.top + diverBounds.height / 2;
+    let closestAnimal = null;
+    let closestAnimalElement = null;
+    let closestDistance = 120;
+
+    animals.forEach((animal) => {
+      const bounds = animal.getBoundingClientRect();
+      if (!bounds.width || !bounds.height) return;
+      const distance = Math.hypot(
+        diverX - (bounds.left + bounds.width / 2),
+        diverY - (bounds.top + bounds.height / 2),
+      );
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestAnimal = bounds;
+        closestAnimalElement = animal;
+      }
+    });
+
+    if (!closestAnimal) {
+      framedAnimal = null;
+      photoFrame.hidden = true;
+      return;
+    }
+
+    framedAnimal = closestAnimalElement;
+    const worldBounds = bubbleLayer.getBoundingClientRect();
+    const side = Math.max(closestAnimal.width, closestAnimal.height) + 18;
+    photoFrame.hidden = false;
+    photoFrame.style.width = `${side}px`;
+    photoFrame.style.height = `${side}px`;
+    photoFrame.style.left = `${closestAnimal.left + closestAnimal.width / 2 - worldBounds.left - side / 2}px`;
+    photoFrame.style.top = `${closestAnimal.top + closestAnimal.height / 2 - worldBounds.top - side / 2}px`;
+  }
+
+  function triggerPhotoFlash() {
+    if (photoModal.getAttribute("aria-hidden") === "false") return;
+
+    photoFlash.classList.remove("photo-flash-active");
+    void photoFlash.offsetWidth;
+    photoFlash.classList.add("photo-flash-active");
+
+    if (!framedAnimal) return;
+
+    const photo = {
+      src: framedAnimal.currentSrc || framedAnimal.src,
+      title: framedAnimal.dataset.title,
+      description: framedAnimal.dataset.description,
+    };
+    window.clearTimeout(pendingPhotoTimer);
+    pendingPhotoTimer = window.setTimeout(() => openPhoto(photo), 180);
+  }
+
+  function openPhoto(photo) {
+    photoImage.src = photo.src;
+    photoImage.alt = photo.title;
+    photoTitle.textContent = photo.title;
+    photoDescription.textContent = photo.description;
+    photoModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("photo-modal-open");
+    photoModal.querySelector(".photo-modal-close").focus();
+  }
+
+  function closePhoto() {
+    if (photoModal.getAttribute("aria-hidden") !== "false") return;
+    photoModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("photo-modal-open");
+    photoImage.removeAttribute("src");
+    field.focus({ preventScroll: true });
+  }
+
   function addRoamer(node, kind, width) {
     const fieldWidth = bubbleLayer.clientWidth;
     const fieldHeight = bubbleLayer.clientHeight;
@@ -184,10 +267,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateRoamers(delta, timestamp);
     updateDiver();
+    updatePhotoTarget();
     requestAnimationFrame(swim);
   }
 
   document.addEventListener("keydown", (event) => {
+    if (event.code === "Space") {
+      event.preventDefault();
+      if (!event.repeat) triggerPhotoFlash();
+      return;
+    }
+
     const direction = keyDirections.get(event.key) || keyDirections.get(event.key.toLowerCase());
     if (!direction) return;
     event.preventDefault();
@@ -217,7 +307,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const bubble = document.createElement("i");
     bubble.className = "drifting-bubble";
     const size = randomBetween(4, 12);
-    addRoamer(bubble, "bubble", size);
+    bubble.style.setProperty("--bubble-x", `${randomBetween(0, 100)}%`);
+    bubble.style.setProperty("--bubble-size", `${size}px`);
+    bubble.style.setProperty("--bubble-duration", `${randomBetween(7, 14)}s`);
+    bubble.style.setProperty("--bubble-delay", `${-randomBetween(0, 14)}s`);
+    bubble.style.setProperty("--bubble-drift", `${randomBetween(-34, 34)}px`);
+    bubbleLayer.append(bubble);
   }
 
   [
@@ -231,7 +326,18 @@ document.addEventListener("DOMContentLoaded", () => {
     creature.alt = "";
     creature.draggable = false;
     creature.setAttribute("aria-hidden", "true");
+    creature.dataset.title = {
+      "crabe.png": "Le crabe",
+      "crevette.png": "La crevette",
+      "homard.png": "Le homard",
+    }[filename];
+    creature.dataset.description = {
+      "crabe.png": "Le crabe marche de côté sur les fonds marins et se cache souvent entre les rochers.",
+      "crevette.png": "La crevette nage en petits bonds et se faufile avec agilité dans l'eau.",
+      "homard.png": "Le homard du Saint-Laurent explore le fond avec ses longues antennes et ses pinces puissantes.",
+    }[filename];
     addRoamer(creature, "creature", width);
+    animals.push(creature);
   });
 
   const oyster = document.createElement("img");
@@ -245,6 +351,8 @@ document.addEventListener("DOMContentLoaded", () => {
   oyster.alt = "";
   oyster.draggable = false;
   oyster.setAttribute("aria-hidden", "true");
+  oyster.dataset.title = "L’huître";
+  oyster.dataset.description = "L’huître vit fixée au fond marin et filtre l’eau pour se nourrir.";
   oyster.style.width = `${oysterWidth}px`;
 
   const oysterXRatio = randomBetween(0.08, 0.92);
@@ -266,9 +374,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   oyster.addEventListener("load", placeOysterOnFloor);
+  oyster.addEventListener("load", () => {
+    updatePhotoTarget();
+  });
   bubbleLayer.append(oyster);
+  animals.push(oyster);
   placeOysterOnFloor();
   window.addEventListener("resize", placeOysterOnFloor);
+
+  photoModal.querySelectorAll("[data-photo-close]").forEach((element) => {
+    element.addEventListener("click", closePhoto);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closePhoto();
+  });
 
   updateDiver();
   requestAnimationFrame(swim);

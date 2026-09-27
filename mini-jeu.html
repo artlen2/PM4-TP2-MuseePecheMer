@@ -53,7 +53,8 @@
 			<div class="dive-world">
 				<div class="dive-bubbles" id="diveBubbles" aria-hidden="true"></div>
 				<div class="dive-floor" aria-hidden="true"></div>
-				<div class="dive-field" id="diveField">
+				<div class="photo-frame" id="photoFrame" aria-hidden="true"></div>
+				<div class="dive-field" id="diveField" tabindex="-1">
 					<div class="diver" id="diver">
 						<img src="./assets/images/jeu/diver1.png" data-frame="0" alt="Plongeur" draggable="false" />
 					</div>
@@ -66,6 +67,7 @@
 						<button type="button" data-direction="right" aria-label="Droite">→</button>
 					</div>
 				</div>
+				<p class="photo-instruction">Espace pour prendre en photo</p>
 			</div>
 		</header>
 
@@ -73,5 +75,25 @@
 			Musée de la pêche et de la mer, Contact info@museedespeches.ca | (418)
 			555-2025
 		</footer>
+		<div class="photo-flash" id="photoFlash" aria-hidden="true"></div>
+		<div class="photo-modal" id="photoModal" aria-hidden="true">
+			<div class="photo-modal-backdrop" data-photo-close></div>
+			<section class="photo-modal-panel" role="dialog" aria-modal="true" aria-labelledby="photoTitle" aria-describedby="photoDescription">
+				<div class="photo-modal-visual">
+					<img class="photo-modal-image" id="photoImage" alt="" />
+					<span class="photo-modal-location">GOLFE DU SAINT-LAURENT</span>
+				</div>
+				<div class="photo-modal-copy">
+					<header class="photo-modal-heading">
+						<div>
+							<p class="photo-modal-kicker">RENCONTRE MARINE</p>
+							<h2 id="photoTitle"></h2>
+						</div>
+						<button class="photo-modal-close" type="button" aria-label="Fermer la photo" data-photo-close>&times;</button>
+					</header>
+					<p class="photo-modal-description" id="photoDescription"></p>
+				</div>
+			</section>
+		</div>
 	</body>
 </html>
