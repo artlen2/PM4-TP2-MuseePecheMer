@@ -30,6 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let spritesAvailable = true;
   const roamers = [];
   const animals = [];
+  const floorContours = [
+    [0, 0.27], [0.12, 0.18], [0.25, 0.24], [0.39, 0.13],
+    [0.51, 0.22], [0.66, 0.12], [0.79, 0.2], [0.91, 0.11], [1, 0.17],
+  ];
   let framedAnimal = null;
   let pendingPhotoTimer = 0;
 
@@ -60,6 +64,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function randomBetween(min, max) {
     return min + Math.random() * (max - min);
+  }
+
+  function floorSurfaceY(xRatio, height, floorHeight) {
+    const segment = floorContours.findIndex(([ratio]) => ratio >= xRatio);
+    const nextIndex = Math.max(1, segment);
+    const [leftRatio, leftHeight] = floorContours[nextIndex - 1];
+    const [rightRatio, rightHeight] = floorContours[nextIndex];
+    const progress = (xRatio - leftRatio) / (rightRatio - leftRatio);
+    return height - floorHeight + floorHeight * (leftHeight + (rightHeight - leftHeight) * progress);
   }
 
   function chooseInsideTarget(roamer, width, height) {
@@ -108,6 +121,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const height = bubbleLayer.clientHeight;
 
     roamers.forEach((roamer) => {
+      if (roamer.kind === "ground-creature") {
+        const floorHeight = document.querySelector(".dive-floor").getBoundingClientRect().height;
+        const minX = roamer.padding + width * 0.04;
+        const maxX = width - roamer.padding - width * 0.04;
+        roamer.x += roamer.direction * roamer.speed * delta;
+
+        if (roamer.x <= minX || roamer.x >= maxX) {
+          roamer.x = Math.max(minX, Math.min(maxX, roamer.x));
+          roamer.direction *= -1;
+        }
+
+        const xRatio = roamer.x / width;
+        const imageHeight = roamer.node.naturalWidth
+          ? roamer.width * roamer.node.naturalHeight / roamer.node.naturalWidth
+          : roamer.width * 0.65;
+        roamer.y = floorSurfaceY(xRatio, height, floorHeight) - imageHeight / 2;
+        roamer.node.style.left = `${roamer.x}px`;
+        roamer.node.style.top = `${roamer.y}px`;
+        roamer.node.classList.toggle("faces-left", roamer.direction > 0);
+        return;
+      }
+
       if (roamer.mode === "inside" && timestamp >= roamer.stayUntil) {
         roamer.mode = "leaving";
         roamer.exitSide = Math.random() < 0.5 ? -1 : 1;
@@ -319,6 +354,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ["crabe.png", 62],
     ["crevette.png", 33],
     ["homard.png", 74],
+    ["fletan.png", 108],
   ].forEach(([filename, width]) => {
     const creature = document.createElement("img");
     creature.className = "marine-creature";
@@ -330,22 +366,47 @@ document.addEventListener("DOMContentLoaded", () => {
       "crabe.png": "Crabe des neiges",
       "crevette.png": "Crevette nordique",
       "homard.png": "Homard gaspésien",
+      "fletan.png": "Flétan de l'Atlantique",
     }[filename];
     creature.dataset.description = {
       "crabe.png": "Reconnaissable à ses longues pattes fines et sa carapace beige rosé, il vit dans les eaux froides et profondes du golfe. C'est l'une des pêches commerciales les plus importantes de la Gaspésie, récoltée surtout au printemps.",
       "crevette.png": "Uniquement pêchée à l'état sauvage dans les eaux froides du Saint-Laurent, elle se distingue par son goût raffiné, légèrement sucré et une chair plus tendre que toute autre espèce.",
       "homard.png": "Reconnu à travers le monde, le homard de la Gaspésie est recherché pour la qualité supérieure de sa chair. C'est en raison de sa carapace dure que sa chair, bien protégée des eaux froides et des fonds rocailleux du Saint-Laurent, est si blanche et abondante.",
+      "fletan.png": "Le géant des poissons plats, capable de dépasser 100 kg. Il vit couché sur le fond marin, camouflé dans le sable, et se nourrit d'autres poissons. Sa chair blanche et dense en fait un poisson très prisé, mais sa croissance lente le rend vulnérable à la surpêche.",
     }[filename];
     addRoamer(creature, "creature", width);
     animals.push(creature);
   });
 
+  const whelk = document.createElement("img");
+  const whelkWidth = 62;
+  const worldWidth = bubbleLayer.clientWidth;
+  const worldHeight = bubbleLayer.clientHeight;
+  const floorHeight = document.querySelector(".dive-floor").getBoundingClientRect().height;
+  const whelkX = randomBetween(worldWidth * 0.12, worldWidth * 0.88);
+  whelk.className = "marine-creature";
+  whelk.src = "./assets/images/jeu/bourgot.png";
+  whelk.alt = "";
+  whelk.draggable = false;
+  whelk.setAttribute("aria-hidden", "true");
+  whelk.dataset.title = "Bourgot";
+  whelk.dataset.description = "Aussi appelé buccin, ce mollusque à coquille en spirale vit sur les fonds rocheux du golfe du Saint-Laurent. Sa chair ferme et légèrement caoutchouteuse est traditionnellement pêchée à la trappe, un peu comme le homard.";
+  whelk.style.width = `${whelkWidth}px`;
+  bubbleLayer.append(whelk);
+  roamers.push({
+    node: whelk,
+    kind: "ground-creature",
+    x: whelkX,
+    y: 0,
+    width: whelkWidth,
+    padding: whelkWidth / 2,
+    speed: randomBetween(4, 8),
+    direction: Math.random() < 0.5 ? -1 : 1,
+  });
+  animals.push(whelk);
+
   const oyster = document.createElement("img");
   const oysterWidth = 56;
-  const oysterContours = [
-    [0, 0.27], [0.12, 0.18], [0.25, 0.24], [0.39, 0.13],
-    [0.51, 0.22], [0.66, 0.12], [0.79, 0.2], [0.91, 0.11], [1, 0.17],
-  ];
   oyster.className = "marine-creature";
   oyster.src = "./assets/images/jeu/hu%C3%AEtre.png";
   oyster.alt = "";
@@ -361,12 +422,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const height = bubbleLayer.clientHeight;
     const floorHeight = document.querySelector(".dive-floor").getBoundingClientRect().height;
     const xRatio = Math.max(oysterWidth / width, Math.min(1 - oysterWidth / width, oysterXRatio));
-    const segment = oysterContours.findIndex(([ratio]) => ratio >= xRatio);
-    const nextIndex = Math.max(1, segment);
-    const [leftRatio, leftHeight] = oysterContours[nextIndex - 1];
-    const [rightRatio, rightHeight] = oysterContours[nextIndex];
-    const progress = (xRatio - leftRatio) / (rightRatio - leftRatio);
-    const surface = height - floorHeight + floorHeight * (leftHeight + (rightHeight - leftHeight) * progress);
+    const surface = floorSurfaceY(xRatio, height, floorHeight);
     const imageHeight = oyster.naturalWidth ? oysterWidth * oyster.naturalHeight / oyster.naturalWidth : oysterWidth * 0.7;
 
     oyster.style.left = `${width * xRatio}px`;
