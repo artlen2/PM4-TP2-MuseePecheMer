@@ -9,8 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const photoTitle = document.querySelector("#photoTitle");
   const photoImage = document.querySelector("#photoImage");
   const photoDescription = document.querySelector("#photoDescription");
+  const gameIntroModal = document.querySelector("#gameIntroModal");
+  const albumModal = document.querySelector("#albumModal");
+  const albumToggle = document.querySelector("#albumToggle");
+  const albumCount = document.querySelector("#albumCount");
+  const albumProgress = document.querySelector("#albumProgress");
+  const albumGrid = document.querySelector("#albumGrid");
+  const albumEmpty = document.querySelector("#albumEmpty");
 
-  if (!field || !diver || !diverImage || !bubbleLayer || !photoFrame || !photoFlash || !photoModal) return;
+  if (!field || !diver || !diverImage || !bubbleLayer || !photoFrame || !photoFlash || !photoModal || !gameIntroModal || !albumModal || !albumToggle || !albumCount || !albumGrid || !albumEmpty) return;
 
   const heldDirections = new Set();
   const keyDirections = new Map([
@@ -28,6 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastFrame = 0;
   let lastFrameChange = 0;
   let spritesAvailable = true;
+  let gameStarted = false;
+  const photoAlbum = new Set();
   const roamers = [];
   const animals = [];
   const floorContours = [
@@ -207,6 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function triggerPhotoFlash() {
+    if (!gameStarted) return;
     if (photoModal.getAttribute("aria-hidden") === "false") return;
 
     photoFlash.classList.remove("photo-flash-active");
@@ -219,12 +229,15 @@ document.addEventListener("DOMContentLoaded", () => {
       src: framedAnimal.currentSrc || framedAnimal.src,
       title: framedAnimal.dataset.title,
       description: framedAnimal.dataset.description,
+      species: framedAnimal.dataset.species,
     };
     window.clearTimeout(pendingPhotoTimer);
     pendingPhotoTimer = window.setTimeout(() => openPhoto(photo), 180);
   }
 
   function openPhoto(photo) {
+    photoAlbum.add(photo.species);
+    updateAlbumCount();
     photoImage.src = photo.src;
     photoImage.alt = photo.title;
     photoTitle.textContent = photo.title;
@@ -240,6 +253,47 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.remove("photo-modal-open");
     photoImage.removeAttribute("src");
     field.focus({ preventScroll: true });
+  }
+
+  function updateAlbumCount() {
+    albumCount.textContent = String(photoAlbum.size);
+    if (albumProgress) albumProgress.textContent = `${photoAlbum.size} / ${animals.length}`;
+  }
+
+  function renderAlbum() {
+    albumGrid.replaceChildren();
+    albumEmpty.hidden = photoAlbum.size > 0;
+    photoAlbum.forEach((species) => {
+      const animal = animals.find((entry) => entry.dataset.species === species);
+      if (!animal) return;
+      const card = document.createElement("article");
+      card.className = "album-card";
+      const image = document.createElement("img");
+      image.src = animal.currentSrc || animal.src;
+      image.alt = animal.dataset.title;
+      const copy = document.createElement("div");
+      const title = document.createElement("h3");
+      title.textContent = animal.dataset.title;
+      const description = document.createElement("p");
+      description.textContent = animal.dataset.description;
+      copy.append(title, description);
+      card.append(image, copy);
+      albumGrid.append(card);
+    });
+  }
+
+  function openAlbum() {
+    renderAlbum();
+    albumModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("album-modal-open");
+    albumModal.querySelector(".photo-modal-close").focus();
+  }
+
+  function closeAlbum() {
+    if (albumModal.getAttribute("aria-hidden") !== "false") return;
+    albumModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("album-modal-open");
+    albumToggle.focus({ preventScroll: true });
   }
 
   function addRoamer(node, kind, width) {
@@ -362,6 +416,7 @@ document.addEventListener("DOMContentLoaded", () => {
     creature.alt = "";
     creature.draggable = false;
     creature.setAttribute("aria-hidden", "true");
+    creature.dataset.species = filename;
     creature.dataset.title = {
       "crabe.png": "Crabe des neiges",
       "crevette.png": "Crevette nordique",
@@ -378,6 +433,51 @@ document.addEventListener("DOMContentLoaded", () => {
     animals.push(creature);
   });
 
+  [
+    {
+      filename: "baudroie.png",
+      width: 62,
+      title: "Baudroie",
+      description: "Poisson des profondeurs, la baudroie se reconnaît à sa large tête et à son leurre placé au-dessus de la bouche. Elle reste immobile sur le fond et attire ainsi ses proies.",
+    },
+    {
+      filename: "maquereau.png",
+      width: 64,
+      title: "Maquereau",
+      description: "Poisson rapide et grégaire, le maquereau nage en bancs près de la surface. Ses lignes sombres sur le dos et son corps fuselé l’aident à se déplacer vivement dans l’Atlantique Nord.",
+    },
+    {
+      filename: "morue.png",
+      width: 68,
+      title: "Morue de l’Atlantique",
+      description: "La morue de l’Atlantique fréquente les eaux froides du golfe et se nourrit de poissons et de crustacés. Longtemps au cœur de la pêche gaspésienne, elle demeure une espèce importante à protéger.",
+    },
+    {
+      filename: "sebaste.png",
+      width: 74,
+      title: "Sébaste",
+      description: "Le sébaste, aussi appelé sébaste atlantique, vit dans les eaux froides et profondes du golfe. Ce poisson rouge grandit lentement et forme souvent des bancs près du fond marin.",
+    },
+    {
+      filename: "thon.png",
+      width: 112,
+      title: "Thon rouge",
+      description: "Puissant nageur des eaux de l’Atlantique, le thon rouge peut parcourir de grandes distances. Son corps fuselé et sa nageoire caudale robuste sont adaptés aux longues migrations.",
+    },
+  ].forEach(({ filename, width, title, description }) => {
+    const creature = document.createElement("img");
+    creature.className = "marine-creature";
+    creature.src = `./assets/images/${filename}`;
+    creature.alt = "";
+    creature.draggable = false;
+    creature.setAttribute("aria-hidden", "true");
+    creature.dataset.species = filename;
+    creature.dataset.title = title;
+    creature.dataset.description = description;
+    addRoamer(creature, "creature", width);
+    animals.push(creature);
+  });
+
   const whelk = document.createElement("img");
   const whelkWidth = 62;
   const worldWidth = bubbleLayer.clientWidth;
@@ -389,6 +489,7 @@ document.addEventListener("DOMContentLoaded", () => {
   whelk.alt = "";
   whelk.draggable = false;
   whelk.setAttribute("aria-hidden", "true");
+  whelk.dataset.species = "bourgot.png";
   whelk.dataset.title = "Bourgot";
   whelk.dataset.description = "Aussi appelé buccin, ce mollusque à coquille en spirale vit sur les fonds rocheux du golfe du Saint-Laurent. Sa chair ferme et légèrement caoutchouteuse est traditionnellement pêchée à la trappe, un peu comme le homard.";
   whelk.style.width = `${whelkWidth}px`;
@@ -412,6 +513,7 @@ document.addEventListener("DOMContentLoaded", () => {
   oyster.alt = "";
   oyster.draggable = false;
   oyster.setAttribute("aria-hidden", "true");
+  oyster.dataset.species = "huître.png";
   oyster.dataset.title = "Huître";
   oyster.dataset.description = "Ce mollusque bivalve filtre l'eau pour se nourrir de plancton, jouant un rôle important dans la santé des écosystèmes côtiers. Moins commune dans les eaux froides du golfe que dans les Maritimes, elle reste appréciée pour sa fraîcheur iodée.";
   oyster.style.width = `${oysterWidth}px`;
@@ -441,10 +543,24 @@ document.addEventListener("DOMContentLoaded", () => {
   photoModal.querySelectorAll("[data-photo-close]").forEach((element) => {
     element.addEventListener("click", closePhoto);
   });
+  albumToggle.addEventListener("click", openAlbum);
+  albumModal.querySelectorAll("[data-album-close]").forEach((element) => {
+    element.addEventListener("click", closeAlbum);
+  });
+  document.querySelector("[data-game-start]").addEventListener("click", () => {
+    gameStarted = true;
+    gameIntroModal.setAttribute("aria-hidden", "true");
+    updateDiver();
+    field.focus({ preventScroll: true });
+    requestAnimationFrame(swim);
+  });
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closePhoto();
+    if (event.key === "Escape") {
+      closePhoto();
+      closeAlbum();
+    }
   });
 
   updateDiver();
-  requestAnimationFrame(swim);
+  updateAlbumCount();
 });
