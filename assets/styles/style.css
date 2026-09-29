@@ -1096,24 +1096,7 @@ body.modal-open::-webkit-scrollbar {
   line-height: 0.85;
   letter-spacing: -0.04em;
 }
-/* 
-.subhero-content h1 {
-  --title-rest: clamp(4rem, 18vh, 12rem);
-  max-width: 100%;
-  transform: translateY(var(--title-rest));
-  color: #ffff;
-  mix-blend-mode: difference;
-  font-family: var(--font-main);
-  font-size: 10rem;
-  font-weight: 800;
-  line-height: 0.9; 
-  letter-spacing: -0.04em;
-  text-wrap: balance;
-  text-align: center;
-  transition:
-    background-position 700ms ease,
-    transform 500ms ease;
-} */
+
 
 .title-float {
   animation: title-float 100s ease-in-out infinite;
@@ -1140,7 +1123,7 @@ body.modal-open::-webkit-scrollbar {
   }
 }
 
-/* ============ TYPOGRAPHY / SECTIONS ============ */
+/* typo */
 h2 {
   text-decoration: underline;
   text-decoration-color: #f2e676;
@@ -1176,7 +1159,7 @@ footer {
   text-transform: uppercase;
 }
 
-/* ============ MEDIA QUERIES ============ */
+/* media queris */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1264,7 +1247,7 @@ footer {
   }
 }
 
-/* ============ COMPONENTS / UTILS ============ */
+/* components */
 .btn button {
   background-color: white;
   border: none;
@@ -1323,18 +1306,18 @@ h2.tarifs-title {
   @apply text-2xl font-bold;
 }
 
-/* ============ INFO PAGE ============ */
+/* ingo page */
 
 /* variables */
 
 .info-page {
-  --info-background: #f4f5f2;
-  --info-white: #ffffff;
-  --info-ink: #24d1f0;
-  --info-text: #423f3c;
+  --info-background: #f3f2f5;
+  --info-white: #0e3352;
+  --info-ink: #6fd1e2;
+  --info-text: #faf0e6;
   --info-muted: #f7ebdd;
   --info-blue: #f8b569;
-  --info-line: rgba(180, 191, 201, 0.22);
+  --info-line: rgba(243, 223, 135, 0.384);
   --info-yellow: #e6d65c;
 }
 
@@ -1439,7 +1422,7 @@ h2.tarifs-title {
   }
 }
 
-/* ==== Tarifs ==== */
+/* tarification*/
 .season {
   font: 700 1.4rem / 1.2 var(--font-title);
   color: #fff;
@@ -1518,7 +1501,7 @@ h2.tarifs-title {
 }
 
 .info-page .info-card:hover {
-  background: #fbfcfa;
+  background: #22659c;
   box-shadow: 0 20px 45px rgba(16, 43, 67, 0.08);
 }
 
@@ -1614,7 +1597,7 @@ h2.tarifs-title {
 .info-page .services-list li > span {
   font-size: 0.65rem;
   font-weight: 600;
-  color: #423f3c;
+  color: #c9b6a383;
 }
 
 .info-page .services-list small {
@@ -1630,7 +1613,7 @@ h2.tarifs-title {
 
 .info-page .info-card-contact {
   background: var(--info-blue);
-  color: white;
+  color: rgb(10, 31, 59);
 }
 
 .info-page .info-card-contact::before {
@@ -1853,7 +1836,7 @@ h2.tarifs-title {
   z-index: 1;
 }
 
-/* ============ RESERVATION PAGE ============ */
+/* page de réservation */
 
 .reservation-main {
   display: block;
@@ -3290,8 +3273,8 @@ h2.tarifs-title {
 
 /* poisson */
 .fish-buddy {
-  width: 3rem;
-  height: 3rem;
+  width: 3.5rem;
+  height: 3.5rem;
   border: 0;
   border-radius: 50%;
   display: grid;
@@ -3305,7 +3288,7 @@ h2.tarifs-title {
   );
   box-shadow:
     0 12px 30px rgba(2, 26, 52, 0.45),
-    0 0 0 4px rgba(255, 255, 255, 0.12);
+    0 0 0 4px rgb(255, 251, 0);
   animation: fish-swim 3.4s ease-in-out infinite;
   transition: transform 200ms ease;
 }
