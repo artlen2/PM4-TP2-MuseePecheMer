@@ -79,6 +79,13 @@
           </div>
         </div>
         <p class="photo-instruction">Espace pour prendre en photo</p>
+        <button class="album-toggle" id="albumToggle" type="button" aria-label="Ouvrir l'album photo">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4 7.5A2.5 2.5 0 0 1 6.5 5h2l1.2-1.5h4.6L15.5 5h2A2.5 2.5 0 0 1 20 7.5v10a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5z" />
+            <circle cx="12" cy="12.5" r="3.5" />
+          </svg>
+          <span class="album-count" id="albumCount" aria-live="polite">0</span>
+        </button>
       </div>
     </header>
 
@@ -117,6 +124,34 @@
           </header>
           <p class="photo-modal-description" id="photoDescription"></p>
         </div>
+      </section>
+    </div>
+    <div class="game-intro-modal" id="gameIntroModal" aria-hidden="false">
+      <div class="game-intro-backdrop"></div>
+      <section class="game-intro-panel" role="dialog" aria-modal="true" aria-labelledby="gameIntroTitle">
+        <p class="game-modal-kicker">MISSION GOLFE DU SAINT-LAURENT</p>
+        <h2 id="gameIntroTitle">Prêt à plonger ?</h2>
+        <p class="game-intro-copy">Explore les fonds marins, observe les espèces du golfe et photographie-les pour compléter ton album.</p>
+        <div class="game-help-list">
+          <p><span class="help-key">↑ ↓ ← →</span><span>Déplace le plongeur avec les flèches ou les touches W, A, S, D. Sur téléphone, utilise les boutons à l’écran.</span></p>
+          <p><span class="help-key">ESPACE</span><span>Approche-toi d’un poisson encadré, puis appuie sur Espace pour le photographier.</span></p>
+        </div>
+        <button class="game-play-button" type="button" data-game-start>Jouer</button>
+      </section>
+    </div>
+    <div class="album-modal" id="albumModal" aria-hidden="true">
+      <div class="album-backdrop" data-album-close></div>
+      <section class="album-panel" role="dialog" aria-modal="true" aria-labelledby="albumTitle">
+        <header class="album-heading">
+          <div>
+            <p class="game-modal-kicker">CARNET D’EXPLORATION</p>
+            <h2 id="albumTitle">Mon album photo</h2>
+            <p class="album-summary"><span id="albumProgress">0 / 11</span> espèces photographiées</p>
+          </div>
+          <button class="photo-modal-close" type="button" aria-label="Fermer l’album" data-album-close>&times;</button>
+        </header>
+        <p class="album-empty" id="albumEmpty">Aucune photo pour le moment. Pars explorer le golfe !</p>
+        <div class="album-grid" id="albumGrid"></div>
       </section>
     </div>
   </body>
