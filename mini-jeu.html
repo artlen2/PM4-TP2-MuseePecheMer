@@ -1,99 +1,123 @@
 <!doctype html>
 <html lang="fr">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Plongée dans le Saint-Laurent - Musée des pêches et de la mer</title>
-		<link rel="stylesheet" href="style.css" />
-		<link rel="icon" type="image/png" href="./favicon3.png" />
-		<script src="./assets/scripts/script.js" defer></script>
-		<script src="./assets/scripts/minigame.js" defer></script>
-	</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plongée dans le Saint-Laurent - Musée des pêches et de la mer</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="./favicon3.png" />
+    <script src="./assets/scripts/script.js" defer></script>
+    <script src="./assets/scripts/minigame.js" defer></script>
+  </head>
 
-	<body class="game-page">
-		<div class="drawer" id="drawer">
-			<a class="drawer-link" href="index.html " onclick="closeDrawer()"
-				>Accueil</a
-			>
-			<a class="drawer-link" href="reservation.html" onclick="closeDrawer()"
-				>Réservation</a
-			>
-			<a class="drawer-link" href="information.html" onclick="closeDrawer()"
-				>Information</a
-			>
-			<a class="drawer-link" href="mini-jeu.html" onclick="closeDrawer()"
-				>Jeu</a
-			>
-		</div>
+  <body class="game-page">
+    <div class="drawer" id="drawer">
+      <a class="drawer-link" href="index.html " onclick="closeDrawer()"
+        >Accueil</a
+      >
+      <a class="drawer-link" href="reservation.html" onclick="closeDrawer()"
+        >Réservation</a
+      >
+      <a class="drawer-link" href="information.html" onclick="closeDrawer()"
+        >Information</a
+      >
+      <a class="drawer-link" href="mini-jeu.html" onclick="closeDrawer()"
+        >Espace enfant</a
+      >
+    </div>
 
-		<nav class="site-nav" aria-label="Navigation principale">
-			<div>
-				<a href="index.html">
-					<img src="favicon.png" alt="Musée des pêches et de la mer, accueil" />
-				</a>
-			</div>
-			<div class="nav-links">
-				<a class="nav-link" href="index.html">Accueil</a>
-				<a class="nav-link" href="reservation.html">Réservation</a>
-				<a class="nav-link" href="information.html">Information</a>
-				<a class="nav-link" href="mini-jeu.html">Jeu</a>
-			</div>
-			<button
-				class="burger"
-				id="burger"
-				type="button"
-				aria-label="Ouvrir le menu"
-				aria-expanded="false"
-			>
-				<span></span><span></span><span></span>
-			</button>
-		</nav>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <div>
+        <a href="index.html">
+          <img src="favicon.png" alt="Musée des pêches et de la mer, accueil" />
+        </a>
+      </div>
+      <div class="nav-links">
+        <a class="nav-link" href="index.html">Accueil</a>
+        <a class="nav-link" href="reservation.html">Réservation</a>
+        <a class="nav-link" href="information.html">Information</a>
+        <a class="nav-link" href="mini-jeu.html">Espace enfant</a>
+      </div>
+      <button
+        class="burger"
+        id="burger"
+        type="button"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
 
-		<header class="site-header dive-header">
-			<div class="dive-world">
-				<div class="dive-bubbles" id="diveBubbles" aria-hidden="true"></div>
-				<div class="dive-floor" aria-hidden="true"></div>
-				<div class="photo-frame" id="photoFrame" aria-hidden="true"></div>
-				<div class="dive-field" id="diveField" tabindex="-1">
-					<div class="diver" id="diver">
-						<img src="./assets/images/jeu/diver1.png" data-frame="0" alt="Plongeur" draggable="false" />
-					</div>
-				</div>
-				<div class="dive-controls" aria-label="Commandes de déplacement">
-					<button type="button" data-direction="up" aria-label="Haut">↑</button>
-					<div>
-						<button type="button" data-direction="left" aria-label="Gauche">←</button>
-						<button type="button" data-direction="down" aria-label="Bas">↓</button>
-						<button type="button" data-direction="right" aria-label="Droite">→</button>
-					</div>
-				</div>
-				<p class="photo-instruction">Espace pour prendre en photo</p>
-			</div>
-		</header>
+    <header class="site-header dive-header">
+      <div class="dive-world">
+        <div class="dive-bubbles" id="diveBubbles" aria-hidden="true"></div>
+        <div class="dive-floor" aria-hidden="true"></div>
+        <div class="photo-frame" id="photoFrame" aria-hidden="true"></div>
+        <div class="dive-field" id="diveField" tabindex="-1">
+          <div class="diver" id="diver">
+            <img
+              src="./assets/images/jeu/diver1.png"
+              data-frame="0"
+              alt="Plongeur"
+              draggable="false"
+            />
+          </div>
+        </div>
+        <div class="dive-controls" aria-label="Commandes de déplacement">
+          <button type="button" data-direction="up" aria-label="Haut">↑</button>
+          <div>
+            <button type="button" data-direction="left" aria-label="Gauche">
+              ←
+            </button>
+            <button type="button" data-direction="down" aria-label="Bas">
+              ↓
+            </button>
+            <button type="button" data-direction="right" aria-label="Droite">
+              →
+            </button>
+          </div>
+        </div>
+        <p class="photo-instruction">Espace pour prendre en photo</p>
+      </div>
+    </header>
 
-		<footer>
-			Musée de la pêche et de la mer, Contact info@museedespeches.ca | (418)
-			555-2025
-		</footer>
-		<div class="photo-flash" id="photoFlash" aria-hidden="true"></div>
-		<div class="photo-modal" id="photoModal" aria-hidden="true">
-			<div class="photo-modal-backdrop" data-photo-close></div>
-			<section class="photo-modal-panel" role="dialog" aria-modal="true" aria-labelledby="photoTitle" aria-describedby="photoDescription">
-				<div class="photo-modal-visual">
-					<img class="photo-modal-image" id="photoImage" alt="" />
-					<span class="photo-modal-location">GOLFE DU SAINT-LAURENT</span>
-				</div>
-				<div class="photo-modal-copy">
-					<header class="photo-modal-heading">
-						<div>
-							<p class="photo-modal-kicker">RENCONTRE MARINE</p>
-							<h2 id="photoTitle"></h2>
-						</div>
-						<button class="photo-modal-close" type="button" aria-label="Fermer la photo" data-photo-close>&times;</button>
-					</header>
-					<p class="photo-modal-description" id="photoDescription"></p>
-				</div>
-			</section>
-		</div>
-	</body>
+    <footer>
+      Musée de la pêche et de la mer, Contact info@museedespeches.ca | (418)
+      555-2025
+    </footer>
+    <div class="photo-flash" id="photoFlash" aria-hidden="true"></div>
+    <div class="photo-modal" id="photoModal" aria-hidden="true">
+      <div class="photo-modal-backdrop" data-photo-close></div>
+      <section
+        class="photo-modal-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="photoTitle"
+        aria-describedby="photoDescription"
+      >
+        <div class="photo-modal-visual">
+          <img class="photo-modal-image" id="photoImage" alt="" />
+          <span class="photo-modal-location">GOLFE DU SAINT-LAURENT</span>
+        </div>
+        <div class="photo-modal-copy">
+          <header class="photo-modal-heading">
+            <div>
+              <p class="photo-modal-kicker">RENCONTRE MARINE</p>
+              <h2 id="photoTitle"></h2>
+            </div>
+            <button
+              class="photo-modal-close"
+              type="button"
+              aria-label="Fermer la photo"
+              data-photo-close
+            >
+              &times;
+            </button>
+          </header>
+          <p class="photo-modal-description" id="photoDescription"></p>
+        </div>
+      </section>
+    </div>
+  </body>
 </html>
