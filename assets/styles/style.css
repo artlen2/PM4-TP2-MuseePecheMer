@@ -9,7 +9,6 @@
   --color-smartblue5: #3263bf;
   --color-yaleblue6: #294c6b;
   --color-prussianblue7: #021a34;
-  --color-amber: #f8b569;
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Jost", sans-serif;
   --font-main: "Archivo", sans-serif;
@@ -23,7 +22,6 @@
   --color-smartblue5: #3263bf;
   --color-yaleblue6: #294c6b;
   --color-prussianblue7: #021a34;
-  --color-amber: #f8b569;
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Jost", sans-serif;
   --font-main: "Archivo", sans-serif;
@@ -101,6 +99,7 @@ video {
   cursor: pointer;
   gap: 5px;
 }
+
 @media (max-width: 820px) {
   .nav-links,
   .nav-actions {
@@ -110,6 +109,7 @@ video {
     display: flex;
   }
 }
+
 .burger span {
   display: block;
   width: 24px;
@@ -2181,14 +2181,13 @@ h2.tarifs-title {
 /* section bas de la page */
 
 .reservation-bottom {
-  display: grid;
+  width: 90%;
+  /* display: grid;
   grid-template-columns: clamp(3rem, 7vw, 7rem) minmax(0, 1fr);
-  gap: clamp(2rem, 5vw, 5rem);
-
+  gap: clamp(2rem, 5vw, 5rem); */
   margin-top: clamp(6rem, 12vw, 12rem);
   padding-top: clamp(4rem, 7vw, 7rem);
-
-  border-top: 1px solid rgba(247, 235, 221, 0.22);
+  /* border-top: 1px solid rgba(247, 235, 221, 0.22); */
 }
 
 .reservation-bottom > span {
@@ -2404,6 +2403,7 @@ h2.tarifs-title {
   font: 600 0.9rem var(--font-main) !important;
   color: var(--color-yellow1) !important;
   font-variant-numeric: tabular-nums;
+  margin-bottom: 3rem !important;
 }
 .contour::after {
   content: "";
@@ -2420,6 +2420,7 @@ h2.tarifs-title {
   color: var(--color-prussianblue7) !important;
   font: 700 1rem var(--font-main);
   text-decoration: none;
+
   cursor: pointer;
   transition:
     transform 0.2s,
@@ -2430,9 +2431,27 @@ h2.tarifs-title {
   transform: translateY(-2px);
 }
 .more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-yellow1);
+  padding: 0.6rem 1.2rem;
+  min-height: 3.2rem;
+  border-radius: 999px;
   color: var(--color-yellow1);
   font-weight: 700;
   text-underline-offset: 0.25em;
+  transition:
+    border-color 0.2s,
+    color 0.2s,
+    transform 0.2s,
+    background 0.2s;
+}
+.more:hover {
+  border-color: var(--color-palesky2);
+  color: var(--color-palesky2);
+  background: rgba(232, 162, 74, 0.04);
+  transform: translateY(-2px);
 }
 
 /* grille tarifaire */

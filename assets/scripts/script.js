@@ -46,7 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastMoveTime = 0;
 
   document.body.style.cursor = "auto";
-  fish.innerHTML = `<img id="fish-cursor" src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Cpath fill=%27%23f2e676%27 d=%27M3 16c5-8 13-9 19-3l7-5v16l-7-5c-6 6-14 5-19-3z%27/%3E%3Ccircle cx=%277.5%27 cy=%2715%27 r=%271.4%27 fill=%27%23021a34%27/%3E%3C/svg%3E" alt="" style="position: fixed; pointer-events: none; width: 32px; height: 32px; transform: translate(-50%, -50%); z-index: 9999;">`;
   fish.style.position = "fixed";
   fish.style.pointerEvents = "none";
   fish.style.fontSize = "26px";
