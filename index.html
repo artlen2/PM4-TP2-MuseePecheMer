@@ -355,7 +355,8 @@
           overlay.classList.remove("closing");
           overlay.classList.add("open");
           overlay.setAttribute("aria-hidden", "false");
-          document.body.style.overflow = "hidden";
+          document.documentElement.classList.add("modal-open");
+          document.body.classList.add("modal-open");
           overlay.querySelector(".expo-card-close").focus();
         }
 
@@ -368,7 +369,8 @@
           function onEnd() {
             overlay.classList.remove("open", "closing");
             overlay.setAttribute("aria-hidden", "true");
-            document.body.style.overflow = "";
+            document.documentElement.classList.remove("modal-open");
+            document.body.classList.remove("modal-open");
             panel.removeEventListener("animationend", onEnd);
             if (lastFocused) lastFocused.focus();
           }
