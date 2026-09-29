@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const bubbleLayer = document.querySelector("#diveBubbles");
   const photoFrame = document.querySelector("#photoFrame");
   const photoFlash = document.querySelector("#photoFlash");
+  const takePhotoButton = document.querySelector("#takePhoto");
   const photoModal = document.querySelector("#photoModal");
   const photoTitle = document.querySelector("#photoTitle");
   const photoImage = document.querySelector("#photoImage");
@@ -271,6 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!gameStarted) return;
     if (photoModal.getAttribute("aria-hidden") === "false") return;
 
+    updatePhotoTarget();
     photoFlash.classList.remove("photo-flash-active");
     void photoFlash.offsetWidth;
     photoFlash.classList.add("photo-flash-active");
@@ -442,6 +444,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (direction) setDirection(direction, false);
   });
 
+  takePhotoButton.addEventListener("click", triggerPhotoFlash);
+
   window.addEventListener("blur", () => heldDirections.clear());
 
   document.querySelectorAll("[data-direction]").forEach((button) => {
@@ -484,18 +488,14 @@ document.addEventListener("DOMContentLoaded", () => {
     creature.dataset.title = {
       "crabe.png": "Crabe des neiges",
       "crevette.png": "Crevette nordique",
-      "homard.png": "Homard gaspésien",
       "fletan.png": "Flétan de l'Atlantique",
+      "homard.png": "Homard gaspésien",
     }[filename];
     creature.dataset.description = {
-      "crabe.png":
-        "Reconnaissable à ses longues pattes fines et sa carapace beige rosé, il vit dans les eaux froides et profondes du golfe. C'est l'une des pêches commerciales les plus importantes de la Gaspésie, récoltée surtout au printemps.",
-      "crevette.png":
-        "Uniquement pêchée à l'état sauvage dans les eaux froides du Saint-Laurent, elle se distingue par son goût raffiné, légèrement sucré et une chair plus tendre que toute autre espèce.",
-      "homard.png":
-        "Reconnu à travers le monde, le homard de la Gaspésie est recherché pour la qualité supérieure de sa chair. C'est en raison de sa carapace dure que sa chair, bien protégée des eaux froides et des fonds rocailleux du Saint-Laurent, est si blanche et abondante.",
-      "fletan.png":
-        "Le géant des poissons plats, capable de dépasser 100 kg. Il vit couché sur le fond marin, camouflé dans le sable, et se nourrit d'autres poissons. Sa chair blanche et dense en fait un poisson très prisé, mais sa croissance lente le rend vulnérable à la surpêche.",
+      "crabe.png": "Reconnaissable à ses longues pattes fines et sa carapace beige rosé, il vit dans les eaux froides et profondes du golfe. C'est l'une des pêches commerciales les plus importantes de la Gaspésie, récoltée surtout au printemps.",
+      "crevette.png": "Uniquement pêchée à l'état sauvage dans les eaux froides du Saint-Laurent, elle se distingue par son goût raffiné, légèrement sucré et une chair plus tendre que toute autre espèce.",
+      "homard.png": "Reconnu à travers le monde, le homard de la Gaspésie est recherché pour la qualité supérieure de sa chair. C'est en raison de sa carapace dure que sa chair, bien protégée des eaux froides et des fonds rocailleux du Saint-Laurent, est si blanche et abondante.",
+      "fletan.png": "Le géant des poissons plats, capable de dépasser 100 kg. Il vit couché sur le fond marin, camouflé dans le sable, et se nourrit d'autres poissons. Sa chair blanche et dense en fait un poisson très prisé, mais sa croissance lente le rend vulnérable à la surpêche.",
     }[filename];
     addRoamer(creature, "creature", width);
     animals.push(creature);
@@ -506,29 +506,25 @@ document.addEventListener("DOMContentLoaded", () => {
       filename: "baudroie.png",
       width: 62,
       title: "Baudroie",
-      description:
-        "Poisson des profondeurs, la baudroie se reconnaît à sa large tête et à son leurre placé au-dessus de la bouche. Elle reste immobile sur le fond et attire ainsi ses proies.",
+      description: "Poisson des profondeurs, la baudroie se reconnaît à sa large tête et à son leurre placé au-dessus de la bouche. Elle reste immobile sur le fond et attire ainsi ses proies.",
     },
     {
       filename: "maquereau.png",
       width: 64,
       title: "Maquereau",
-      description:
-        "Poisson rapide et grégaire, le maquereau nage en bancs près de la surface. Ses lignes sombres sur le dos et son corps fuselé l’aident à se déplacer vivement dans l’Atlantique Nord.",
+      description: "Poisson rapide et grégaire, le maquereau nage en bancs près de la surface. Ses lignes sombres sur le dos et son corps fuselé l’aident à se déplacer vivement dans l’Atlantique Nord.",
     },
     {
       filename: "morue.png",
       width: 68,
       title: "Morue de l’Atlantique",
-      description:
-        "La morue de l’Atlantique fréquente les eaux froides du golfe et se nourrit de poissons et de crustacés. Longtemps au cœur de la pêche gaspésienne, elle demeure une espèce importante à protéger.",
+      description: "La morue de l’Atlantique fréquente les eaux froides du golfe et se nourrit de poissons et de crustacés. Longtemps au cœur de la pêche gaspésienne, elle demeure une espèce importante à protéger.",
     },
     {
       filename: "sebaste.png",
       width: 74,
       title: "Sébaste",
-      description:
-        "Le sébaste, aussi appelé sébaste atlantique, vit dans les eaux froides et profondes du golfe. Ce poisson rouge grandit lentement et forme souvent des bancs près du fond marin.",
+      description: "Le sébaste, aussi appelé sébaste atlantique, vit dans les eaux froides et profondes du golfe. Ce poisson rouge grandit lentement et forme souvent des bancs près du fond marin.",
     },
     {
       filename: "thon.png",
@@ -566,8 +562,7 @@ document.addEventListener("DOMContentLoaded", () => {
   whelk.setAttribute("aria-hidden", "true");
   whelk.dataset.species = "bourgot.png";
   whelk.dataset.title = "Bourgot";
-  whelk.dataset.description =
-    "Aussi appelé buccin, ce mollusque à coquille en spirale vit sur les fonds rocheux du golfe du Saint-Laurent. Sa chair ferme et légèrement caoutchouteuse est traditionnellement pêchée à la trappe, un peu comme le homard.";
+  whelk.dataset.description = "Aussi appelé buccin, ce mollusque à coquille en spirale vit sur les fonds rocheux du golfe du Saint-Laurent. Sa chair ferme et légèrement caoutchouteuse est traditionnellement pêchée à la trappe, un peu comme le homard.";
   whelk.style.width = `${whelkWidth}px`;
   bubbleLayer.append(whelk);
   roamers.push({
@@ -591,8 +586,7 @@ document.addEventListener("DOMContentLoaded", () => {
   oyster.setAttribute("aria-hidden", "true");
   oyster.dataset.species = "huître.png";
   oyster.dataset.title = "Huître";
-  oyster.dataset.description =
-    "Ce mollusque bivalve filtre l'eau pour se nourrir de plancton, jouant un rôle important dans la santé des écosystèmes côtiers. Moins commune dans les eaux froides du golfe que dans les Maritimes, elle reste appréciée pour sa fraîcheur iodée.";
+  oyster.dataset.description = "Ce mollusque bivalve filtre l'eau pour se nourrir de plancton, jouant un rôle important dans la santé des écosystèmes côtiers. Moins commune dans les eaux froides du golfe que dans les Maritimes, elle reste appréciée pour sa fraîcheur iodée.";
   oyster.style.width = `${oysterWidth}px`;
 
   const oysterXRatio = randomBetween(0.08, 0.92);
