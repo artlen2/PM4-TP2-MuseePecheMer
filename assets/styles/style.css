@@ -86,7 +86,7 @@ video {
 
 .nav-links {
   display: flex;
-  gap: 1.25rem;
+  gap: 1.75rem;
 }
 
 .burger {
@@ -188,7 +188,11 @@ video {
   inset: 0;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 48% 0%, rgba(125, 238, 230, 0.36), transparent 43%),
+    radial-gradient(
+      ellipse at 48% 0%,
+      rgba(125, 238, 230, 0.36),
+      transparent 43%
+    ),
     linear-gradient(180deg, #23b8d2 0%, #0789b5 38%, #086b91 72%, #075473 100%);
 }
 
@@ -225,8 +229,12 @@ video {
 
 @keyframes diver-float {
   0%,
-  100% { margin-top: -4px; }
-  50% { margin-top: 4px; }
+  100% {
+    margin-top: -4px;
+  }
+  50% {
+    margin-top: 4px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -280,7 +288,19 @@ video {
   left: -2%;
   height: clamp(4rem, 10vh, 6.5rem);
   background: linear-gradient(180deg, #ffe45c 0%, #f5b832 100%);
-  clip-path: polygon(0 27%, 12% 18%, 25% 24%, 39% 13%, 51% 22%, 66% 12%, 79% 20%, 91% 11%, 100% 17%, 100% 100%, 0 100%);
+  clip-path: polygon(
+    0 27%,
+    12% 18%,
+    25% 24%,
+    39% 13%,
+    51% 22%,
+    66% 12%,
+    79% 20%,
+    91% 11%,
+    100% 17%,
+    100% 100%,
+    0 100%
+  );
 }
 
 .dive-bubbles {
@@ -343,7 +363,9 @@ video {
   padding: clamp(1rem, 4vw, 3rem);
   visibility: hidden;
   opacity: 0;
-  transition: opacity 300ms ease, visibility 300ms ease;
+  transition:
+    opacity 300ms ease,
+    visibility 300ms ease;
 }
 
 .photo-modal[aria-hidden="false"] {
@@ -355,7 +377,11 @@ video {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 50% 48%, rgba(27, 164, 190, 0.25), transparent 55%),
+    radial-gradient(
+      ellipse at 50% 48%,
+      rgba(27, 164, 190, 0.25),
+      transparent 55%
+    ),
     rgba(1, 19, 32, 0.84);
   backdrop-filter: blur(7px);
 }
@@ -389,7 +415,11 @@ video {
   overflow: hidden;
   padding: clamp(1.5rem, 4vw, 3rem);
   background:
-    radial-gradient(ellipse at 50% 46%, rgba(58, 197, 210, 0.35), transparent 40%),
+    radial-gradient(
+      ellipse at 50% 46%,
+      rgba(58, 197, 210, 0.35),
+      transparent 40%
+    ),
     linear-gradient(155deg, #14677c 0%, #0b526b 46%, #073b56 100%);
 }
 
@@ -439,7 +469,11 @@ video {
   justify-content: center;
   padding: clamp(1.5rem, 4vw, 2.8rem);
   background:
-    radial-gradient(ellipse at 100% 0%, rgba(36, 151, 240, 0.13), transparent 54%),
+    radial-gradient(
+      ellipse at 100% 0%,
+      rgba(36, 151, 240, 0.13),
+      transparent 54%
+    ),
     #062b40;
 }
 
@@ -484,7 +518,10 @@ video {
   color: var(--color-skyblue3);
   font: 400 1.7rem / 1 var(--font-main);
   cursor: pointer;
-  transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    transform 180ms ease;
 }
 
 .photo-modal-close:hover {
@@ -500,8 +537,14 @@ video {
 }
 
 @keyframes photo-specimen-in {
-  from { opacity: 0; transform: translateY(0.6rem) scale(0.94); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  from {
+    opacity: 0;
+    transform: translateY(0.6rem) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 @media (max-width: 700px) {
@@ -553,14 +596,24 @@ video {
 
 @keyframes photo-frame-pulse {
   0%,
-  100% { opacity: 0.3; }
-  50% { opacity: 1; }
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 @keyframes photo-flash {
-  0% { opacity: 0; }
-  9% { opacity: 0.96; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 0;
+  }
+  9% {
+    opacity: 0.96;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .drifting-bubble {
@@ -572,16 +625,33 @@ video {
   height: var(--bubble-size);
   border: 1px solid rgba(219, 246, 242, 0.66);
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 25%, rgba(239, 255, 255, 0.5), rgba(190, 235, 238, 0.05) 65%);
-  box-shadow: inset -1px -1px 2px rgba(215, 247, 240, 0.28), 0 0 7px rgba(193, 242, 240, 0.14);
-  animation: bubble-rise var(--bubble-duration) linear var(--bubble-delay) infinite;
+  background: radial-gradient(
+    circle at 30% 25%,
+    rgba(239, 255, 255, 0.5),
+    rgba(190, 235, 238, 0.05) 65%
+  );
+  box-shadow:
+    inset -1px -1px 2px rgba(215, 247, 240, 0.28),
+    0 0 7px rgba(193, 242, 240, 0.14);
+  animation: bubble-rise var(--bubble-duration) linear var(--bubble-delay)
+    infinite;
 }
 
 @keyframes bubble-rise {
-  0% { opacity: 0; transform: translate3d(0, 0, 0); }
-  10% { opacity: 0.82; }
-  88% { opacity: 0.68; }
-  100% { opacity: 0; transform: translate3d(var(--bubble-drift), -110vh, 0); }
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+  10% {
+    opacity: 0.82;
+  }
+  88% {
+    opacity: 0.68;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--bubble-drift), -110vh, 0);
+  }
 }
 
 .marine-creature {
@@ -622,7 +692,9 @@ video {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .drifting-bubble { opacity: 0.5; }
+  .drifting-bubble {
+    opacity: 0.5;
+  }
 }
 
 .site-header:has(.hero-video) {
@@ -668,7 +740,7 @@ video {
   display: inline-block;
   color: var(--color-palesky2);
   font-family: var(--font-main);
-  font-size: 0.7rem;
+  font-size: 1.2rem;
   font-weight: 400;
   letter-spacing: 0.03em;
   text-transform: uppercase;
