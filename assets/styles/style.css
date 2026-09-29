@@ -584,12 +584,6 @@ html.modal-open,
 body.modal-open {
   overflow: hidden;
   overscroll-behavior: none;
-  scrollbar-width: none;
-}
-
-html.modal-open::-webkit-scrollbar,
-body.modal-open::-webkit-scrollbar {
-  display: none;
 }
 
 .photo-flash {
@@ -1096,7 +1090,6 @@ body.modal-open::-webkit-scrollbar {
   line-height: 0.85;
   letter-spacing: -0.04em;
 }
-
 
 .title-float {
   animation: title-float 100s ease-in-out infinite;
