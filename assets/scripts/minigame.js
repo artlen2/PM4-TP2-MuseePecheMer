@@ -17,7 +17,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const albumGrid = document.querySelector("#albumGrid");
   const albumEmpty = document.querySelector("#albumEmpty");
 
-  if (!field || !diver || !diverImage || !bubbleLayer || !photoFrame || !photoFlash || !photoModal || !gameIntroModal || !albumModal || !albumToggle || !albumCount || !albumGrid || !albumEmpty) return;
+  if (
+    !field ||
+    !diver ||
+    !diverImage ||
+    !bubbleLayer ||
+    !photoFrame ||
+    !photoFlash ||
+    !photoModal ||
+    !gameIntroModal ||
+    !albumModal ||
+    !albumToggle ||
+    !albumCount ||
+    !albumGrid ||
+    !albumEmpty
+  )
+    return;
+
+  function setModalScrollLock(isLocked) {
+    document.documentElement.classList.toggle("modal-open", isLocked);
+    document.body.classList.toggle("modal-open", isLocked);
+  }
+
+  setModalScrollLock(gameIntroModal.getAttribute("aria-hidden") === "false");
 
   const heldDirections = new Set();
   const keyDirections = new Map([
@@ -40,8 +62,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const roamers = [];
   const animals = [];
   const floorContours = [
-    [0, 0.27], [0.12, 0.18], [0.25, 0.24], [0.39, 0.13],
-    [0.51, 0.22], [0.66, 0.12], [0.79, 0.2], [0.91, 0.11], [1, 0.17],
+    [0, 0.27],
+    [0.12, 0.18],
+    [0.25, 0.24],
+    [0.39, 0.13],
+    [0.51, 0.22],
+    [0.66, 0.12],
+    [0.79, 0.2],
+    [0.91, 0.11],
+    [1, 0.17],
   ];
   let framedAnimal = null;
   let pendingPhotoTimer = 0;
@@ -81,15 +110,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const [leftRatio, leftHeight] = floorContours[nextIndex - 1];
     const [rightRatio, rightHeight] = floorContours[nextIndex];
     const progress = (xRatio - leftRatio) / (rightRatio - leftRatio);
-    return height - floorHeight + floorHeight * (leftHeight + (rightHeight - leftHeight) * progress);
+    return (
+      height -
+      floorHeight +
+      floorHeight * (leftHeight + (rightHeight - leftHeight) * progress)
+    );
   }
 
   function chooseInsideTarget(roamer, width, height) {
     const padding = roamer.padding;
     roamer.targetX = randomBetween(padding, Math.max(padding, width - padding));
-    roamer.targetY = roamer.kind === "bubble"
-      ? Math.max(-padding, roamer.y - randomBetween(height * 0.12, height * 0.32))
-      : randomBetween(height * 0.12, height * 0.76);
+    roamer.targetY =
+      roamer.kind === "bubble"
+        ? Math.max(
+            -padding,
+            roamer.y - randomBetween(height * 0.12, height * 0.32),
+          )
+        : randomBetween(height * 0.12, height * 0.76);
   }
 
   function moveRoamer(roamer, delta, timestamp, width) {
@@ -131,7 +168,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     roamers.forEach((roamer) => {
       if (roamer.kind === "ground-creature") {
-        const floorHeight = document.querySelector(".dive-floor").getBoundingClientRect().height;
+        const floorHeight = document
+          .querySelector(".dive-floor")
+          .getBoundingClientRect().height;
         const minX = roamer.padding + width * 0.04;
         const maxX = width - roamer.padding - width * 0.04;
         roamer.x += roamer.direction * roamer.speed * delta;
@@ -143,7 +182,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const xRatio = roamer.x / width;
         const imageHeight = roamer.node.naturalWidth
-          ? roamer.width * roamer.node.naturalHeight / roamer.node.naturalWidth
+          ? (roamer.width * roamer.node.naturalHeight) /
+            roamer.node.naturalWidth
           : roamer.width * 0.65;
         roamer.y = floorSurfaceY(xRatio, height, floorHeight) - imageHeight / 2;
         roamer.node.style.left = `${roamer.x}px`;
@@ -155,23 +195,35 @@ document.addEventListener("DOMContentLoaded", () => {
       if (roamer.mode === "inside" && timestamp >= roamer.stayUntil) {
         roamer.mode = "leaving";
         roamer.exitSide = Math.random() < 0.5 ? -1 : 1;
-        roamer.targetX = roamer.exitSide < 0 ? -roamer.padding : width + roamer.padding;
-        roamer.targetY = roamer.kind === "bubble"
-          ? Math.max(height * 0.12, roamer.y - randomBetween(height * 0.08, height * 0.18))
-          : randomBetween(height * 0.18, height * 0.72);
+        roamer.targetX =
+          roamer.exitSide < 0 ? -roamer.padding : width + roamer.padding;
+        roamer.targetY =
+          roamer.kind === "bubble"
+            ? Math.max(
+                height * 0.12,
+                roamer.y - randomBetween(height * 0.08, height * 0.18),
+              )
+            : randomBetween(height * 0.18, height * 0.72);
       } else if (roamer.mode === "outside" && timestamp >= roamer.waitUntil) {
         roamer.mode = "returning";
         roamer.targetX = randomBetween(width * 0.18, width * 0.82);
-        roamer.targetY = roamer.kind === "bubble"
-          ? randomBetween(height * 0.72, height + roamer.padding)
-          : randomBetween(height * 0.18, height * 0.72);
+        roamer.targetY =
+          roamer.kind === "bubble"
+            ? randomBetween(height * 0.72, height + roamer.padding)
+            : randomBetween(height * 0.18, height * 0.72);
       }
 
-      if (roamer.mode === "inside" || roamer.mode === "leaving" || roamer.mode === "returning") {
+      if (
+        roamer.mode === "inside" ||
+        roamer.mode === "leaving" ||
+        roamer.mode === "returning"
+      ) {
         moveRoamer(roamer, delta, timestamp, width);
       }
 
-      const bob = Math.sin(timestamp * 0.0015 + roamer.phase) * (roamer.kind === "bubble" ? 3 : 5);
+      const bob =
+        Math.sin(timestamp * 0.0015 + roamer.phase) *
+        (roamer.kind === "bubble" ? 3 : 5);
       roamer.node.style.left = `${roamer.x}px`;
       roamer.node.style.top = `${roamer.y + bob}px`;
     });
@@ -244,6 +296,7 @@ document.addEventListener("DOMContentLoaded", () => {
     photoDescription.textContent = photo.description;
     photoModal.setAttribute("aria-hidden", "false");
     document.body.classList.add("photo-modal-open");
+    setModalScrollLock(true);
     photoModal.querySelector(".photo-modal-close").focus();
   }
 
@@ -251,13 +304,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (photoModal.getAttribute("aria-hidden") !== "false") return;
     photoModal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("photo-modal-open");
+    setModalScrollLock(false);
     photoImage.removeAttribute("src");
     field.focus({ preventScroll: true });
   }
 
   function updateAlbumCount() {
     albumCount.textContent = String(photoAlbum.size);
-    if (albumProgress) albumProgress.textContent = `${photoAlbum.size} / ${animals.length}`;
+    if (albumProgress)
+      albumProgress.textContent = `${photoAlbum.size} / ${animals.length}`;
   }
 
   function renderAlbum() {
@@ -286,6 +341,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderAlbum();
     albumModal.setAttribute("aria-hidden", "false");
     document.body.classList.add("album-modal-open");
+    setModalScrollLock(true);
     albumModal.querySelector(".photo-modal-close").focus();
   }
 
@@ -293,6 +349,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (albumModal.getAttribute("aria-hidden") !== "false") return;
     albumModal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("album-modal-open");
+    setModalScrollLock(false);
     albumToggle.focus({ preventScroll: true });
   }
 
@@ -301,9 +358,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const fieldHeight = bubbleLayer.clientHeight;
     const padding = width / 2;
     const x = randomBetween(padding, Math.max(padding, fieldWidth - padding));
-    const y = kind === "bubble"
-      ? randomBetween(fieldHeight * 0.72, fieldHeight + padding)
-      : randomBetween(fieldHeight * 0.12, fieldHeight * 0.76);
+    const y =
+      kind === "bubble"
+        ? randomBetween(fieldHeight * 0.72, fieldHeight + padding)
+        : randomBetween(fieldHeight * 0.12, fieldHeight * 0.76);
 
     node.style.width = `${width}px`;
     if (kind === "bubble") node.style.height = `${width}px`;
@@ -328,7 +386,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function swim(timestamp) {
-    const delta = lastFrame ? Math.min((timestamp - lastFrame) / 1000, 0.05) : 0;
+    const delta = lastFrame
+      ? Math.min((timestamp - lastFrame) / 1000, 0.05)
+      : 0;
     lastFrame = timestamp;
 
     if (timestamp - lastFrameChange >= 220) {
@@ -367,14 +427,18 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const direction = keyDirections.get(event.key) || keyDirections.get(event.key.toLowerCase());
+    const direction =
+      keyDirections.get(event.key) ||
+      keyDirections.get(event.key.toLowerCase());
     if (!direction) return;
     event.preventDefault();
     setDirection(direction, true);
   });
 
   document.addEventListener("keyup", (event) => {
-    const direction = keyDirections.get(event.key) || keyDirections.get(event.key.toLowerCase());
+    const direction =
+      keyDirections.get(event.key) ||
+      keyDirections.get(event.key.toLowerCase());
     if (direction) setDirection(direction, false);
   });
 
@@ -424,10 +488,14 @@ document.addEventListener("DOMContentLoaded", () => {
       "fletan.png": "Flétan de l'Atlantique",
     }[filename];
     creature.dataset.description = {
-      "crabe.png": "Reconnaissable à ses longues pattes fines et sa carapace beige rosé, il vit dans les eaux froides et profondes du golfe. C'est l'une des pêches commerciales les plus importantes de la Gaspésie, récoltée surtout au printemps.",
-      "crevette.png": "Uniquement pêchée à l'état sauvage dans les eaux froides du Saint-Laurent, elle se distingue par son goût raffiné, légèrement sucré et une chair plus tendre que toute autre espèce.",
-      "homard.png": "Reconnu à travers le monde, le homard de la Gaspésie est recherché pour la qualité supérieure de sa chair. C'est en raison de sa carapace dure que sa chair, bien protégée des eaux froides et des fonds rocailleux du Saint-Laurent, est si blanche et abondante.",
-      "fletan.png": "Le géant des poissons plats, capable de dépasser 100 kg. Il vit couché sur le fond marin, camouflé dans le sable, et se nourrit d'autres poissons. Sa chair blanche et dense en fait un poisson très prisé, mais sa croissance lente le rend vulnérable à la surpêche.",
+      "crabe.png":
+        "Reconnaissable à ses longues pattes fines et sa carapace beige rosé, il vit dans les eaux froides et profondes du golfe. C'est l'une des pêches commerciales les plus importantes de la Gaspésie, récoltée surtout au printemps.",
+      "crevette.png":
+        "Uniquement pêchée à l'état sauvage dans les eaux froides du Saint-Laurent, elle se distingue par son goût raffiné, légèrement sucré et une chair plus tendre que toute autre espèce.",
+      "homard.png":
+        "Reconnu à travers le monde, le homard de la Gaspésie est recherché pour la qualité supérieure de sa chair. C'est en raison de sa carapace dure que sa chair, bien protégée des eaux froides et des fonds rocailleux du Saint-Laurent, est si blanche et abondante.",
+      "fletan.png":
+        "Le géant des poissons plats, capable de dépasser 100 kg. Il vit couché sur le fond marin, camouflé dans le sable, et se nourrit d'autres poissons. Sa chair blanche et dense en fait un poisson très prisé, mais sa croissance lente le rend vulnérable à la surpêche.",
     }[filename];
     addRoamer(creature, "creature", width);
     animals.push(creature);
@@ -438,31 +506,36 @@ document.addEventListener("DOMContentLoaded", () => {
       filename: "baudroie.png",
       width: 62,
       title: "Baudroie",
-      description: "Poisson des profondeurs, la baudroie se reconnaît à sa large tête et à son leurre placé au-dessus de la bouche. Elle reste immobile sur le fond et attire ainsi ses proies.",
+      description:
+        "Poisson des profondeurs, la baudroie se reconnaît à sa large tête et à son leurre placé au-dessus de la bouche. Elle reste immobile sur le fond et attire ainsi ses proies.",
     },
     {
       filename: "maquereau.png",
       width: 64,
       title: "Maquereau",
-      description: "Poisson rapide et grégaire, le maquereau nage en bancs près de la surface. Ses lignes sombres sur le dos et son corps fuselé l’aident à se déplacer vivement dans l’Atlantique Nord.",
+      description:
+        "Poisson rapide et grégaire, le maquereau nage en bancs près de la surface. Ses lignes sombres sur le dos et son corps fuselé l’aident à se déplacer vivement dans l’Atlantique Nord.",
     },
     {
       filename: "morue.png",
       width: 68,
       title: "Morue de l’Atlantique",
-      description: "La morue de l’Atlantique fréquente les eaux froides du golfe et se nourrit de poissons et de crustacés. Longtemps au cœur de la pêche gaspésienne, elle demeure une espèce importante à protéger.",
+      description:
+        "La morue de l’Atlantique fréquente les eaux froides du golfe et se nourrit de poissons et de crustacés. Longtemps au cœur de la pêche gaspésienne, elle demeure une espèce importante à protéger.",
     },
     {
       filename: "sebaste.png",
       width: 74,
       title: "Sébaste",
-      description: "Le sébaste, aussi appelé sébaste atlantique, vit dans les eaux froides et profondes du golfe. Ce poisson rouge grandit lentement et forme souvent des bancs près du fond marin.",
+      description:
+        "Le sébaste, aussi appelé sébaste atlantique, vit dans les eaux froides et profondes du golfe. Ce poisson rouge grandit lentement et forme souvent des bancs près du fond marin.",
     },
     {
       filename: "thon.png",
       width: 112,
       title: "Thon rouge",
-      description: "Puissant nageur des eaux de l’Atlantique, le thon rouge peut parcourir de grandes distances. Son corps fuselé et sa nageoire caudale robuste sont adaptés aux longues migrations.",
+      description:
+        "Puissant nageur des eaux de l’Atlantique, le thon rouge peut parcourir de grandes distances. Son corps fuselé et sa nageoire caudale robuste sont adaptés aux longues migrations.",
     },
   ].forEach(({ filename, width, title, description }) => {
     const creature = document.createElement("img");
@@ -482,7 +555,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const whelkWidth = 62;
   const worldWidth = bubbleLayer.clientWidth;
   const worldHeight = bubbleLayer.clientHeight;
-  const floorHeight = document.querySelector(".dive-floor").getBoundingClientRect().height;
+  const floorHeight = document
+    .querySelector(".dive-floor")
+    .getBoundingClientRect().height;
   const whelkX = randomBetween(worldWidth * 0.12, worldWidth * 0.88);
   whelk.className = "marine-creature";
   whelk.src = "./assets/images/jeu/bourgot.png";
@@ -491,7 +566,8 @@ document.addEventListener("DOMContentLoaded", () => {
   whelk.setAttribute("aria-hidden", "true");
   whelk.dataset.species = "bourgot.png";
   whelk.dataset.title = "Bourgot";
-  whelk.dataset.description = "Aussi appelé buccin, ce mollusque à coquille en spirale vit sur les fonds rocheux du golfe du Saint-Laurent. Sa chair ferme et légèrement caoutchouteuse est traditionnellement pêchée à la trappe, un peu comme le homard.";
+  whelk.dataset.description =
+    "Aussi appelé buccin, ce mollusque à coquille en spirale vit sur les fonds rocheux du golfe du Saint-Laurent. Sa chair ferme et légèrement caoutchouteuse est traditionnellement pêchée à la trappe, un peu comme le homard.";
   whelk.style.width = `${whelkWidth}px`;
   bubbleLayer.append(whelk);
   roamers.push({
@@ -515,17 +591,25 @@ document.addEventListener("DOMContentLoaded", () => {
   oyster.setAttribute("aria-hidden", "true");
   oyster.dataset.species = "huître.png";
   oyster.dataset.title = "Huître";
-  oyster.dataset.description = "Ce mollusque bivalve filtre l'eau pour se nourrir de plancton, jouant un rôle important dans la santé des écosystèmes côtiers. Moins commune dans les eaux froides du golfe que dans les Maritimes, elle reste appréciée pour sa fraîcheur iodée.";
+  oyster.dataset.description =
+    "Ce mollusque bivalve filtre l'eau pour se nourrir de plancton, jouant un rôle important dans la santé des écosystèmes côtiers. Moins commune dans les eaux froides du golfe que dans les Maritimes, elle reste appréciée pour sa fraîcheur iodée.";
   oyster.style.width = `${oysterWidth}px`;
 
   const oysterXRatio = randomBetween(0.08, 0.92);
   function placeOysterOnFloor() {
     const width = bubbleLayer.clientWidth;
     const height = bubbleLayer.clientHeight;
-    const floorHeight = document.querySelector(".dive-floor").getBoundingClientRect().height;
-    const xRatio = Math.max(oysterWidth / width, Math.min(1 - oysterWidth / width, oysterXRatio));
+    const floorHeight = document
+      .querySelector(".dive-floor")
+      .getBoundingClientRect().height;
+    const xRatio = Math.max(
+      oysterWidth / width,
+      Math.min(1 - oysterWidth / width, oysterXRatio),
+    );
     const surface = floorSurfaceY(xRatio, height, floorHeight);
-    const imageHeight = oyster.naturalWidth ? oysterWidth * oyster.naturalHeight / oyster.naturalWidth : oysterWidth * 0.7;
+    const imageHeight = oyster.naturalWidth
+      ? (oysterWidth * oyster.naturalHeight) / oyster.naturalWidth
+      : oysterWidth * 0.7;
 
     oyster.style.left = `${width * xRatio}px`;
     oyster.style.top = `${surface - imageHeight / 2}px`;
@@ -550,6 +634,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("[data-game-start]").addEventListener("click", () => {
     gameStarted = true;
     gameIntroModal.setAttribute("aria-hidden", "true");
+    setModalScrollLock(false);
     updateDiver();
     field.focus({ preventScroll: true });
     requestAnimationFrame(swim);

@@ -411,7 +411,9 @@ video {
   padding: clamp(1rem, 4vw, 3rem);
   visibility: hidden;
   opacity: 0;
-  transition: opacity 250ms ease, visibility 250ms ease;
+  transition:
+    opacity 250ms ease,
+    visibility 250ms ease;
 }
 
 .game-intro-modal[aria-hidden="false"],
@@ -576,6 +578,18 @@ video {
 .album-modal-open,
 .photo-modal-open {
   overflow: hidden;
+}
+
+html.modal-open,
+body.modal-open {
+  overflow: hidden;
+  overscroll-behavior: none;
+  scrollbar-width: none;
+}
+
+html.modal-open::-webkit-scrollbar,
+body.modal-open::-webkit-scrollbar {
+  display: none;
 }
 
 .photo-flash {
